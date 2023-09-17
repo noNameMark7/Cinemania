@@ -1,0 +1,50 @@
+{
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
+        "version" : "5.7.1"
+      }
+    },
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core.git",
+      "state" : {
+        "revision" : "c04f5e401a1ec682e6b08b1ee157e19a0f834a5f",
+        "version" : "13.17.1"
+      }
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift.git",
+      "state" : {
+        "revision" : "933abaa8076966e237e66497def74df84c6adbb4",
+        "version" : "10.42.0"
+      }
+    },
+    {
+      "identity" : "sdwebimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "state" : {
+        "revision" : "633996a807442ec28df9d33b0f88ce57a0e2fdbf",
+        "version" : "5.17.0"
+      }
+    },
+    {
+      "identity" : "youtube-ios-player-helper",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/youtube/youtube-ios-player-helper.git",
+      "state" : {
+        "revision" : "f57129cd4380ec0a74dd3a59da3270a1d653d59b",
+        "version" : "1.0.4"
+      }
+    }
+  ],
+  "version" : 2
+}
