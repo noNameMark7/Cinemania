@@ -1,7 +1,7 @@
 import UIKit
 
-final class AppCoordinator {
-    static func setupRootViewController(in window: UIWindow) {
+final class SetupTabBarController {
+    static func asRootViewController(in window: UIWindow) {
         let tabBarController = UITabBarController()
         tabBarController.tabBar.tintColor = .label
         

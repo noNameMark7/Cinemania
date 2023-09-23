@@ -24,8 +24,9 @@
 		4D46C29C2A758ED100C4C127 /* UIImage Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D46C29B2A758ED100C4C127 /* UIImage Extension.swift */; };
 		4D46C2A12A75A31F00C4C127 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D46C2A02A75A31F00C4C127 /* HomeViewController.swift */; };
 		4D5C7C312A7ACEFC0085994F /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C7C302A7ACEFC0085994F /* SavedViewController.swift */; };
-		4D63F2272AA0F69600FADB08 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63F2262AA0F69600FADB08 /* AppCoordinator.swift */; };
 		4D63F22C2AA3704000FADB08 /* ValueFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63F22B2AA3704000FADB08 /* ValueFormatting.swift */; };
+		4DA6D09D2ABF73740048FCEE /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6D09C2ABF73730048FCEE /* AppRouter.swift */; };
+		4DA6D09F2ABF794F0048FCEE /* SetupTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6D09E2ABF794F0048FCEE /* SetupTabBarController.swift */; };
 		4DAFADB32AA6401000CBDD54 /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DAFADB12AA6401000CBDD54 /* Manrope-Regular.ttf */; };
 		4DAFADB62AA647A400CBDD54 /* Manrope-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DAFADB52AA647A400CBDD54 /* Manrope-Medium.ttf */; };
 		4DBADFAF2AA51FC400A6E528 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DBADFAE2AA51FC400A6E528 /* Comfortaa-Regular.ttf */; };
@@ -60,8 +61,9 @@
 		4D46C29B2A758ED100C4C127 /* UIImage Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage Extension.swift"; sourceTree = "<group>"; };
 		4D46C2A02A75A31F00C4C127 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4D5C7C302A7ACEFC0085994F /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
-		4D63F2262AA0F69600FADB08 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		4D63F22B2AA3704000FADB08 /* ValueFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueFormatting.swift; sourceTree = "<group>"; };
+		4DA6D09C2ABF73730048FCEE /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		4DA6D09E2ABF794F0048FCEE /* SetupTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTabBarController.swift; sourceTree = "<group>"; };
 		4DAFADB12AA6401000CBDD54 /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
 		4DAFADB52AA647A400CBDD54 /* Manrope-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Medium.ttf"; sourceTree = "<group>"; };
 		4DBADFAE2AA51FC400A6E528 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
@@ -133,14 +135,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		4D63F2282AA108F000FADB08 /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-				4D63F2262AA0F69600FADB08 /* AppCoordinator.swift */,
-			);
-			path = Coordinators;
-			sourceTree = "<group>";
-		};
 		4D63F22E2AA3D56D00FADB08 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +162,14 @@
 				4DD25BE72A51D84D00C44A9E /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4DA6D0A02ABF7C400048FCEE /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				4DA6D09C2ABF73730048FCEE /* AppRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		4DAFADB02AA63FDC00CBDD54 /* Manrope */ = {
@@ -236,15 +238,16 @@
 			isa = PBXGroup;
 			children = (
 				4D72FA3A2A69F86F0067C71B /* Supporting Files */,
-				4D63F2282AA108F000FADB08 /* Coordinators */,
-				4DD25BFD2A52102F00C44A9E /* Controllers */,
 				4D594A3B2A75BEA600FE2B4D /* Models */,
 				4DD25C002A52108800C44A9E /* Views */,
 				4D5C7C322A7ACFB10085994F /* ViewModels */,
+				4DD25BFD2A52102F00C44A9E /* Controllers */,
+				4DA6D0A02ABF7C400048FCEE /* Router */,
 				4D5C7C332A7ACFD80085994F /* Services */,
 				4DCB2D782A9AA5C3004FDFDB /* Protocols */,
 				4DCB2D6E2A97A61A004FDFDB /* Utils */,
 				4D63F22E2AA3D56D00FADB08 /* Resources */,
+				4DA6D09E2ABF794F0048FCEE /* SetupTabBarController.swift */,
 			);
 			path = Cinemania;
 			sourceTree = "<group>";
@@ -384,14 +387,15 @@
 			files = (
 				4D00A2092A8FFB8C00799B9C /* Media.swift in Sources */,
 				4DD25BDA2A51D84300C44A9E /* AppDelegate.swift in Sources */,
-				4D63F2272AA0F69600FADB08 /* AppCoordinator.swift in Sources */,
 				4D00A2052A8FFB7000799B9C /* Genres.swift in Sources */,
 				4D00A2012A8FFB2E00799B9C /* TrendingMovies.swift in Sources */,
+				4DA6D09D2ABF73740048FCEE /* AppRouter.swift in Sources */,
 				4D1BAAC72A7C121800FEF19C /* NetworkService.swift in Sources */,
 				4D00A2072A8FFB7D00799B9C /* Trailers.swift in Sources */,
 				4DE108F22A8E469F001B7D34 /* SavedViewModel.swift in Sources */,
 				4DE108F02A8E4690001B7D34 /* HomeViewModel.swift in Sources */,
 				4DE108FA2A8E4E88001B7D34 /* SavedView.swift in Sources */,
+				4DA6D09F2ABF794F0048FCEE /* SetupTabBarController.swift in Sources */,
 				4DCB2D722A97A733004FDFDB /* UIFont Extension.swift in Sources */,
 				4D46C29C2A758ED100C4C127 /* UIImage Extension.swift in Sources */,
 				4DCB2D772A981871004FDFDB /* DetailsViewModel.swift in Sources */,

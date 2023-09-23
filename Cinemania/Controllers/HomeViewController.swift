@@ -15,6 +15,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         )
         
         settingUIElementsAndConstraints()
+        
         homeViewModel.fetchInitialData { [weak self] in
             DispatchQueue.main.async {
                 self?.homeView.tableView.reloadData()
@@ -110,11 +111,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedItem = homeViewModel.getSelectedItem(for: indexPath)
-        let detailsViewModel = DetailsViewModel(media: selectedItem, genres: homeViewModel.genres)
-        detailsViewModel.fetchMediaDetails()
-        let detailsViewController = DetailsViewController(detailsViewModel: detailsViewModel)
-        detailsViewController.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(detailsViewController, animated: true)
+        AppRouter.shared.navigateToDetails(
+            from: self,
+            media: selectedItem,
+            genres: homeViewModel.genres
+        )
     }
     
     // Swipe to download

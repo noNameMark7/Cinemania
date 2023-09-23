@@ -83,11 +83,11 @@ extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         if let savedMedia = savedViewModel.savedMedia?[indexPath.row] {
             let media = Media(from: savedMedia)
-            let detailsViewModel = DetailsViewModel(media: media, genres: savedViewModel.genres)
-            detailsViewModel.fetchMediaDetails()
-            let detailsViewController = DetailsViewController(detailsViewModel: detailsViewModel)
-            detailsViewController.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(detailsViewController, animated: true)
+            AppRouter.shared.navigateToDetails(
+                from: self,
+                media: media,
+                genres: savedViewModel.genres
+            )
         }
     }
     
