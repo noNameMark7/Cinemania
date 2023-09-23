@@ -334,13 +334,13 @@ class DetailsView: UIView {
     }
     
     func configure(with object: Media, and genres: [Genre]) {
-        if let backdropURL = URL(string: APIs.getImage.rawValue + object.backdrop) {
+        if let backdropURL = URL(string: Constants.getImage + object.backdrop) {
             backdropImageView.sd_setImage(with: backdropURL, placeholderImage: .placeholder(named: "DefaultBackdrop"))
         } else {
             backdropImageView.image = .placeholder(named: "DefaultBackdrop")
         }
         
-        if let posterURL = URL(string: APIs.getImage.rawValue + object.poster) {
+        if let posterURL = URL(string: Constants.getImage + object.poster) {
             posterImageView.sd_setImage(with: posterURL, placeholderImage: .placeholder(named: "DefaultPoster"))
         } else {
             posterImageView.image = .placeholder(named: "DefaultPoster")

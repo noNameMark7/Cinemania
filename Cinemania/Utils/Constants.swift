@@ -1,17 +1,14 @@
 import UIKit
 import RealmSwift
 
-//struct Constants {
-//    static let tmdbImageBaseUrl = "https://image.tmdb.org/t/p/original"
-//    static let tmdbApiKey = "c41873ea67b88f6ae314459f7b75f68e"
-//    static let tmdbBaseUrl = "https://api.themoviedb.org"
-//}
-
-// MARK: - APIs path and constans
-enum APIs: String {
-    case apiKey = "c41873ea67b88f6ae314459f7b75f68e"
-    case baseURL = "https://api.themoviedb.org/3/"
-    case getImage = "https://image.tmdb.org/t/p/original"
+// MARK: - Path and constans
+struct Constants {
+    static let apiKey = "c41873ea67b88f6ae314459f7b75f68e"
+    static let trendingBaseUrl = "https://api.themoviedb.org/3/trending/"
+    static let getImage = "https://image.tmdb.org/t/p/original"
+    static let videos = "/videos"
+    static let getMoviesGenreList = "https://api.themoviedb.org/3/genre/movie/list"
+    static let getTVsGenreList = "https://api.themoviedb.org/3/genre/tv/list"
 }
 
 // MARK: - Time window parameter 

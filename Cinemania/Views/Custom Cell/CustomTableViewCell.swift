@@ -110,7 +110,7 @@ class CustomTableViewCell: UITableViewCell {
     }
     
     func configure(with object: Media, and genre: [Genre]) {
-        if let posterURL = URL(string: APIs.getImage.rawValue + object.poster) {
+        if let posterURL = URL(string: Constants.getImage + object.poster) {
             posterImageView.sd_setImage(with: posterURL, placeholderImage: .placeholder(named: "DefaultPoster"))
         } else {
             posterImageView.image = .placeholder(named: "DefaultPoster")
@@ -127,7 +127,7 @@ class CustomTableViewCell: UITableViewCell {
     }
     
     func configure(with object: MediaRealm, and genre: [Genre]) {
-        if let posterURL = URL(string: APIs.getImage.rawValue + object.poster) {
+        if let posterURL = URL(string: Constants.getImage + object.poster) {
             posterImageView.sd_setImage(with: posterURL, placeholderImage: .placeholder(named: "DefaultPoster"))
         } else {
             posterImageView.image = .placeholder(named: "DefaultPoster")
