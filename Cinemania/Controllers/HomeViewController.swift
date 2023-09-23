@@ -1,6 +1,5 @@
 import UIKit
 import RealmSwift
-import Alamofire
 
 class HomeViewController: UIViewController, UIScrollViewDelegate {
     private let homeView = HomeView()

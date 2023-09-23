@@ -10,9 +10,9 @@ final class NetworkService {
         modelType: T.Type,
         completion: @escaping ((Result<T?, Error>) -> Void)
     ) {
-        let url = "\(Constants.tmdbBaseUrl)/3/trending/\(mediaType)/\(timeWindow)"
+        let url = "\(APIs.baseURL)trending/\(mediaType)/\(timeWindow)"
         let parameters: Parameters = [
-            "api_key": Constants.tmdbApiKey,
+            "api_key": APIs.apiKey,
             "language": "en-US",
             "page": 1
         ]
@@ -34,12 +34,12 @@ final class NetworkService {
         completion: @escaping (Result<[Genre], Error>) -> Void
     ) {
         let parameters: Parameters = [
-            "api_key": Constants.tmdbApiKey,
+            "api_key": APIs.apiKey,
             "language": "en-US"
         ]
         
-        let movieGenresUrl = "\(Constants.tmdbBaseUrl)/3/genre/movie/list"
-        let tvShowGenresUrl = "\(Constants.tmdbBaseUrl)/3/genre/tv/list"
+        let movieGenresUrl = "\(APIs.baseURL)genre/movie/list"
+        let tvShowGenresUrl = "\(APIs.baseURL)genre/tv/list"
         
         let dispatchGroup = DispatchGroup()
         
@@ -86,7 +86,7 @@ final class NetworkService {
         let url = "https://api.themoviedb.org/3/\(type)/\(id)/videos"
         
         let parameters: Parameters = [
-            "api_key": Constants.tmdbApiKey,
+            "api_key": APIs.apiKey,
             "language": "en-US"
         ]
         

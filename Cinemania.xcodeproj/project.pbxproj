@@ -19,13 +19,13 @@
 		4D00A2192A8FFF4400799B9C /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4D00A2182A8FFF4400799B9C /* SDWebImageMapKit */; };
 		4D00A21C2A8FFF6600799B9C /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 4D00A21B2A8FFF6600799B9C /* YouTubeiOSPlayerHelper */; };
 		4D00A21E2A9019D600799B9C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D00A21D2A9019D600799B9C /* Constants.swift */; };
+		4D0F6F042ABF0BAD007A550A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0F6F032ABF0BAD007A550A /* RealmManager.swift */; };
 		4D1BAAC72A7C121800FEF19C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1BAAC62A7C121700FEF19C /* NetworkService.swift */; };
 		4D46C29C2A758ED100C4C127 /* UIImage Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D46C29B2A758ED100C4C127 /* UIImage Extension.swift */; };
 		4D46C2A12A75A31F00C4C127 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D46C2A02A75A31F00C4C127 /* HomeViewController.swift */; };
 		4D5C7C312A7ACEFC0085994F /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C7C302A7ACEFC0085994F /* SavedViewController.swift */; };
 		4D63F2272AA0F69600FADB08 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63F2262AA0F69600FADB08 /* AppCoordinator.swift */; };
 		4D63F22C2AA3704000FADB08 /* ValueFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63F22B2AA3704000FADB08 /* ValueFormatting.swift */; };
-		4D8D0C1F2A9E46EB007C468B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D0C1E2A9E46EB007C468B /* Enums.swift */; };
 		4DAFADB32AA6401000CBDD54 /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DAFADB12AA6401000CBDD54 /* Manrope-Regular.ttf */; };
 		4DAFADB62AA647A400CBDD54 /* Manrope-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DAFADB52AA647A400CBDD54 /* Manrope-Medium.ttf */; };
 		4DBADFAF2AA51FC400A6E528 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DBADFAE2AA51FC400A6E528 /* Comfortaa-Regular.ttf */; };
@@ -55,13 +55,13 @@
 		4D00A2082A8FFB8C00799B9C /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		4D00A20B2A8FFBD200799B9C /* MediaRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaRealm.swift; sourceTree = "<group>"; };
 		4D00A21D2A9019D600799B9C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4D0F6F032ABF0BAD007A550A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		4D1BAAC62A7C121700FEF19C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		4D46C29B2A758ED100C4C127 /* UIImage Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage Extension.swift"; sourceTree = "<group>"; };
 		4D46C2A02A75A31F00C4C127 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4D5C7C302A7ACEFC0085994F /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		4D63F2262AA0F69600FADB08 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		4D63F22B2AA3704000FADB08 /* ValueFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueFormatting.swift; sourceTree = "<group>"; };
-		4D8D0C1E2A9E46EB007C468B /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		4DAFADB12AA6401000CBDD54 /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
 		4DAFADB52AA647A400CBDD54 /* Manrope-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Medium.ttf"; sourceTree = "<group>"; };
 		4DBADFAE2AA51FC400A6E528 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
@@ -128,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				4D1BAAC62A7C121700FEF19C /* NetworkService.swift */,
+				4D0F6F032ABF0BAD007A550A /* RealmManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -191,7 +192,6 @@
 		4DCB2D6E2A97A61A004FDFDB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				4D8D0C1E2A9E46EB007C468B /* Enums.swift */,
 				4D00A21D2A9019D600799B9C /* Constants.swift */,
 				4D63F22B2AA3704000FADB08 /* ValueFormatting.swift */,
 				4DCB2D712A97A733004FDFDB /* UIFont Extension.swift */,
@@ -385,7 +385,6 @@
 				4D00A2092A8FFB8C00799B9C /* Media.swift in Sources */,
 				4DD25BDA2A51D84300C44A9E /* AppDelegate.swift in Sources */,
 				4D63F2272AA0F69600FADB08 /* AppCoordinator.swift in Sources */,
-				4D8D0C1F2A9E46EB007C468B /* Enums.swift in Sources */,
 				4D00A2052A8FFB7000799B9C /* Genres.swift in Sources */,
 				4D00A2012A8FFB2E00799B9C /* TrendingMovies.swift in Sources */,
 				4D1BAAC72A7C121800FEF19C /* NetworkService.swift in Sources */,
@@ -396,6 +395,7 @@
 				4DCB2D722A97A733004FDFDB /* UIFont Extension.swift in Sources */,
 				4D46C29C2A758ED100C4C127 /* UIImage Extension.swift in Sources */,
 				4DCB2D772A981871004FDFDB /* DetailsViewModel.swift in Sources */,
+				4D0F6F042ABF0BAD007A550A /* RealmManager.swift in Sources */,
 				4D00A21E2A9019D600799B9C /* Constants.swift in Sources */,
 				4D00A2032A8FFB6000799B9C /* TrendingTVShows.swift in Sources */,
 				4D00A20C2A8FFBD200799B9C /* MediaRealm.swift in Sources */,
