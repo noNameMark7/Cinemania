@@ -5,10 +5,11 @@ import RealmSwift
 struct Constants {
     static let apiKey = "c41873ea67b88f6ae314459f7b75f68e"
     static let trendingBaseUrl = "https://api.themoviedb.org/3/trending/"
+    static let baseUrl = "https://api.themoviedb.org/3/"
     static let getImage = "https://image.tmdb.org/t/p/original"
-    static let videos = "/videos"
     static let getMoviesGenreList = "https://api.themoviedb.org/3/genre/movie/list"
     static let getTVsGenreList = "https://api.themoviedb.org/3/genre/tv/list"
+    static let videos = "/videos"
 }
 
 // MARK: - Time window parameter 

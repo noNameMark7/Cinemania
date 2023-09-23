@@ -47,7 +47,10 @@ final class NetworkService {
         
         // Fetch movie genres
         dispatchGroup.enter()
-        AF.request(movieGenresUrl, parameters: parameters).responseDecodable(of: Genres.self) { response in
+        AF.request(
+            movieGenresUrl,
+            parameters: parameters
+        ).responseDecodable(of: Genres.self) { response in
             defer {
                 dispatchGroup.leave()
             }
@@ -61,7 +64,10 @@ final class NetworkService {
         
         // Fetch TV show genres
         dispatchGroup.enter()
-        AF.request(tvShowGenresUrl, parameters: parameters).responseDecodable(of: Genres.self) { response in
+        AF.request(
+            tvShowGenresUrl,
+            parameters: parameters
+        ).responseDecodable(of: Genres.self) { response in
             defer {
                 dispatchGroup.leave()
             }
@@ -83,7 +89,7 @@ final class NetworkService {
         _ id: Int,
         completion: @escaping ((URL?) -> Void)
     ) {
-        let url = "\(Constants.trendingBaseUrl)\(type)/\(id)\(Constants.videos)"
+        let url = "\(Constants.baseUrl)\(type)/\(id)\(Constants.videos)"
         
         let parameters: Parameters = [
             "api_key": Constants.apiKey,
@@ -112,7 +118,9 @@ final class NetworkService {
                 return
             }
             
-            guard let trailerUrl = URL(string: "https://www.youtube.com/watch?v=\(trailer.key)") else {
+            guard let trailerUrl = URL(
+                string: "https://www.youtube.com/watch?v=\(trailer.key)"
+            ) else {
                 print("Error: Invalid trailer URL")
                 completion(nil)
                 return
