@@ -1,6 +1,5 @@
 import UIKit
 import RealmSwift
-import Alamofire
 
 class SavedViewController: UIViewController {
     private let savedView = SavedView()
@@ -9,11 +8,13 @@ class SavedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingUIElementsAndConstraints()
+        
         savedViewModel.updateUI = { [weak self] in
             DispatchQueue.main.async {
                 self?.savedView.tableView.reloadData()
             }
         }
+        
         savedViewModel.fetchAllGenres()
     }
     
@@ -28,14 +29,14 @@ class SavedViewController: UIViewController {
     private func settingUIElementsAndConstraints() {
         view.addSubview(savedView)
         savedView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             savedView.topAnchor.constraint(equalTo: view.topAnchor),
             savedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             savedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             savedView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
+
         savedView.tableView.dataSource = self
         savedView.tableView.delegate = self
         savedView.tableView.register(

@@ -8,6 +8,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchBar()
+        
         homeView.segmentedControl.addTarget(
             self,
             action: #selector(segmentedControlValueChanged),
@@ -19,16 +20,15 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         homeViewModel.fetchInitialData { [weak self] in
             DispatchQueue.main.async {
                 self?.homeView.tableView.reloadData()
+                self?.homeViewModel.fetchAllGenres()
             }
         }
-        
+
         homeViewModel.updateUI = { [weak self] in
             DispatchQueue.main.async {
                 self?.homeView.tableView.reloadData()
             }
         }
-        
-        homeViewModel.fetchAllGenres()
     }
  
     @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {        
@@ -58,14 +58,14 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     private func settingUIElementsAndConstraints() {
         view.addSubview(homeView)
         homeView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             homeView.topAnchor.constraint(equalTo: view.topAnchor),
             homeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             homeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             homeView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
+
         homeView.tableView.dataSource = self
         homeView.tableView.delegate = self
         homeView.tableView.register(
