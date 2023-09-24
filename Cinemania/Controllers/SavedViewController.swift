@@ -7,15 +7,15 @@ class SavedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingUIElementsAndConstraints()
+        setupUI()
+        
+        savedViewModel.fetchAllGenres()
         
         savedViewModel.updateUI = { [weak self] in
             DispatchQueue.main.async {
                 self?.savedView.tableView.reloadData()
             }
         }
-        
-        savedViewModel.fetchAllGenres()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,7 +26,8 @@ class SavedViewController: UIViewController {
         }
     }
     
-    private func settingUIElementsAndConstraints() {
+    private func setupUI() {
+        // Constarints and UI Elements
         view.addSubview(savedView)
         savedView.translatesAutoresizingMaskIntoConstraints = false
 

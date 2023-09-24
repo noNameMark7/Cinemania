@@ -7,15 +7,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSearchBar()
-        
-        homeView.segmentedControl.addTarget(
-            self,
-            action: #selector(segmentedControlValueChanged),
-            for: .valueChanged
-        )
-        
-        settingUIElementsAndConstraints()
+        setupUI()
         
         homeViewModel.fetchInitialData { [weak self] in
             DispatchQueue.main.async {
@@ -29,6 +21,43 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
                 self?.homeView.tableView.reloadData()
             }
         }
+    }
+    
+    private func setupUI() {
+        // Navigation Bar
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = homeViewModel.searchController
+        definesPresentationContext = true
+        
+        // Search Bar
+        homeViewModel.searchController.searchResultsUpdater = self
+        homeViewModel.searchController.obscuresBackgroundDuringPresentation = false
+        homeViewModel.searchController.searchBar.delegate = self
+        
+        // Segmented Control
+        homeView.segmentedControl.addTarget(
+            self,
+            action: #selector(segmentedControlValueChanged),
+            for: .valueChanged
+        )
+        
+        // Constarints and UI Elements
+        view.addSubview(homeView)
+        homeView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            homeView.topAnchor.constraint(equalTo: view.topAnchor),
+            homeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            homeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            homeView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+
+        homeView.tableView.dataSource = self
+        homeView.tableView.delegate = self
+        homeView.tableView.register(
+            CustomTableViewCell.self,
+            forCellReuseIdentifier: CustomTableViewCell.reuseIdentifier
+        )
     }
  
     @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {        
@@ -44,34 +73,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
                 self?.homeView.tableView.reloadData()
             }
         }
-    }
- 
-    private func setupSearchBar() {
-        homeViewModel.searchController.searchResultsUpdater = self
-        homeViewModel.searchController.obscuresBackgroundDuringPresentation = false
-        homeViewModel.searchController.searchBar.delegate = self
-        navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.searchController = homeViewModel.searchController
-        definesPresentationContext = true
-    }
-
-    private func settingUIElementsAndConstraints() {
-        view.addSubview(homeView)
-        homeView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            homeView.topAnchor.constraint(equalTo: view.topAnchor),
-            homeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            homeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            homeView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-
-        homeView.tableView.dataSource = self
-        homeView.tableView.delegate = self
-        homeView.tableView.register(
-            CustomTableViewCell.self,
-            forCellReuseIdentifier: CustomTableViewCell.reuseIdentifier
-        )
     }
 }
 
