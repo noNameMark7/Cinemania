@@ -138,7 +138,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
                 mediaToSave = self.homeViewModel.getItem(at: indexPath.row)
             }
             
-            if RealmManager.shared.isMediaSaved(mediaToSave.id) {
+            if RealmService.shared.isMediaSaved(mediaToSave.id) {
                 // Alert message if media already exsist
                 let alert = UIAlertController(
                     title: "Saved",
@@ -155,7 +155,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
                 self.present(alert, animated: true)
             } else {
                 // Save the media to Realm using RealmManager
-                RealmManager.shared.saveMedia(mediaToSave)
+                RealmService.shared.saveMedia(mediaToSave)
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.homeView.tableView.reloadData()

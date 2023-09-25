@@ -1,8 +1,8 @@
 import UIKit
 import RealmSwift
 
-class RealmManager {
-    static let shared = RealmManager()
+class RealmService {
+    static let shared = RealmService()
     
     private init() {}
     

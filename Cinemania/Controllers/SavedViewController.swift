@@ -124,7 +124,7 @@ extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
             ) { _ in
                 // Delete the media using the RealmService
                 if let mediaID = deleteMedia?.id {
-                    RealmManager.shared.deleteMedia(mediaID)
+                    RealmService.shared.deleteMedia(mediaID)
                 }
                 
                 // Remove the item from the ViewModel's data source

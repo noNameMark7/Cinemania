@@ -19,7 +19,7 @@
 		4D00A2192A8FFF4400799B9C /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4D00A2182A8FFF4400799B9C /* SDWebImageMapKit */; };
 		4D00A21C2A8FFF6600799B9C /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 4D00A21B2A8FFF6600799B9C /* YouTubeiOSPlayerHelper */; };
 		4D00A21E2A9019D600799B9C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D00A21D2A9019D600799B9C /* Constants.swift */; };
-		4D0F6F042ABF0BAD007A550A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0F6F032ABF0BAD007A550A /* RealmManager.swift */; };
+		4D0F6F042ABF0BAD007A550A /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0F6F032ABF0BAD007A550A /* RealmService.swift */; };
 		4D1BAAC72A7C121800FEF19C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1BAAC62A7C121700FEF19C /* NetworkService.swift */; };
 		4D46C29C2A758ED100C4C127 /* UIImage Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D46C29B2A758ED100C4C127 /* UIImage Extension.swift */; };
 		4D46C2A12A75A31F00C4C127 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D46C2A02A75A31F00C4C127 /* HomeViewController.swift */; };
@@ -56,7 +56,7 @@
 		4D00A2082A8FFB8C00799B9C /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		4D00A20B2A8FFBD200799B9C /* MediaRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaRealm.swift; sourceTree = "<group>"; };
 		4D00A21D2A9019D600799B9C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		4D0F6F032ABF0BAD007A550A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		4D0F6F032ABF0BAD007A550A /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		4D1BAAC62A7C121700FEF19C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		4D46C29B2A758ED100C4C127 /* UIImage Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage Extension.swift"; sourceTree = "<group>"; };
 		4D46C2A02A75A31F00C4C127 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				4D1BAAC62A7C121700FEF19C /* NetworkService.swift */,
-				4D0F6F032ABF0BAD007A550A /* RealmManager.swift */,
+				4D0F6F032ABF0BAD007A550A /* RealmService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -399,7 +399,7 @@
 				4DCB2D722A97A733004FDFDB /* UIFont Extension.swift in Sources */,
 				4D46C29C2A758ED100C4C127 /* UIImage Extension.swift in Sources */,
 				4DCB2D772A981871004FDFDB /* DetailsViewModel.swift in Sources */,
-				4D0F6F042ABF0BAD007A550A /* RealmManager.swift in Sources */,
+				4D0F6F042ABF0BAD007A550A /* RealmService.swift in Sources */,
 				4D00A21E2A9019D600799B9C /* Constants.swift in Sources */,
 				4D00A2032A8FFB6000799B9C /* TrendingTVShows.swift in Sources */,
 				4D00A20C2A8FFBD200799B9C /* MediaRealm.swift in Sources */,
