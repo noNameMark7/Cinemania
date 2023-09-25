@@ -1,5 +1,4 @@
 import UIKit
-import RealmSwift
 
 class HomeViewController: UIViewController, UIScrollViewDelegate {
     private let homeView = HomeView()
@@ -139,9 +138,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
                 mediaToSave = self.homeViewModel.getItem(at: indexPath.row)
             }
             
-            // Check if the media is already saved
-            let realm = try? Realm()
-            if (realm?.object(ofType: MediaRealm.self, forPrimaryKey: mediaToSave.id)) != nil {
+            if RealmManager.shared.isMediaSaved(mediaToSave.id) {
+                // Alert message if media already exsist
                 let alert = UIAlertController(
                     title: "Saved",
                     message: "\(mediaToSave.title) already saved.",
@@ -156,23 +154,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
                 alert.addAction(okAction)
                 self.present(alert, animated: true)
             } else {
-                // Create a RealmModel object and save it
-                let realmMedia = MediaRealm()
-                realmMedia.id = mediaToSave.id
-                realmMedia.poster = mediaToSave.poster
-                realmMedia.title = mediaToSave.title
-                realmMedia.genre.append(objectsIn: mediaToSave.genre)
-                realmMedia.voteAverage = mediaToSave.voteAverage
-                realmMedia.typeOfMedia = mediaToSave.typeOfMedia
-                realmMedia.backdrop = mediaToSave.backdrop
-                realmMedia.overview = mediaToSave.overview
-                realmMedia.popularity = mediaToSave.popularity
-                realmMedia.releaseDate = mediaToSave.releaseDate
-                realmMedia.voteCount = mediaToSave.voteCount
-                
-                try? realm?.write {
-                    realm?.add(realmMedia, update: .all)
-                }
+                // Save the media to Realm using RealmManager
+                RealmManager.shared.saveMedia(mediaToSave)
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.homeView.tableView.reloadData()

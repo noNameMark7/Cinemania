@@ -1,5 +1,4 @@
 import UIKit
-import RealmSwift
 
 class SavedViewController: UIViewController {
     private let savedView = SavedView()
@@ -119,16 +118,19 @@ extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
                 completion(false)
             }
             
-            let realm = try? Realm()
-            
             let confirmDeleteAction = UIAlertAction(
                 title: "Delete",
                 style: .destructive
             ) { _ in
-                try? realm?.write {
-                    realm?.delete(deleteMedia!)
+                // Delete the media using the RealmService
+                if let mediaID = deleteMedia?.id {
+                    RealmManager.shared.deleteMedia(mediaID)
                 }
                 
+                // Remove the item from the ViewModel's data source
+                self.savedViewModel.genres.remove(at: indexPath.row)
+                
+                // Delete the row from the table view
                 self.savedView.tableView.deleteRows(
                     at: [indexPath],
                     with: .fade
