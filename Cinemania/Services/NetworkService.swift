@@ -3,6 +3,8 @@ import Alamofire
 
 final class NetworkService {
     static let shared = NetworkService()
+    
+    private init() {}
    
     public func fetchTrendingMedia<T: Codable>(
         mediaType: TypeOfMedia,
