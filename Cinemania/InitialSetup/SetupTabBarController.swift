@@ -15,11 +15,11 @@ final class SetupTabBarController {
         
         let homeViewController = HomeViewController()
         homeViewController.view.backgroundColor = .systemBackground
-        homeViewController.title = "Home"
+        homeViewController.title = "Top Trending"
         
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
         homeNavigationController.tabBarItem = UITabBarItem(
-            title: "Home",
+            title: "Movies and TV Shows",
             image: UIImage(systemName: "house"),
             tag: 0
         )

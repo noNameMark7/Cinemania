@@ -103,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D2CD9652B56D9CC004D93B3 /* InitialSetup */ = {
+			isa = PBXGroup;
+			children = (
+				4DA6D09E2ABF794F0048FCEE /* SetupTabBarController.swift */,
+			);
+			path = InitialSetup;
+			sourceTree = "<group>";
+		};
 		4D594A3B2A75BEA600FE2B4D /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +148,8 @@
 			children = (
 				4D63F22F2AA3D68D00FADB08 /* Fonts */,
 				4DD25BE22A51D84D00C44A9E /* Assets.xcassets */,
+				4DD25BE42A51D84D00C44A9E /* LaunchScreen.storyboard */,
+				4DD25BE72A51D84D00C44A9E /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -153,23 +163,21 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		4D72FA3A2A69F86F0067C71B /* Supporting Files */ = {
+		4D72FA3A2A69F86F0067C71B /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				4DD25BD92A51D84300C44A9E /* AppDelegate.swift */,
 				4DD25BDB2A51D84300C44A9E /* SceneDelegate.swift */,
-				4DD25BE42A51D84D00C44A9E /* LaunchScreen.storyboard */,
-				4DD25BE72A51D84D00C44A9E /* Info.plist */,
 			);
-			path = "Supporting Files";
+			path = Application;
 			sourceTree = "<group>";
 		};
-		4DA6D0A02ABF7C400048FCEE /* Router */ = {
+		4DA6D0A02ABF7C400048FCEE /* Routers */ = {
 			isa = PBXGroup;
 			children = (
 				4DA6D09C2ABF73730048FCEE /* AppRouter.swift */,
 			);
-			path = Router;
+			path = Routers;
 			sourceTree = "<group>";
 		};
 		4DAFADB02AA63FDC00CBDD54 /* Manrope */ = {
@@ -237,17 +245,17 @@
 		4DD25BD82A51D84300C44A9E /* Cinemania */ = {
 			isa = PBXGroup;
 			children = (
-				4D72FA3A2A69F86F0067C71B /* Supporting Files */,
+				4D72FA3A2A69F86F0067C71B /* Application */,
+				4D63F22E2AA3D56D00FADB08 /* Resources */,
 				4D594A3B2A75BEA600FE2B4D /* Models */,
 				4DD25C002A52108800C44A9E /* Views */,
 				4D5C7C322A7ACFB10085994F /* ViewModels */,
 				4DD25BFD2A52102F00C44A9E /* Controllers */,
-				4DA6D0A02ABF7C400048FCEE /* Router */,
 				4D5C7C332A7ACFD80085994F /* Services */,
 				4DCB2D782A9AA5C3004FDFDB /* Protocols */,
+				4DA6D0A02ABF7C400048FCEE /* Routers */,
+				4D2CD9652B56D9CC004D93B3 /* InitialSetup */,
 				4DCB2D6E2A97A61A004FDFDB /* Utils */,
-				4D63F22E2AA3D56D00FADB08 /* Resources */,
-				4DA6D09E2ABF794F0048FCEE /* SetupTabBarController.swift */,
 			);
 			path = Cinemania;
 			sourceTree = "<group>";
@@ -552,7 +560,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J484329K7V;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Cinemania/Supporting Files/Info.plist";
+				INFOPLIST_FILE = Cinemania/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -582,7 +590,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J484329K7V;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Cinemania/Supporting Files/Info.plist";
+				INFOPLIST_FILE = Cinemania/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
