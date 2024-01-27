@@ -7,13 +7,11 @@ class HomeView: UIView {
         let customColor = UIColor(
             red: 110/255, green: 83/255, blue: 211/255, alpha: 1.0
         )
-        let control = UISegmentedControl(items: ["Movies", "TV Shows"])
+        let control = UISegmentedControl(items: ["Movies", "TV shows"])
         control.translatesAutoresizingMaskIntoConstraints = false
         control.selectedSegmentIndex = 0
-        control.apportionsSegmentWidthsByContent = true
         control.backgroundColor = customColor
         let normalAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.customFont(.comfortaaRegular, ofSize: 14) as Any,
             .foregroundColor: UIColor.white
         ]
         control.setTitleTextAttributes(
@@ -21,7 +19,6 @@ class HomeView: UIView {
             for: .normal
         )
         let selectedAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.customFont(.comfortaaSemiBold, ofSize: 18) as Any,
             .foregroundColor: UIColor.black
         ]
         control.setTitleTextAttributes(

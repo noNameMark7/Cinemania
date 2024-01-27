@@ -19,7 +19,7 @@ final class SetupTabBarController {
         
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
         homeNavigationController.tabBarItem = UITabBarItem(
-            title: "Movies and TV Shows",
+            title: "Movies and TV shows",
             image: UIImage(systemName: "house"),
             tag: 0
         )

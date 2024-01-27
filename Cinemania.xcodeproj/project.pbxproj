@@ -163,13 +163,13 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		4D72FA3A2A69F86F0067C71B /* Application */ = {
+		4D72FA3A2A69F86F0067C71B /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
 				4DD25BD92A51D84300C44A9E /* AppDelegate.swift */,
 				4DD25BDB2A51D84300C44A9E /* SceneDelegate.swift */,
 			);
-			path = Application;
+			path = Supporting;
 			sourceTree = "<group>";
 		};
 		4DA6D0A02ABF7C400048FCEE /* Routers */ = {
@@ -245,7 +245,7 @@
 		4DD25BD82A51D84300C44A9E /* Cinemania */ = {
 			isa = PBXGroup;
 			children = (
-				4D72FA3A2A69F86F0067C71B /* Application */,
+				4D72FA3A2A69F86F0067C71B /* Supporting */,
 				4D63F22E2AA3D56D00FADB08 /* Resources */,
 				4D594A3B2A75BEA600FE2B4D /* Models */,
 				4DD25C002A52108800C44A9E /* Views */,

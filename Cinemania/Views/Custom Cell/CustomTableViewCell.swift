@@ -17,7 +17,7 @@ class CustomTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.comfortaaMedium, ofSize: 15)
+        label.font = .customFont(.comfortaaMedium, ofSize: 14)
         label.numberOfLines = 0
         return label
     }()
@@ -74,7 +74,7 @@ class CustomTableViewCell: UITableViewCell {
             posterImageView.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor),
             posterImageView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             posterImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            posterImageView.widthAnchor.constraint(equalToConstant: 124),
+            posterImageView.widthAnchor.constraint(equalToConstant: 120),
             posterImageView.heightAnchor.constraint(equalToConstant: 180)
         ]
         
