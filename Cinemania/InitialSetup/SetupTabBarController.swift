@@ -7,19 +7,16 @@ final class SetupTabBarController {
         
         // Define the font attributes for the tab bar titles
         let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.customFont(.comfortaaMedium, ofSize: 12) as Any
+            .font: UIFont.customFont(.comfortaaMedium, ofSize: 11) as Any
         ]
-        
-        // Apply the font attributes to all tab bar items
-        UITabBarItem.appearance().setTitleTextAttributes(titleAttributes, for: .normal)
         
         let homeViewController = HomeViewController()
         homeViewController.view.backgroundColor = .systemBackground
-        homeViewController.title = "Top Trending"
+        homeViewController.title = "Trending movies and tv shows"
         
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
         homeNavigationController.tabBarItem = UITabBarItem(
-            title: "Movies and TV shows",
+            title: "Trending",
             image: UIImage(systemName: "house"),
             tag: 0
         )
@@ -35,14 +32,41 @@ final class SetupTabBarController {
             tag: 1
         )
         
+        let searchViewController = SearchViewController()
+        searchViewController.view.backgroundColor = .systemBackground
+        searchViewController.title = "Search"
+        
+        let searchNavigationController = UINavigationController(rootViewController: searchViewController)
+        searchNavigationController.tabBarItem = UITabBarItem(
+            title: "Search",
+            image: UIImage(systemName: "magnifyingglass"),
+            tag: 3
+        )
+        
+        let settingsViewController = SettingsViewController()
+        settingsViewController.view.backgroundColor = .systemBackground
+        settingsViewController.title = "Settings"
+        
+        let settingsNavigationController = UINavigationController(rootViewController: settingsViewController)
+        settingsNavigationController.tabBarItem = UITabBarItem(
+            title: "Settings",
+            image: UIImage(systemName: "gear"),
+            tag: 2
+        )
+        
         // Apply the font attributes to all navigationController titles
         UINavigationBar.appearance().titleTextAttributes = [
             NSAttributedString.Key.font: UIFont.customFont(.comfortaaSemiBold, ofSize: 16) as Any
         ]
         
+        // Apply the font attributes to all tab bar items
+        UITabBarItem.appearance().setTitleTextAttributes(titleAttributes, for: .normal)
+        
         tabBarController.viewControllers = [
             homeNavigationController,
-            savedNavigationController
+            savedNavigationController,
+            searchNavigationController,
+            settingsNavigationController,
         ]
         
         window.rootViewController = tabBarController
