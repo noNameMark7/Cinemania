@@ -21,11 +21,10 @@ class DetailsViewModel {
         delegate?.updateUI(with: media, and: genres)
         
         if let cachedTrailerURL = trailerURLCache[media.id] {
-            DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
                 /// Use the cached trailer URL
-                strongSelf.trailerURL = cachedTrailerURL
-                strongSelf.delegate?.updateTrailer(with: cachedTrailerURL)
+                self.trailerURL = cachedTrailerURL
+                self.delegate?.updateTrailer(with: cachedTrailerURL)
             }
         } else {
             /// Load the trailer URL from the network
@@ -33,11 +32,10 @@ class DetailsViewModel {
                 media.typeOfMedia,
                 media.id
             ) { [weak self] trailerURL in
-                DispatchQueue.main.async { [weak self] in
-                    guard let strongSelf = self else { return }
-                    strongSelf.trailerURL = trailerURL
-                    strongSelf.trailerURLCache[media.id] = trailerURL
-                    strongSelf.delegate?.updateTrailer(with: trailerURL)
+                DispatchQueue.main.async {
+                    self?.trailerURL = trailerURL
+                    self?.trailerURLCache[media.id] = trailerURL
+                    self?.delegate?.updateTrailer(with: trailerURL)
                 }
             }
         }

@@ -61,6 +61,7 @@ class DetailsView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "HelveticaNeue", size: 13)
         label.numberOfLines = 0
+        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return label
     }()
     
@@ -77,7 +78,7 @@ class DetailsView: UIView {
     private let voteAverageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Baskerville", size: 16)
+        label.font = UIFont(name: "Baskerville", size: 17)
         return label
     }()
     
@@ -99,14 +100,14 @@ class DetailsView: UIView {
     private let popularityLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Baskerville", size: 16)
+        label.font = UIFont(name: "Baskerville", size: 17)
         return label
     }()
     
     private let voteCountLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Baskerville", size: 16)
+        label.font = UIFont(name: "Baskerville", size: 17)
         return label
     }()
     
@@ -257,9 +258,9 @@ extension DetailsView {
         
         let tmdbImageViewConstraints = [
             tmdbImageView.widthAnchor.constraint(equalToConstant: 42),
-            tmdbImageView.heightAnchor.constraint(equalToConstant: 21.8),
+            tmdbImageView.heightAnchor.constraint(equalToConstant: 21),
             tmdbImageView.centerYAnchor.constraint(equalTo: popularityLabel.centerYAnchor),
-            tmdbImageView.trailingAnchor.constraint(equalTo: voteAverageLabel.leadingAnchor, constant: -4)
+            tmdbImageView.trailingAnchor.constraint(equalTo: voteAverageLabel.leadingAnchor, constant: -6)
         ]
         
         let voteCountLabelConstraints = [
@@ -341,7 +342,7 @@ private extension DetailsView {
         
         attributedText.addAttribute(
             .font,
-            value: UIFont.customFont(.manropeRegular, ofSize: 16) as Any,
+            value: UIFont(name: "HelveticaNeue", size: 16) as Any,
             range: NSMakeRange(0, attributedText.length)
         )
         
@@ -386,7 +387,7 @@ private extension DetailsView {
         label.textColor = .white
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.font = .customFont(.manropeRegular, ofSize: 16)
+        label.font = UIFont(name: "HelveticaNeue", size: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
 
         playerView.addSubview(label)
