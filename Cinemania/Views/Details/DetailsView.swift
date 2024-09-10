@@ -26,6 +26,7 @@ class DetailsView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.image = .placeholder(named: "DefaultBackdrop")
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
@@ -58,7 +59,6 @@ class DetailsView: UIView {
     private let genreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .systemBackground
         label.font = UIFont(name: "HelveticaNeue", size: 13)
         label.numberOfLines = 0
         return label
