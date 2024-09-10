@@ -1,6 +1,9 @@
 import UIKit
 
+// MARK: - ValueFormatting
+
 struct ValueFormatting {
+    
     static func convertDateFormat(_ date: String?) -> String {
         guard let dateInput = date else { return "No date found" }
         let dateFormatter = DateFormatter()

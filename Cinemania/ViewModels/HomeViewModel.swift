@@ -1,6 +1,9 @@
 import UIKit
 
+// MARK: - HomeViewModel
+
 class HomeViewModel {
+    
     var trendingMedia: [Media] = []
     var filtered: [Media] = []
     var genres: [Genre] = []
@@ -44,7 +47,7 @@ class HomeViewModel {
         completion: @escaping (() -> Void)
     ) {
         if initialDataLoaded {
-            // If data is already loaded, just call the completion block
+            /// If data is already loaded, just call the completion block
             completion()
             return
         }
@@ -54,7 +57,7 @@ class HomeViewModel {
             modelType: TrendingMovies.self
         ) {
             DispatchQueue.main.async {
-                // Set the flag to true
+                /// Set the flag to true
                 self.initialDataLoaded = true
                 completion()
             }

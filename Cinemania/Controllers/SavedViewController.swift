@@ -1,32 +1,38 @@
 import UIKit
 
+// MARK: - SavedViewController
+
 class SavedViewController: UIViewController {
+    
     private let savedView = SavedView()
     private let savedViewModel = SavedViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        
-        savedViewModel.fetchAllGenres()
-        
-        savedViewModel.updateUI = { [weak self] in
-            DispatchQueue.main.async {
-                self?.savedView.tableView.reloadData()
-            }
-        }
+        initialSetup()
+        fetchingAndUpdatingUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Refresh table view when view appears
         DispatchQueue.main.async {
             self.savedView.tableView.reloadData()
         }
     }
+}
+
+
+// MARK: - Initial setup
+
+extension SavedViewController {
     
-    private func setupUI() {
-        // Constarints and UI Elements
+    func initialSetup() {
+        view.backgroundColor = .systemBackground
+        configureUI()
+        configureTableView()
+    }
+    
+    func configureUI() {
         view.addSubview(savedView)
         savedView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -36,7 +42,26 @@ class SavedViewController: UIViewController {
             savedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             savedView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    func fetchingAndUpdatingUI() {
+        savedViewModel.fetchAllGenres()
+        
+        savedViewModel.updateUI = { [weak self] in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                strongSelf.savedView.tableView.reloadData()
+            }
+        }
+    }
+}
 
+
+// MARK: - TableView setup
+
+extension SavedViewController {
+    
+    func configureTableView() {
         savedView.tableView.dataSource = self
         savedView.tableView.delegate = self
         savedView.tableView.register(
@@ -45,6 +70,9 @@ class SavedViewController: UIViewController {
         )
     }
 }
+
+
+// MARK: - UITableViewDataSource and UITableViewDelegate setup
 
 extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(
@@ -65,7 +93,7 @@ extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         if let mediaRealm = savedViewModel.getItem(at: indexPath.row) {
-            cell.configure(with: mediaRealm, and: savedViewModel.genres)
+            cell.configureWith(mediaRealm, and: savedViewModel.genres)
         }
         return cell
     }
@@ -82,6 +110,7 @@ extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
         didSelectRowAt indexPath: IndexPath
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
         if let savedMedia = savedViewModel.savedMedia?[indexPath.row] {
             let media = Media(from: savedMedia)
             AppRouter.shared.navigateToDetails(
@@ -92,22 +121,22 @@ extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    // Deleting a cell by swipe from right to left
+    /// Deleting a cell by swipe from right to left
     func tableView(
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(
             style: .destructive,
-            title: "Delete from Saved"
+            title: "Remove from saved"
         ) { [weak self] (action, view, completion) in
             guard let self = self else { return }
             let deleteMedia = self.savedViewModel.getItem(at: indexPath.row)
             
-            // Deletion confirmation
+            /// Deletion confirmation
             let alert = UIAlertController(
-                title: "Delete",
-                message: "Are you sure you want to delete \(deleteMedia?.title ?? "Unknown title")?",
+                title: "Remove",
+                message: "Are you sure you want to remove \(deleteMedia?.title ?? "Unknown title")?",
                 preferredStyle: .alert
             )
             
@@ -119,18 +148,18 @@ extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
             }
             
             let confirmDeleteAction = UIAlertAction(
-                title: "Delete",
+                title: "Remove",
                 style: .destructive
             ) { _ in
-                // Delete the media using the RealmService
+                /// Delete the media using the RealmService
                 if let mediaID = deleteMedia?.id {
                     RealmService.shared.deleteMedia(mediaID)
                 }
                 
-                // Remove the item from the ViewModel's data source
+                /// Remove the item from the ViewModel's data source
                 self.savedViewModel.genres.remove(at: indexPath.row)
                 
-                // Delete the row from the table view
+                /// Delete the row from the table view
                 self.savedView.tableView.deleteRows(
                     at: [indexPath],
                     with: .fade

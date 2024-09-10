@@ -1,64 +1,22 @@
 import UIKit
 
+// MARK: - HomeViewController
+
 class HomeViewController: UIViewController, UIScrollViewDelegate {
+    
+    // MARK: - Properties
+    
     private let homeView = HomeView()
     private let homeViewModel = HomeViewModel()
    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        
-        homeViewModel.fetchInitialData { [weak self] in
-            DispatchQueue.main.async {
-                self?.homeView.tableView.reloadData()
-                self?.homeViewModel.fetchAllGenres()
-            }
-        }
-
-        homeViewModel.updateUI = { [weak self] in
-            DispatchQueue.main.async {
-                self?.homeView.tableView.reloadData()
-            }
-        }
+        initialSetup()
+        fetchingAndUpdatingUI()
     }
     
-    private func setupUI() {
-        // Navigation Bar
-        navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.searchController = homeViewModel.searchController
-        definesPresentationContext = true
-        
-        // Search Bar
-        homeViewModel.searchController.searchResultsUpdater = self
-        homeViewModel.searchController.obscuresBackgroundDuringPresentation = false
-        homeViewModel.searchController.searchBar.delegate = self
-        
-        // Segmented Control
-        homeView.segmentedControl.addTarget(
-            self,
-            action: #selector(segmentedControlValueChanged),
-            for: .valueChanged
-        )
-        
-        // Constarints and UI Elements
-        view.addSubview(homeView)
-        homeView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            homeView.topAnchor.constraint(equalTo: view.topAnchor),
-            homeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            homeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            homeView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-
-        homeView.tableView.dataSource = self
-        homeView.tableView.delegate = self
-        homeView.tableView.register(
-            CustomTableViewCell.self,
-            forCellReuseIdentifier: CustomTableViewCell.reuseIdentifier
-        )
-    }
- 
     @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {        
         homeViewModel.segmentedControlValueChanged(index: sender.selectedSegmentIndex)
 
@@ -75,7 +33,85 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     }
 }
 
+
+// MARK: - Initial setup
+
+extension HomeViewController {
+    
+    func initialSetup() {
+        view.backgroundColor = .systemBackground
+        configureUI()
+    }
+    
+    func configureUI() {
+        view.addSubview(homeView)
+        homeView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            homeView.topAnchor.constraint(equalTo: view.topAnchor),
+            homeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            homeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            homeView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        homeView.segmentedControl.addTarget(
+            self,
+            action: #selector(segmentedControlValueChanged),
+            for: .valueChanged
+        )
+        configureNavigationBar()
+        configureSearchBar()
+        configureTableView()
+    }
+    
+    func fetchingAndUpdatingUI() {
+        homeViewModel.fetchInitialData { [weak self] in
+            DispatchQueue.main.async {
+                self?.homeView.tableView.reloadData()
+                self?.homeViewModel.fetchAllGenres()
+            }
+        }
+
+        homeViewModel.updateUI = { [weak self] in
+            DispatchQueue.main.async {
+                self?.homeView.tableView.reloadData()
+            }
+        }
+    }
+}
+
+
+// MARK: - NavigationBar, TableView, SearchBar setup
+
+extension HomeViewController {
+    
+    func configureNavigationBar() {
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = homeViewModel.searchController
+        definesPresentationContext = true
+    }
+    
+    func configureSearchBar() {
+        homeViewModel.searchController.searchResultsUpdater = self
+        homeViewModel.searchController.obscuresBackgroundDuringPresentation = false
+        homeViewModel.searchController.searchBar.delegate = self
+    }
+    
+    func configureTableView() {
+        homeView.tableView.dataSource = self
+        homeView.tableView.delegate = self
+        homeView.tableView.register(
+            CustomTableViewCell.self,
+            forCellReuseIdentifier: CustomTableViewCell.reuseIdentifier
+        )
+    }
+}
+
+
+// MARK: - UITableViewDataSource and UITableViewDelegate setup
+
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
@@ -87,6 +123,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: CustomTableViewCell.reuseIdentifier,
             for: indexPath
@@ -94,7 +131,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let item = homeViewModel.searchController.isActive ? homeViewModel.filtered[indexPath.row] : homeViewModel.getItem(at: indexPath.row)
-        cell.configure(with: item, and: homeViewModel.genres)
+        cell.configureWith(item, and: homeViewModel.genres)
         return cell
     }
     
@@ -110,7 +147,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         didSelectRowAt indexPath: IndexPath
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
         let selectedItem = homeViewModel.getSelectedItem(for: indexPath)
+        
         AppRouter.shared.navigateToDetails(
             from: self,
             media: selectedItem,
@@ -118,7 +157,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         )
     }
     
-    // Swipe to download
+    /// Swipe to download
     func tableView(
         _ tableView: UITableView,
         leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath
@@ -131,15 +170,15 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             let mediaToSave: Media
             
             if self.homeViewModel.searchController.isActive {
-                // If in search mode, get the media from the search results
+                /// If in search mode, get the media from the search results
                 mediaToSave = self.homeViewModel.filtered[indexPath.row]
             } else {
-                // If not in search mode, get the media from the original data
+                /// If not in search mode, get the media from the original data
                 mediaToSave = self.homeViewModel.getItem(at: indexPath.row)
             }
             
             if RealmService.shared.isMediaSaved(mediaToSave.id) {
-                // Alert message if media already exsist
+                /// Alert message if media already exsist
                 let alert = UIAlertController(
                     title: "Saved",
                     message: "\(mediaToSave.title) already saved.",
@@ -154,7 +193,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
                 alert.addAction(okAction)
                 self.present(alert, animated: true)
             } else {
-                // Save the media to Realm using RealmManager
+                /// Save the media to Realm using RealmManager
                 RealmService.shared.saveMedia(mediaToSave)
                 
                 DispatchQueue.main.async { [weak self] in
@@ -179,14 +218,20 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         saveAction.backgroundColor = .systemGreen
-        saveAction.image = UIImage(systemName: "arrow.down.to.line.circle")
+        saveAction.image = UIImage(systemName: "square.and.arrow.down")
+        
         let configuration = UISwipeActionsConfiguration(actions: [saveAction])
         return configuration
     }
 }
 
+
+// MARK: - UISearchResultsUpdating and UISearchBarDelegate
+
 extension HomeViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    
     func updateSearchResults(for searchController: UISearchController) {
+        
         let tableView = homeView.tableView
         guard let searchText = searchController.searchBar.text,
               !searchText.trimmingCharacters(in: .whitespaces).isEmpty,

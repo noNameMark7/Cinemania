@@ -1,7 +1,10 @@
 import UIKit
 import SafariServices
 
+// MARK: - DetailsViewController
+
 class DetailsViewController: UIViewController {
+    
     private let detailsView: DetailsView
     private let detailsViewModel: DetailsViewModel
     
@@ -17,13 +20,23 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        settingUIElementsAndConstraints()
-        detailsViewModel.delegate = detailsView
+        initialSetup()
         detailsViewModel.fetchMediaDetails()
     }
+}
+
+
+// MARK: - Initial setup
+
+extension DetailsViewController {
     
-    private func settingUIElementsAndConstraints() {
+    func initialSetup() {
+        view.backgroundColor = .systemBackground
+        configureUI()
+        delegatesSetup()
+    }
+    
+    func configureUI() {
         view.addSubview(detailsView)
         detailsView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -33,12 +46,19 @@ class DetailsViewController: UIViewController {
             detailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             detailsView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
+    }
+    
+    func delegatesSetup() {
         detailsView.overviewTextView.delegate = self
+        detailsViewModel.delegate = detailsView
     }
 }
 
+
+// MARK: - DetailsViewModelDelegate
+
 extension DetailsViewController: DetailsViewModelDelegate {
+    
     func updateUI(with model: Media, and genres: [Genre]) {
         detailsView.configure(with: model, and: genres)
     }
@@ -48,7 +68,11 @@ extension DetailsViewController: DetailsViewModelDelegate {
     }
 }
 
+
+// MARK: - UITextViewDelegate
+
 extension DetailsViewController: UITextViewDelegate {
+    
     func textView(
         _ textView: UITextView,
         shouldInteractWith URL: URL,

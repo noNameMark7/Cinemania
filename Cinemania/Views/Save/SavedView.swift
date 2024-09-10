@@ -1,23 +1,36 @@
 import UIKit
 
+// MARK: - SavedView
+
 class SavedView: UIView {
+    
     let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        settingUIElementsAndConstraints()
+        initialSetup()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+
+// MARK: - Initial setup
+
+extension SavedView {
     
-    private func settingUIElementsAndConstraints() {
+    func initialSetup() {
+        configureUI()
+    }
+    
+    func configureUI() {
         addSubview(tableView)
     
         let tableViewConstraints = [

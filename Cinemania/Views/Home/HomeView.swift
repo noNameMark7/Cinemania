@@ -1,6 +1,11 @@
 import UIKit
 
+// MARK: - HomeView
+
 class HomeView: UIView {
+    
+    // MARK: - Properties
+    
     var segmentedControlTopConstraint: NSLayoutConstraint?
 
     let segmentedControl: UISegmentedControl = {
@@ -30,30 +35,31 @@ class HomeView: UIView {
     
     let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        settingUIElementsAndConstraints()
-        setupUI()
+        initialSetup()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
 
-    private func setupUI() {
-        addSubview(segmentedControl)
-        segmentedControlTopConstraint = segmentedControl.topAnchor.constraint(
-            equalTo: safeAreaLayoutGuide.topAnchor,
-            constant: 16
-        )
+
+// MARK: - Initial setup
+
+extension HomeView {
+    
+    func initialSetup() {
+        configureUI()
     }
     
-    private func settingUIElementsAndConstraints() {
+    func configureUI() {
         addSubview(segmentedControl)
         addSubview(tableView)
         
@@ -72,5 +78,11 @@ class HomeView: UIView {
         
         NSLayoutConstraint.activate(segmentedControlConstraints)
         NSLayoutConstraint.activate(tableViewConstraints)
+        
+        addSubview(segmentedControl)
+        segmentedControlTopConstraint = segmentedControl.topAnchor.constraint(
+            equalTo: safeAreaLayoutGuide.topAnchor,
+            constant: 16
+        )
     }
 }

@@ -1,13 +1,26 @@
 import UIKit
 
-class SettingsViewController: UIViewController {
+// MARK: - SettingsViewController
 
+class SettingsViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialSetup()
+        
+    }
+}
 
-        // Do any additional setup after loading the view.
+
+// MARK: - Initial setup
+
+extension SettingsViewController {
+    
+    func initialSetup() {
+        configureUI()
     }
     
-
-
+    func configureUI() {
+        
+    }
 }

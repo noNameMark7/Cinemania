@@ -1,11 +1,16 @@
 import UIKit
 
+// MARK: -  SetupTabBarController
+
 final class SetupTabBarController {
+    
     static func asRootViewController(in window: UIWindow) {
+        
         let tabBarController = UITabBarController()
         tabBarController.tabBar.tintColor = .label
         
-        // Define the font attributes for the tab bar titles
+        /// Define the font attributes for the tab bar titles
+        
         let titleAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.customFont(.comfortaaMedium, ofSize: 11) as Any
         ]
@@ -28,7 +33,7 @@ final class SetupTabBarController {
         let savedNavigationController = UINavigationController(rootViewController: savedViewController)
         savedNavigationController.tabBarItem = UITabBarItem(
             title: "Saved",
-            image: UIImage(systemName: "arrow.down.to.line"),
+            image: UIImage(systemName: "square.and.arrow.down"),
             tag: 1
         )
         
@@ -50,16 +55,18 @@ final class SetupTabBarController {
         let settingsNavigationController = UINavigationController(rootViewController: settingsViewController)
         settingsNavigationController.tabBarItem = UITabBarItem(
             title: "Settings",
-            image: UIImage(systemName: "gear"),
+            image: UIImage(systemName: "gearshape"),
             tag: 2
         )
         
-        // Apply the font attributes to all navigationController titles
+        /// Apply the font attributes to all navigationController titles
+        
         UINavigationBar.appearance().titleTextAttributes = [
             NSAttributedString.Key.font: UIFont.customFont(.comfortaaSemiBold, ofSize: 16) as Any
         ]
         
-        // Apply the font attributes to all tab bar items
+        /// Apply the font attributes to all tab bar items
+        
         UITabBarItem.appearance().setTitleTextAttributes(titleAttributes, for: .normal)
         
         tabBarController.viewControllers = [

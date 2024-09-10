@@ -1,6 +1,9 @@
 import UIKit
 
+// MARK: - Media
+
 struct Media {
+    
     var backdrop: String
     var id: Int
     var title: String

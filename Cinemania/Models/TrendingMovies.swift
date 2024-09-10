@@ -1,6 +1,9 @@
 import UIKit
 
+// MARK: - TrendingMovies
+
 struct TrendingMovies: Codable {
+    
     let page: Int
     let results: [Movies]
     let totalPages: Int
@@ -14,7 +17,11 @@ struct TrendingMovies: Codable {
     }
 }
 
+
+// MARK: - Movies
+
 struct Movies: Codable {
+    
     let adult: Bool
     let backdropPath: String
     let id: Int

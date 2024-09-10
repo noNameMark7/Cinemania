@@ -1,6 +1,9 @@
 import UIKit
 
+// MARK: - DetailsViewModel
+
 class DetailsViewModel {
+    
     var media: Media?
     var genres: [Genre] = []
     var trailerURL: URL?
@@ -14,17 +17,17 @@ class DetailsViewModel {
         
     func fetchMediaDetails() {
         guard let media = media else { return }
-        // Update the UI with other media details
+        /// Update the UI with other media details
         delegate?.updateUI(with: media, and: self.genres)
         
         if let cachedTrailerURL = trailerURLCache[media.id] {
             DispatchQueue.main.async {
-                // Use the cached trailer URL
+                /// Use the cached trailer URL
                 self.trailerURL = cachedTrailerURL
                 self.delegate?.updateTrailer(with: cachedTrailerURL)
             }
         } else {
-            // Load the trailer URL from the network
+            /// Load the trailer URL from the network
             NetworkService.shared.loadTrailer(
                 media.typeOfMedia,
                 media.id
