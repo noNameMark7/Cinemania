@@ -36,7 +36,7 @@ class CustomTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.manropeMedium, ofSize: 13)
+        label.font = UIFont(name: "HelveticaNeue-Bold", size: 14)
         label.numberOfLines = 0
         return label
     }()
@@ -44,7 +44,7 @@ class CustomTableViewCell: UITableViewCell {
     private let genreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.manropeRegular, ofSize: 11)
+        label.font = UIFont(name: "HelveticaNeue", size: 12)
         label.textColor = .secondaryLabel
         label.numberOfLines = 0
         return label
@@ -63,7 +63,7 @@ class CustomTableViewCell: UITableViewCell {
     private let voteAverageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.manropeMedium, ofSize: 15)
+        label.font = UIFont(name: "Baskerville-Bold", size: 14)
         return label
     }()
     
@@ -150,7 +150,6 @@ extension CustomTableViewCell {
         let voteAverageLabelConstraints = [
             voteAverageLabel.leadingAnchor.constraint(equalTo: tmdbImageView.trailingAnchor, constant: 8),
             voteAverageLabel.centerYAnchor.constraint(equalTo: tmdbImageView.centerYAnchor)
-            //voteAverageLabel.bottomAnchor.constraint(equalTo: tmdbImageView.bottomAnchor, constant: -1.8)
         ]
         
         NSLayoutConstraint.activate(posterContainerViewConstraints)
@@ -181,7 +180,7 @@ extension CustomTableViewCell {
         }).joined(separator: "\(Constants.divider)")
         
         let formattedVoteAverage = ValueFormatting.formatVoteAverage(object.voteAverage)
-        voteAverageLabel.text = formattedVoteAverage
+        voteAverageLabel.text = "\(formattedVoteAverage)/10"
     }
     
     func configureWith(_ object: MediaRealm, and genre: [Genre]) {
@@ -198,7 +197,7 @@ extension CustomTableViewCell {
         }).joined(separator: "\(Constants.divider)")
         
         let formattedVoteAverage = ValueFormatting.formatVoteAverage(object.voteAverage)
-        voteAverageLabel.text = formattedVoteAverage
+        voteAverageLabel.text = "\(formattedVoteAverage)/10"
     }
     
     ///  Configuring SearchViewController
@@ -207,7 +206,7 @@ extension CustomTableViewCell {
         posterImageView.sd_setImage(with: posterUrl)
         titleLabel.text = media.title
         let formattedVoteAverage = ValueFormatting.formatVoteAverage(media.voteAverage)
-        voteAverageLabel.text = formattedVoteAverage
+        voteAverageLabel.text = "\(formattedVoteAverage)/10"
         
         genreLabel.text = Media(from: media).genre.compactMap({ genreID in
             genre.first { $0.id == genreID }?.name
