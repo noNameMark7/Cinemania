@@ -143,7 +143,7 @@ final class NetworkService {
     ) {
         /// Ensure the query is properly URL encoded
         guard let encodedQuery = query.addingPercentEncoding(
-            withAllowedCharacters: .urlQueryAllowed
+            withAllowedCharacters: .urlHostAllowed
         ) else { return }
         
         /// Construct the URL for the search request

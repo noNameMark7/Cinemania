@@ -179,10 +179,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
                     /// If not - save
                     RealmService.shared.saveMedia(media)
                     
-//                    DispatchQueue.main.async {
-//                        strongSelf.collectionView.reloadData()
-//                    }
-                    
                     let alert = UIAlertController(
                         title: "Success",
                         message: "\(media.title) successfully saved!",
@@ -214,17 +210,20 @@ extension SearchViewController: UISearchResultsUpdating {
         let searchBar = searchController.searchBar
         
         guard let query = searchBar.text,
-              !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+              !query.trimmingCharacters(in: .whitespaces).isEmpty,
+              query.trimmingCharacters(in: .whitespaces).count >= 3 else {
             return
         }
         
         /// Start the search request
         NetworkService.shared.search(with: query) { result in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                
                 switch result {
                 case .success(let movies):
-                    self.movies = movies
-                    self.collectionView.reloadData()
+                    strongSelf.movies = movies
+                    strongSelf.collectionView.reloadData()
                 case .failure(let error):
                     debugPrint(error.localizedDescription)
                 }
