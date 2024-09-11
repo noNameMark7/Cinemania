@@ -4,11 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Manrope-Medium.ttf</string>
-		<string>Manrope-Regular.ttf</string>
-		<string>Comfortaa-SemiBold.ttf</string>
-		<string>Comfortaa-Medium.ttf</string>
+		<string>Comfortaa-Light.ttf</string>
 		<string>Comfortaa-Regular.ttf</string>
+		<string>Comfortaa-Medium.ttf</string>
+		<string>Comfortaa-SemiBold.ttf</string>
+		<string>Comfortaa-Bold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

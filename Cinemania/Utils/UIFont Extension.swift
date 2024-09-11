@@ -3,6 +3,7 @@ import UIKit
 // MARK: - Fonts extension
 
 extension UIFont {
+    
     static func customFontWith(
         name: String,
         ofSize: CGFloat,

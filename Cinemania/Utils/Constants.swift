@@ -41,19 +41,20 @@ enum TypeOfMedia: String, PersistableEnum {
 // MARK: - CustomFont
 
 enum CustomFont {
+    
+    case comfortaaLight
     case comfortaaRegular
     case comfortaaMedium
     case comfortaaSemiBold
-    case manropeRegular
-    case manropeMedium
+    case comfortaaBold
     
     var fontName: String {
         switch self {
+        case .comfortaaLight: return "Comfortaa-Light"
         case .comfortaaRegular: return "Comfortaa-Regular"
         case .comfortaaMedium: return "Comfortaa-Medium"
         case .comfortaaSemiBold: return "Comfortaa-SemiBold"
-        case .manropeRegular: return "Manrope-Regular"
-        case .manropeMedium: return "Manrope-Medium"
+        case .comfortaaBold: return "Comfortaa-Bold"
         }
     }
 }

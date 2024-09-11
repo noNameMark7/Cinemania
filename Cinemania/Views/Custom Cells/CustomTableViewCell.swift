@@ -36,7 +36,7 @@ class CustomTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "HelveticaNeue-Bold", size: 14)
+        label.font = .customFont(.comfortaaBold, ofSize: 14)
         label.numberOfLines = 0
         return label
     }()
@@ -44,7 +44,7 @@ class CustomTableViewCell: UITableViewCell {
     private let genreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "HelveticaNeue", size: 12)
+        label.font = .customFont(.comfortaaRegular, ofSize: 12)
         label.textColor = .secondaryLabel
         label.numberOfLines = 0
         return label
@@ -63,7 +63,7 @@ class CustomTableViewCell: UITableViewCell {
     private let voteAverageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Baskerville-Bold", size: 14)
+        label.font = .customFont(.comfortaaRegular, ofSize: 14)
         return label
     }()
     
@@ -144,7 +144,7 @@ extension CustomTableViewCell {
             tmdbImageView.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 16),
             tmdbImageView.bottomAnchor.constraint(equalTo: posterImageView.bottomAnchor),
             tmdbImageView.widthAnchor.constraint(equalToConstant: 42),
-            tmdbImageView.heightAnchor.constraint(equalToConstant: 21.8)
+            tmdbImageView.heightAnchor.constraint(equalToConstant: 20)
         ]
         
         let voteAverageLabelConstraints = [

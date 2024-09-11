@@ -211,7 +211,7 @@ extension SearchViewController: UISearchResultsUpdating {
         
         guard let query = searchBar.text,
               !query.trimmingCharacters(in: .whitespaces).isEmpty,
-              query.trimmingCharacters(in: .whitespaces).count >= 3 else {
+              query.trimmingCharacters(in: .whitespaces).count >= 2 else {
             return
         }
         

@@ -12,7 +12,7 @@ final class SetupTabBarController {
         /// Define the font attributes for the tab bar titles
         
         let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.customFont(.comfortaaMedium, ofSize: 11) as Any
+            .font: UIFont.customFont(.comfortaaSemiBold, ofSize: 12) as Any
         ]
         
         let homeViewController = HomeViewController()
@@ -62,7 +62,7 @@ final class SetupTabBarController {
         /// Apply the font attributes to all navigationController titles
         
         UINavigationBar.appearance().titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.customFont(.comfortaaSemiBold, ofSize: 16) as Any
+            NSAttributedString.Key.font: UIFont.customFont(.comfortaaBold, ofSize: 18) as Any
         ]
         
         /// Apply the font attributes to all tab bar items

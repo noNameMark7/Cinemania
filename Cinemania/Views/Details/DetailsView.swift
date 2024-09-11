@@ -59,7 +59,7 @@ class DetailsView: UIView {
     private let genreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "HelveticaNeue", size: 13)
+        label.font = .customFont(.comfortaaRegular, ofSize: 13)
         label.numberOfLines = 0
         label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return label
@@ -78,21 +78,21 @@ class DetailsView: UIView {
     private let voteAverageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Baskerville", size: 17)
+        label.font = .customFont(.comfortaaRegular, ofSize: 17)
         return label
     }()
     
     private let releaseDateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "HelveticaNeue", size: 14)
+        label.font = .customFont(.comfortaaRegular, ofSize: 14)
         label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         label.layer.borderWidth = 0.8
         label.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         label.layer.cornerRadius = 5
-        label.clipsToBounds = true
-        label.heightAnchor.constraint(equalToConstant: 27).isActive = true
-        label.widthAnchor.constraint(equalToConstant: 94).isActive = true
+        label.layer.masksToBounds = true
+        label.heightAnchor.constraint(equalToConstant: 26).isActive = true
+        label.widthAnchor.constraint(equalToConstant: 97).isActive = true
         label.textAlignment = .center
         return label
     }()
@@ -100,21 +100,21 @@ class DetailsView: UIView {
     private let popularityLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Baskerville", size: 17)
+        label.font = .customFont(.comfortaaRegular, ofSize: 17)
         return label
     }()
     
     private let voteCountLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Baskerville", size: 17)
+        label.font = .customFont(.comfortaaRegular, ofSize: 17)
         return label
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
+        label.font = .customFont(.comfortaaBold, ofSize: 20)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -124,7 +124,7 @@ class DetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Overview"
-        label.font = UIFont(name: "HelveticaNeue-Medium", size: 18)
+        label.font = .customFont(.comfortaaMedium, ofSize: 18)
         return label
     }()
     
@@ -132,7 +132,7 @@ class DetailsView: UIView {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .clear
-        textView.font = UIFont(name: "HelveticaNeue", size: 15)
+        textView.font = .customFont(.comfortaaRegular, ofSize: 15)
         textView.textContainer.lineBreakMode = .byWordWrapping
         textView.isEditable = false
         textView.isScrollEnabled = false
@@ -143,7 +143,7 @@ class DetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Trailer"
-        label.font = UIFont(name: "HelveticaNeue-Medium", size: 18)
+        label.font = .customFont(.comfortaaMedium, ofSize: 18)
         return label
     }()
 
@@ -258,7 +258,7 @@ extension DetailsView {
         
         let tmdbImageViewConstraints = [
             tmdbImageView.widthAnchor.constraint(equalToConstant: 42),
-            tmdbImageView.heightAnchor.constraint(equalToConstant: 21),
+            tmdbImageView.heightAnchor.constraint(equalToConstant: 20),
             tmdbImageView.centerYAnchor.constraint(equalTo: popularityLabel.centerYAnchor),
             tmdbImageView.trailingAnchor.constraint(equalTo: voteAverageLabel.leadingAnchor, constant: -6)
         ]
@@ -281,7 +281,7 @@ extension DetailsView {
         ]
 
         let overviewTextViewConstraints = [
-            overviewTextView.topAnchor.constraint(equalTo: overviewTitleLabel.bottomAnchor),
+            overviewTextView.topAnchor.constraint(equalTo: overviewTitleLabel.bottomAnchor, constant: 4),
             overviewTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 13),
             overviewTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -13)
         ]
