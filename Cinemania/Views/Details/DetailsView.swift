@@ -48,6 +48,21 @@ class DetailsView: UIView {
         imageView.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         return imageView
     }()
+    
+    private let releaseDateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .customFont(.suseRegular, ofSize: 14)
+        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        label.layer.borderWidth = 0.8
+        label.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        label.layer.cornerRadius = 5
+        label.layer.masksToBounds = true
+        label.heightAnchor.constraint(equalToConstant: 26).isActive = true
+        label.widthAnchor.constraint(equalToConstant: 97).isActive = true
+        label.textAlignment = .center
+        return label
+    }()
 
     private let spacerView: UIView = {
         let view = UIView()
@@ -79,21 +94,6 @@ class DetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(.suseRegular, ofSize: 17)
-        return label
-    }()
-    
-    private let releaseDateLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseRegular, ofSize: 14)
-        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        label.layer.borderWidth = 0.8
-        label.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-        label.layer.cornerRadius = 5
-        label.layer.masksToBounds = true
-        label.heightAnchor.constraint(equalToConstant: 26).isActive = true
-        label.widthAnchor.constraint(equalToConstant: 97).isActive = true
-        label.textAlignment = .center
         return label
     }()
     
