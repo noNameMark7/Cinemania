@@ -10,14 +10,11 @@ class SavedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-        fetchingAndUpdatingUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        DispatchQueue.main.async {
-            self.savedView.tableView.reloadData()
-        }
+        fetchingAndUpdatingUI()
     }
 }
 
@@ -157,7 +154,7 @@ extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
                 }
                 
                 /// Remove the item from the ViewModel's data source
-                self.savedViewModel.genres.remove(at: indexPath.row)
+                //self.savedViewModel.genres.remove(at: indexPath.row)
                 
                 /// Delete the row from the table view
                 self.savedView.tableView.deleteRows(

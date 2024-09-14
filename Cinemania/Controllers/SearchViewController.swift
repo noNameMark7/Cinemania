@@ -6,7 +6,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var movies: [Movies] = []
+    private var media: [Media] = []
     private var genres: [Genre] = []
     
     private let searchController = UISearchController(searchResultsController: nil)
@@ -98,6 +98,7 @@ extension SearchViewController {
     }
 }
 
+
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -106,7 +107,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return movies.count
+        return media.count
     }
     
     func collectionView(
@@ -120,7 +121,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         ) as? CustomCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(with: movies[indexPath.item])
+        cell.configure(with: media[indexPath.item])
         return cell
     }
     
@@ -132,7 +133,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         AppRouter.shared.navigateToDetails(
             from: self,
-            media: Media(from: movies[indexPath.item]),
+            media: media[indexPath.item],
             genres: genres
         )
     }
@@ -157,7 +158,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 guard let strongSelf = self else { return }
                 
                 /// Convert movies to media object
-                let media = Media(from: strongSelf.movies[indexPath.item])
+                let media = strongSelf.media[indexPath.item]
                 
                 /// Checking id if item already exist before saving
                 if RealmService.shared.isMediaSaved(media.id) {
@@ -202,6 +203,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
+
 // MARK: - UISearchResultsUpdating
 
 extension SearchViewController: UISearchResultsUpdating {
@@ -216,14 +218,12 @@ extension SearchViewController: UISearchResultsUpdating {
         }
         
         /// Start the search request
-        NetworkService.shared.search(with: query) { result in
+        NetworkService.shared.universalSearch(with: query) { result in
             DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else { return }
-                
                 switch result {
-                case .success(let movies):
-                    strongSelf.movies = movies
-                    strongSelf.collectionView.reloadData()
+                case .success(let media):
+                    self?.media = media
+                    self?.collectionView.reloadData()
                 case .failure(let error):
                     debugPrint(error.localizedDescription)
                 }
@@ -244,7 +244,7 @@ extension SearchViewController: UISearchBarDelegate {
     func removeMoviesAfterCanceling() {
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.movies = []
+            strongSelf.media = []
             strongSelf.collectionView.reloadData()
         }
     }

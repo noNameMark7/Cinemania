@@ -17,7 +17,7 @@ final class SetupTabBarController {
         
         let homeViewController = HomeViewController()
         homeViewController.view.backgroundColor = .systemBackground
-        homeViewController.title = "Trending movies and tv shows"
+        homeViewController.title = "Trending"
         
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
         homeNavigationController.tabBarItem = UITabBarItem(
@@ -62,7 +62,7 @@ final class SetupTabBarController {
         /// Apply the font attributes to all navigationController titles
         
         UINavigationBar.appearance().titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.customFont(.comfortaaBold, ofSize: 18) as Any
+            NSAttributedString.Key.font: UIFont.customFont(.comfortaaBold, ofSize: 19) as Any
         ]
         
         /// Apply the font attributes to all tab bar items

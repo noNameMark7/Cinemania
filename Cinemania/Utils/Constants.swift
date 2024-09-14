@@ -48,6 +48,14 @@ enum CustomFont {
     case comfortaaSemiBold
     case comfortaaBold
     
+    case suseThin
+    case suseLight
+    case suseRegular
+    case suseMedium
+    case suseSemiBold
+    case suseBold
+    
+    
     var fontName: String {
         switch self {
         case .comfortaaLight: return "Comfortaa-Light"
@@ -55,6 +63,14 @@ enum CustomFont {
         case .comfortaaMedium: return "Comfortaa-Medium"
         case .comfortaaSemiBold: return "Comfortaa-SemiBold"
         case .comfortaaBold: return "Comfortaa-Bold"
+            
+        case .suseThin: return "SUSE-Thin"
+        case .suseLight: return "SUSE-Light"
+        case .suseRegular: return "SUSE-Regular"
+        case .suseMedium: return "SUSE-Medium"
+        case .suseSemiBold: return "SUSE-SemiBold"
+        case .suseBold: return "SUSE-Bold"
+            
         }
     }
 }

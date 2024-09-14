@@ -59,7 +59,7 @@ class DetailsView: UIView {
     private let genreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.comfortaaRegular, ofSize: 13)
+        label.font = .customFont(.suseRegular, ofSize: 13)
         label.numberOfLines = 0
         label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return label
@@ -78,14 +78,14 @@ class DetailsView: UIView {
     private let voteAverageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.comfortaaRegular, ofSize: 17)
+        label.font = .customFont(.suseRegular, ofSize: 17)
         return label
     }()
     
     private let releaseDateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.comfortaaRegular, ofSize: 14)
+        label.font = .customFont(.suseRegular, ofSize: 14)
         label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         label.layer.borderWidth = 0.8
         label.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
@@ -100,21 +100,21 @@ class DetailsView: UIView {
     private let popularityLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.comfortaaRegular, ofSize: 17)
+        label.font = .customFont(.suseRegular, ofSize: 17)
         return label
     }()
     
     private let voteCountLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.comfortaaRegular, ofSize: 17)
+        label.font = .customFont(.suseRegular, ofSize: 17)
         return label
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.comfortaaBold, ofSize: 20)
+        label.font = .customFont(.suseBold, ofSize: 20)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -124,7 +124,7 @@ class DetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Overview"
-        label.font = .customFont(.comfortaaMedium, ofSize: 18)
+        label.font = .customFont(.suseMedium, ofSize: 18)
         return label
     }()
     
@@ -132,7 +132,7 @@ class DetailsView: UIView {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .clear
-        textView.font = .customFont(.comfortaaRegular, ofSize: 15)
+        textView.font = .customFont(.suseRegular, ofSize: 15)
         textView.textContainer.lineBreakMode = .byWordWrapping
         textView.isEditable = false
         textView.isScrollEnabled = false
@@ -143,7 +143,7 @@ class DetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Trailer"
-        label.font = .customFont(.comfortaaMedium, ofSize: 18)
+        label.font = .customFont(.suseMedium, ofSize: 18)
         return label
     }()
 
@@ -191,6 +191,7 @@ extension DetailsView {
         contentView.addSubview(overviewTextView)
         contentView.addSubview(trailerTitleLabel)
         contentView.addSubview(playerView)
+
 
         let scrollViewConstraints = [
             scrollView.topAnchor.constraint(equalTo: topAnchor),

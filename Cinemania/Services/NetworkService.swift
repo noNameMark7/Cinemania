@@ -137,58 +137,112 @@ final class NetworkService {
         }
     }
     
-    func search(
+//    func search(
+//        with query: String,
+//        completion: @escaping (Result<[Media], Error>) -> Void
+//    ) {
+//        /// Ensure the query is properly URL encoded
+//        guard let encodedQuery = query.addingPercentEncoding(
+//            withAllowedCharacters: .urlQueryAllowed
+//        ) else {
+//            return
+//        }
+//
+//        /// Construct the URL for the search request
+//        guard let url = URL(
+//            string: "\(Constants.baseUrl)search/multi?query=\(encodedQuery)&api_key=\(Constants.apiKey)"
+//        ) else {
+//            completion(.failure(APIError.invalidResponse))
+//            return
+//        }
+//
+//        /// Create the URLRequest object
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "GET"
+//
+//        /// Start the URL session data task
+//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+//
+//            if let error = error {
+//                completion(.failure(error))
+//                return
+//            }
+//
+//            guard let httpResponse = response as? HTTPURLResponse, (200...209).contains(httpResponse.statusCode) else {
+//                completion(.failure(APIError.invalidResponse))
+//                return
+//            }
+//
+//            guard let data = data else {
+//                completion(.failure(APIError.failedToGetData))
+//                return
+//            }
+//
+//            do {
+//                let results = try JSONDecoder().decode(TrendingMovies.self, from: data)
+//                let mediaResults = results.results.map { Media(from: $0) }
+//
+//                DispatchQueue.main.async {
+//                    completion(.success(mediaResults))
+//                }
+//            } catch {
+//                DispatchQueue.main.async {
+//                    completion(.failure(APIError.failedToGetData))
+//                }
+//                debugPrint("Decoding error: \(error.localizedDescription)")
+//            }
+//        }
+//        task.resume()
+//    }
+    
+    func universalSearch(
         with query: String,
-        completion: @escaping (Result<[Movies], Error>) -> Void
+        completion: @escaping (Result<[Media], Error>) -> Void
     ) {
-        /// Ensure the query is properly URL encoded
         guard let encodedQuery = query.addingPercentEncoding(
             withAllowedCharacters: .urlQueryAllowed
         ) else { return }
         
-        /// Construct the URL for the search request
         guard let url = URL(
-            string: "\(Constants.baseUrl)search/movie?query=\(encodedQuery)&api_key=\(Constants.apiKey)"
+            string: "\(Constants.baseUrl)search/multi?query=\(encodedQuery)&api_key=\(Constants.apiKey)"
         ) else {
             completion(.failure(APIError.invalidResponse))
             return
         }
         
-        /// Create the URLRequest object
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
-        /// Start the URL session data task
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            /// Check for error
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return
             }
             
-            /// Ensure we received a valid HTTP response
             guard let httpResponse = response as? HTTPURLResponse, (200...209).contains(httpResponse.statusCode) else {
                 completion(.failure(APIError.invalidResponse))
                 return
             }
             
-            /// Ensure we have data
             guard let data = data else {
                 completion(.failure(APIError.failedToGetData))
                 return
             }
             
             do {
-                let results = try JSONDecoder().decode(TrendingMovies.self, from: data)
+                /// Decode the response into TrendingMedia
+                let results = try JSONDecoder().decode(TrendingMedia.self, from: data)
+                let mediaResults = results.results
+                    .filter { $0.mediaType == "movie" || $0.mediaType == "tv" } /// Filter out people or irrelevant types
+                    .map { Media(from: $0) }
+                
                 DispatchQueue.main.async {
-                    completion(.success(results.results))
+                    completion(.success(mediaResults))
                 }
-                debugPrint(results)
             } catch {
                 DispatchQueue.main.async {
                     completion(.failure(APIError.failedToGetData))
                 }
-                debugPrint("Decoding error: \(error.localizedDescription)")
             }
         }
         task.resume()

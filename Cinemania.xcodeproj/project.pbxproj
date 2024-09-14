@@ -33,6 +33,12 @@
 		4D63F22C2AA3704000FADB08 /* ValueFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63F22B2AA3704000FADB08 /* ValueFormatting.swift */; };
 		4DA6D09D2ABF73740048FCEE /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6D09C2ABF73730048FCEE /* AppRouter.swift */; };
 		4DA6D09F2ABF794F0048FCEE /* SetupTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6D09E2ABF794F0048FCEE /* SetupTabBarController.swift */; };
+		4DC540352C939A60001DD80A /* SUSE-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DC540302C939846001DD80A /* SUSE-Bold.ttf */; };
+		4DC540362C939A63001DD80A /* SUSE-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DC540312C939846001DD80A /* SUSE-Light.ttf */; };
+		4DC540372C939A65001DD80A /* SUSE-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DC540322C939846001DD80A /* SUSE-Medium.ttf */; };
+		4DC540382C939A68001DD80A /* SUSE-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DC540332C939847001DD80A /* SUSE-Regular.ttf */; };
+		4DC540392C939A6C001DD80A /* SUSE-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DC540342C939847001DD80A /* SUSE-SemiBold.ttf */; };
+		4DC5403A2C939A6F001DD80A /* SUSE-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DC5402F2C939846001DD80A /* SUSE-Thin.ttf */; };
 		4DCB2D722A97A733004FDFDB /* UIFont Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB2D712A97A733004FDFDB /* UIFont Extension.swift */; };
 		4DCB2D752A9817D4004FDFDB /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB2D742A9817D4004FDFDB /* DetailsView.swift */; };
 		4DCB2D772A981871004FDFDB /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB2D762A981871004FDFDB /* DetailsViewModel.swift */; };
@@ -41,6 +47,8 @@
 		4DD25BDC2A51D84300C44A9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD25BDB2A51D84300C44A9E /* SceneDelegate.swift */; };
 		4DD25BE32A51D84D00C44A9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DD25BE22A51D84D00C44A9E /* Assets.xcassets */; };
 		4DD25BE62A51D84D00C44A9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DD25BE42A51D84D00C44A9E /* LaunchScreen.storyboard */; };
+		4DD3B6882C920E83000310F5 /* TrendingMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3B6872C920E83000310F5 /* TrendingMedia.swift */; };
+		4DD3B68B2C9213D1000310F5 /* Media Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3B68A2C9213D1000310F5 /* Media Extension.swift */; };
 		4DDA203E2B6ACAF7001AD7CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDA203D2B6ACAF7001AD7CE /* SettingsViewController.swift */; };
 		4DDA20402B6ACBD0001AD7CE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDA203F2B6ACBD0001AD7CE /* SearchViewController.swift */; };
 		4DE108F02A8E4690001B7D34 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE108EF2A8E4690001B7D34 /* HomeViewModel.swift */; };
@@ -73,6 +81,12 @@
 		4D63F22B2AA3704000FADB08 /* ValueFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueFormatting.swift; sourceTree = "<group>"; };
 		4DA6D09C2ABF73730048FCEE /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		4DA6D09E2ABF794F0048FCEE /* SetupTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTabBarController.swift; sourceTree = "<group>"; };
+		4DC5402F2C939846001DD80A /* SUSE-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUSE-Thin.ttf"; sourceTree = "<group>"; };
+		4DC540302C939846001DD80A /* SUSE-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUSE-Bold.ttf"; sourceTree = "<group>"; };
+		4DC540312C939846001DD80A /* SUSE-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUSE-Light.ttf"; sourceTree = "<group>"; };
+		4DC540322C939846001DD80A /* SUSE-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUSE-Medium.ttf"; sourceTree = "<group>"; };
+		4DC540332C939847001DD80A /* SUSE-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUSE-Regular.ttf"; sourceTree = "<group>"; };
+		4DC540342C939847001DD80A /* SUSE-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUSE-SemiBold.ttf"; sourceTree = "<group>"; };
 		4DCB2D712A97A733004FDFDB /* UIFont Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont Extension.swift"; sourceTree = "<group>"; };
 		4DCB2D742A9817D4004FDFDB /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		4DCB2D762A981871004FDFDB /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
@@ -83,6 +97,8 @@
 		4DD25BE22A51D84D00C44A9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4DD25BE52A51D84D00C44A9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4DD25BE72A51D84D00C44A9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DD3B6872C920E83000310F5 /* TrendingMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMedia.swift; sourceTree = "<group>"; };
+		4DD3B68A2C9213D1000310F5 /* Media Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Media Extension.swift"; sourceTree = "<group>"; };
 		4DDA203D2B6ACAF7001AD7CE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4DDA203F2B6ACBD0001AD7CE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4DE108EF2A8E4690001B7D34 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -112,6 +128,7 @@
 		4D594A3B2A75BEA600FE2B4D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4DD3B6892C921349000310F5 /* Model for universal search */,
 				4D00A2002A8FFB2E00799B9C /* TrendingMovies.swift */,
 				4D00A2022A8FFB6000799B9C /* TrendingTVShows.swift */,
 				4D00A2042A8FFB7000799B9C /* Genres.swift */,
@@ -155,6 +172,7 @@
 		4D63F22F2AA3D68D00FADB08 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				4DC5402E2C93981A001DD80A /* SUSE */,
 				4DBADFB02AA5217E00A6E528 /* Comfortaa */,
 			);
 			path = Fonts;
@@ -189,6 +207,19 @@
 			path = Comfortaa;
 			sourceTree = "<group>";
 		};
+		4DC5402E2C93981A001DD80A /* SUSE */ = {
+			isa = PBXGroup;
+			children = (
+				4DC540302C939846001DD80A /* SUSE-Bold.ttf */,
+				4DC540312C939846001DD80A /* SUSE-Light.ttf */,
+				4DC540322C939846001DD80A /* SUSE-Medium.ttf */,
+				4DC540332C939847001DD80A /* SUSE-Regular.ttf */,
+				4DC540342C939847001DD80A /* SUSE-SemiBold.ttf */,
+				4DC5402F2C939846001DD80A /* SUSE-Thin.ttf */,
+			);
+			path = SUSE;
+			sourceTree = "<group>";
+		};
 		4DCB2D6E2A97A61A004FDFDB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +227,7 @@
 				4D63F22B2AA3704000FADB08 /* ValueFormatting.swift */,
 				4DCB2D712A97A733004FDFDB /* UIFont Extension.swift */,
 				4D46C29B2A758ED100C4C127 /* UIImage Extension.swift */,
+				4DD3B68A2C9213D1000310F5 /* Media Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -271,6 +303,14 @@
 				4DF505BC2A8FC92E00CFDC52 /* Custom Cells */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4DD3B6892C921349000310F5 /* Model for universal search */ = {
+			isa = PBXGroup;
+			children = (
+				4DD3B6872C920E83000310F5 /* TrendingMedia.swift */,
+			);
+			path = "Model for universal search";
 			sourceTree = "<group>";
 		};
 		4DE108ED2A8E464D001B7D34 /* Home */ = {
@@ -369,13 +409,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DC540382C939A68001DD80A /* SUSE-Regular.ttf in Resources */,
 				4DD25BE62A51D84D00C44A9E /* LaunchScreen.storyboard in Resources */,
+				4DC5403A2C939A6F001DD80A /* SUSE-Thin.ttf in Resources */,
 				4D2D2A242C91CE87006E7DF8 /* Comfortaa-Light.ttf in Resources */,
+				4DC540362C939A63001DD80A /* SUSE-Light.ttf in Resources */,
 				4D2D2A272C91CE93006E7DF8 /* Comfortaa-SemiBold.ttf in Resources */,
+				4DC540392C939A6C001DD80A /* SUSE-SemiBold.ttf in Resources */,
 				4D2D2A252C91CE8A006E7DF8 /* Comfortaa-Medium.ttf in Resources */,
 				4D2D2A262C91CE8E006E7DF8 /* Comfortaa-Regular.ttf in Resources */,
 				4DD25BE32A51D84D00C44A9E /* Assets.xcassets in Resources */,
 				4D2D2A282C91CE95006E7DF8 /* Comfortaa-Bold.ttf in Resources */,
+				4DC540352C939A60001DD80A /* SUSE-Bold.ttf in Resources */,
+				4DC540372C939A65001DD80A /* SUSE-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,11 +439,13 @@
 				4DA6D09D2ABF73740048FCEE /* AppRouter.swift in Sources */,
 				4D1BAAC72A7C121800FEF19C /* NetworkService.swift in Sources */,
 				4D00A2072A8FFB7D00799B9C /* Trailers.swift in Sources */,
+				4DD3B6882C920E83000310F5 /* TrendingMedia.swift in Sources */,
 				4DE108F22A8E469F001B7D34 /* SavedViewModel.swift in Sources */,
 				4DE108F02A8E4690001B7D34 /* HomeViewModel.swift in Sources */,
 				4DE108FA2A8E4E88001B7D34 /* SavedView.swift in Sources */,
 				4DA6D09F2ABF794F0048FCEE /* SetupTabBarController.swift in Sources */,
 				4DCB2D722A97A733004FDFDB /* UIFont Extension.swift in Sources */,
+				4DD3B68B2C9213D1000310F5 /* Media Extension.swift in Sources */,
 				4D46C29C2A758ED100C4C127 /* UIImage Extension.swift in Sources */,
 				4DCB2D772A981871004FDFDB /* DetailsViewModel.swift in Sources */,
 				4D0F6F042ABF0BAD007A550A /* RealmService.swift in Sources */,

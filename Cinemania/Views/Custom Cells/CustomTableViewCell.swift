@@ -36,7 +36,8 @@ class CustomTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.comfortaaBold, ofSize: 14)
+        //label.font = .customFont(.comfortaaBold, ofSize: 14)
+        label.font = .customFont(.suseBold, ofSize: 14)
         label.numberOfLines = 0
         return label
     }()
@@ -44,7 +45,8 @@ class CustomTableViewCell: UITableViewCell {
     private let genreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.comfortaaRegular, ofSize: 12)
+        //label.font = .customFont(.comfortaaRegular, ofSize: 12)
+        label.font = .customFont(.suseRegular, ofSize: 12)
         label.textColor = .secondaryLabel
         label.numberOfLines = 0
         return label
@@ -63,7 +65,8 @@ class CustomTableViewCell: UITableViewCell {
     private let voteAverageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.comfortaaRegular, ofSize: 14)
+        //label.font = .customFont(.comfortaaRegular, ofSize: 14)
+        label.font = .customFont(.suseRegular, ofSize: 14)
         return label
     }()
     
