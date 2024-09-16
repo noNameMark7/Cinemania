@@ -49,7 +49,7 @@ class DetailsView: UIView {
         return imageView
     }()
     
-    private let releaseDateLabel: UILabel = {
+    private let releaseDateLabelValue: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(.suseRegular, ofSize: 14)
@@ -71,7 +71,7 @@ class DetailsView: UIView {
         return view
     }()
     
-    private let genreLabel: UILabel = {
+    private let genreLabelValue: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(.suseRegular, ofSize: 13)
@@ -93,21 +93,13 @@ class DetailsView: UIView {
     private let voteAverageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseRegular, ofSize: 17)
-        return label
-    }()
-    
-    private let popularityLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseRegular, ofSize: 17)
-        return label
-    }()
-    
-    private let voteCountLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseRegular, ofSize: 17)
+        label.font = .customFont(.suseRegular, ofSize: 14)
+        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        label.layer.borderWidth = 0.8
+        label.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        label.layer.cornerRadius = 5
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
         return label
     }()
     
@@ -120,30 +112,51 @@ class DetailsView: UIView {
         return label
     }()
     
-    private let overviewTitleLabel: UILabel = {
+    // MARK: - Contains all properties below
+    
+    private let containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9647058824, alpha: 1)
+        return view
+    }()
+    
+    private let aboutLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Overview"
-        label.font = .customFont(.suseMedium, ofSize: 18)
+        label.text = "About"
+        label.font = .customFont(.suseSemiBold, ofSize: 22)
         return label
     }()
     
     let overviewTextView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.backgroundColor = .clear
+        textView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        textView.textColor = .secondaryLabel
         textView.font = .customFont(.suseRegular, ofSize: 15)
         textView.textContainer.lineBreakMode = .byWordWrapping
         textView.isEditable = false
         textView.isScrollEnabled = false
+        textView.layer.cornerRadius = 10
+        textView.layer.masksToBounds = true
+        textView.textContainerInset = Constants.indentationEightOnAllSides
         return textView
     }()
     
-    private let trailerTitleLabel: UILabel = {
+    private let firstSeparatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.18)
+        view.heightAnchor.constraint(equalToConstant: 0.7).isActive = true
+        return view
+    }()
+    
+    private let trailerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Trailer"
-        label.font = .customFont(.suseMedium, ofSize: 18)
+        label.font = .customFont(.suseSemiBold, ofSize: 22)
         return label
     }()
 
@@ -152,6 +165,57 @@ class DetailsView: UIView {
         playerView.translatesAutoresizingMaskIntoConstraints = false
         playerView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         return playerView
+    }()
+    
+    private let secondSeparatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.18)
+        view.heightAnchor.constraint(equalToConstant: 0.7).isActive = true
+        return view
+    }()
+    
+    private let informationLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Information"
+        label.font = .customFont(.suseSemiBold, ofSize: 22)
+        return label
+    }()
+    
+    
+    private let popularityLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Popularity"
+        label.font = .customFont(.suseRegular, ofSize: 12)
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        return label
+    }()
+    
+    private let popularityLabelValue: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .customFont(.suseLight, ofSize: 12)
+        label.textColor = .secondaryLabel
+        return label
+    }()
+    
+    private let votedLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Voted"
+        label.font = .customFont(.suseRegular, ofSize: 12)
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        return label
+    }()
+    
+    private let voteCountLabelValue: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .customFont(.suseLight, ofSize: 12)
+        label.textColor = .secondaryLabel
+        return label
     }()
   
     override init(frame: CGRect) {
@@ -174,23 +238,30 @@ extension DetailsView {
     }
     
     func configureUI() {
+        
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(backdropImageView)
         backdropImageView.addSubview(backdropOverlayView)
         contentView.addSubview(posterImageView)
-        contentView.addSubview(releaseDateLabel)
+        contentView.addSubview(releaseDateLabelValue)
         contentView.addSubview(spacerView)
-        spacerView.addSubview(genreLabel)
+        spacerView.addSubview(genreLabelValue)
         contentView.addSubview(tmdbImageView)
         contentView.addSubview(voteAverageLabel)
-        contentView.addSubview(popularityLabel)
-        contentView.addSubview(voteCountLabel)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(overviewTitleLabel)
-        contentView.addSubview(overviewTextView)
-        contentView.addSubview(trailerTitleLabel)
-        contentView.addSubview(playerView)
+        contentView.addSubview(containerView)
+        containerView.addSubview(aboutLabel)
+        containerView.addSubview(overviewTextView)
+        containerView.addSubview(firstSeparatorView)
+        containerView.addSubview(trailerLabel)
+        containerView.addSubview(playerView)
+        containerView.addSubview(informationLabel)
+        containerView.addSubview(secondSeparatorView)
+        containerView.addSubview(popularityLabel)
+        containerView.addSubview(popularityLabelValue)
+        containerView.addSubview(votedLabel)
+        containerView.addSubview(voteCountLabelValue)
 
 
         let scrollViewConstraints = [
@@ -229,9 +300,23 @@ extension DetailsView {
             posterImageView.widthAnchor.constraint(equalToConstant: 93)
         ]
         
+        let tmdbImageViewConstraints = [
+            tmdbImageView.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 8),
+            tmdbImageView.widthAnchor.constraint(equalToConstant: 42),
+            tmdbImageView.heightAnchor.constraint(equalToConstant: 22),
+            tmdbImageView.bottomAnchor.constraint(equalTo: releaseDateLabelValue.topAnchor, constant: -8)
+        ]
+        
+        let voteAverageLabelConstraints = [
+            voteAverageLabel.leadingAnchor.constraint(equalTo: tmdbImageView.trailingAnchor, constant: 4),
+            voteAverageLabel.centerYAnchor.constraint(equalTo: tmdbImageView.centerYAnchor),
+            voteAverageLabel.heightAnchor.constraint(equalTo: tmdbImageView.heightAnchor),
+            voteAverageLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 51)
+        ]
+        
         let releaseDateLabelConstraints = [
-            releaseDateLabel.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 8),
-            releaseDateLabel.bottomAnchor.constraint(equalTo: posterImageView.bottomAnchor)
+            releaseDateLabelValue.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 8),
+            releaseDateLabelValue.bottomAnchor.constraint(equalTo: posterImageView.bottomAnchor)
         ]
         
         let spacerViewConstraints = [
@@ -242,62 +327,84 @@ extension DetailsView {
         ]
         
         let genreLabelConstraints = [
-            genreLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            genreLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            genreLabel.centerYAnchor.constraint(equalTo: spacerView.centerYAnchor)
-        ]
-        
-        let popularityLabelConstraints = [
-            popularityLabel.topAnchor.constraint(equalTo: backdropImageView.bottomAnchor, constant: 24),
-            popularityLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
-        ]
-        
-        let voteAverageLabelConstraints = [
-            voteAverageLabel.trailingAnchor.constraint(equalTo: popularityLabel.leadingAnchor, constant: -16),
-            voteAverageLabel.centerYAnchor.constraint(equalTo: popularityLabel.centerYAnchor)
-        ]
-        
-        let tmdbImageViewConstraints = [
-            tmdbImageView.widthAnchor.constraint(equalToConstant: 42),
-            tmdbImageView.heightAnchor.constraint(equalToConstant: 20),
-            tmdbImageView.centerYAnchor.constraint(equalTo: popularityLabel.centerYAnchor),
-            tmdbImageView.trailingAnchor.constraint(equalTo: voteAverageLabel.leadingAnchor, constant: -6)
-        ]
-        
-        let voteCountLabelConstraints = [
-            voteCountLabel.leadingAnchor.constraint(equalTo: popularityLabel.trailingAnchor, constant: 16),
-            voteCountLabel.centerYAnchor.constraint(equalTo: popularityLabel.centerYAnchor)
+            genreLabelValue.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            genreLabelValue.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            genreLabelValue.centerYAnchor.constraint(equalTo: spacerView.centerYAnchor)
         ]
         
         let titleLabelConstraints = [
             titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: 16),
-            titleLabel.topAnchor.constraint(equalTo: popularityLabel.bottomAnchor, constant: 22),
+            titleLabel.topAnchor.constraint(equalTo: backdropImageView.bottomAnchor, constant: 22),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -16)
         ]
         
-        let overviewTitleLabelConstraints = [
-            overviewTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 26),
-            overviewTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16)
+        let containerViewConstraints = [
+            containerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 26),
+            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+        ]
+        
+        let aboutLabelConstraints = [
+            aboutLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16),
+            aboutLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
         ]
 
         let overviewTextViewConstraints = [
-            overviewTextView.topAnchor.constraint(equalTo: overviewTitleLabel.bottomAnchor, constant: 4),
-            overviewTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 13),
-            overviewTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -13)
+            overviewTextView.topAnchor.constraint(equalTo: aboutLabel.bottomAnchor, constant: 16),
+            overviewTextView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
+            overviewTextView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
+        ]
+        
+        let firstSeparatorViewConstraints = [
+            firstSeparatorView.topAnchor.constraint(equalTo: overviewTextView.bottomAnchor, constant: 32),
+            firstSeparatorView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
+            firstSeparatorView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
         ]
 
         let trailerLabelConstraints = [
-            trailerTitleLabel.topAnchor.constraint(equalTo: overviewTextView.bottomAnchor, constant: 26),
-            trailerTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16)
+            trailerLabel.topAnchor.constraint(equalTo: firstSeparatorView.bottomAnchor, constant: 24),
+            trailerLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
         ]
 
         let playerViewConstraints = [
-            playerView.topAnchor.constraint(equalTo: trailerTitleLabel.bottomAnchor, constant: 20),
-            playerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            playerView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            playerView.heightAnchor.constraint(equalTo: playerView.widthAnchor, multiplier: 9/16),
-            playerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+            playerView.topAnchor.constraint(equalTo: trailerLabel.bottomAnchor, constant: 20),
+            playerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            playerView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            playerView.heightAnchor.constraint(equalTo: playerView.widthAnchor, multiplier: 9/16)
+        ]
+        
+        let secondSeparatorViewConstraints = [
+            secondSeparatorView.topAnchor.constraint(equalTo: playerView.bottomAnchor, constant: 32),
+            secondSeparatorView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
+            secondSeparatorView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
+        ]
+
+        let informationLabelConstraints = [
+            informationLabel.topAnchor.constraint(equalTo: secondSeparatorView.bottomAnchor, constant: 24),
+            informationLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
+        ]
+        
+        let popularityLabelConstraints = [
+            popularityLabel.topAnchor.constraint(equalTo: informationLabel.bottomAnchor, constant: 10),
+            popularityLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
+        ]
+        
+        let popularityLabelValueConstraints = [
+            popularityLabelValue.topAnchor.constraint(equalTo: popularityLabel.bottomAnchor, constant: 3),
+            popularityLabelValue.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
+        ]
+        
+        let votedLabelConstraints = [
+            votedLabel.topAnchor.constraint(equalTo: popularityLabelValue.bottomAnchor, constant: 16),
+            votedLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
+        ]
+
+        let voteCountLabelValueConstraints = [
+            voteCountLabelValue.topAnchor.constraint(equalTo: votedLabel.bottomAnchor, constant: 3),
+            voteCountLabelValue.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            voteCountLabelValue.bottomAnchor.constraint(equalTo: containerView.layoutMarginsGuide.bottomAnchor, constant: -16)
         ]
 
         NSLayoutConstraint.activate(scrollViewConstraints)
@@ -308,15 +415,21 @@ extension DetailsView {
         NSLayoutConstraint.activate(releaseDateLabelConstraints)
         NSLayoutConstraint.activate(spacerViewConstraints)
         NSLayoutConstraint.activate(genreLabelConstraints)
-        NSLayoutConstraint.activate(titleLabelConstraints)
         NSLayoutConstraint.activate(tmdbImageViewConstraints)
         NSLayoutConstraint.activate(voteAverageLabelConstraints)
-        NSLayoutConstraint.activate(popularityLabelConstraints)
-        NSLayoutConstraint.activate(voteCountLabelConstraints)
-        NSLayoutConstraint.activate(overviewTitleLabelConstraints)
+        NSLayoutConstraint.activate(titleLabelConstraints)
+        NSLayoutConstraint.activate(containerViewConstraints)
+        NSLayoutConstraint.activate(aboutLabelConstraints)
         NSLayoutConstraint.activate(overviewTextViewConstraints)
+        NSLayoutConstraint.activate(firstSeparatorViewConstraints)
         NSLayoutConstraint.activate(trailerLabelConstraints)
         NSLayoutConstraint.activate(playerViewConstraints)
+        NSLayoutConstraint.activate(secondSeparatorViewConstraints)
+        NSLayoutConstraint.activate(informationLabelConstraints)
+        NSLayoutConstraint.activate(popularityLabelConstraints)
+        NSLayoutConstraint.activate(popularityLabelValueConstraints)
+        NSLayoutConstraint.activate(votedLabelConstraints)
+        NSLayoutConstraint.activate(voteCountLabelValueConstraints)
 
         scrollView.contentSize = contentView.bounds.size
     }
@@ -343,7 +456,7 @@ private extension DetailsView {
         
         attributedText.addAttribute(
             .font,
-            value: UIFont(name: "HelveticaNeue", size: 16) as Any,
+            value: UIFont.customFont(.suseRegular, ofSize: 16) as Any,
             range: NSMakeRange(0, attributedText.length)
         )
         
@@ -381,14 +494,14 @@ private extension DetailsView {
     
     /// Show message if trailer is missing
     func showMessageIfTrailerIsMissing() {
-        let text = "Unfortunately, there is no trailer, sorry.. If the trailer appears on our website, it will immediately appear here."
+        let text = "😥\nUnfortunately, there is no trailer, sorry.. If the trailer appears on our website, it will immediately appear here."
         let components = text.components(separatedBy: ". ")
         let label = UILabel()
         label.text = components.joined(separator: "\n")
         label.textColor = .white
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.font = UIFont(name: "HelveticaNeue", size: 16)
+        label.font = UIFont.customFont(.suseRegular, ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
 
         playerView.addSubview(label)
@@ -456,7 +569,7 @@ extension DetailsView {
             posterImageView.image = .placeholder(named: "DefaultPoster")
         }
         
-        genreLabel.text = object.genre.compactMap({ genreID in
+        genreLabelValue.text = object.genre.compactMap({ genreID in
             genres.first { $0.id == genreID }?.name
         }).joined(separator: "\(Constants.divider)")
         
@@ -464,11 +577,11 @@ extension DetailsView {
         
         object.overview.isEmpty ? configureMissingDescription() : { overviewTextView.text = object.overview }()
         
-        releaseDateLabel.text = "\(object.releaseDate)"
+        releaseDateLabelValue.text = "\(object.releaseDate)"
         
-        popularityLabel.text = "🔥 \(object.popularity)"
+        popularityLabelValue.text = "\(object.popularity)"
         
-        voteCountLabel.text = "🤚🏼 \(object.voteCount)"
+        voteCountLabelValue.text = "\(object.voteCount)"
         
         let formattedVoteAverage = ValueFormatting.formatVoteAverage(object.voteAverage)
         voteAverageLabel.text = "\(formattedVoteAverage)/10"

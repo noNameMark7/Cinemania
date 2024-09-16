@@ -11,7 +11,7 @@ class CustomTableViewCell: UITableViewCell {
     private let posterContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 5
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.4
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -26,7 +26,7 @@ class CustomTableViewCell: UITableViewCell {
     private let posterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 10
+        imageView.layer.cornerRadius = 5
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.image = .placeholder(named: "DefaultPoster")
@@ -36,8 +36,7 @@ class CustomTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        //label.font = .customFont(.comfortaaBold, ofSize: 14)
-        label.font = .customFont(.suseBold, ofSize: 14)
+        label.font = .customFont(.suseBold, ofSize: 15)
         label.numberOfLines = 0
         return label
     }()
@@ -45,7 +44,6 @@ class CustomTableViewCell: UITableViewCell {
     private let genreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        //label.font = .customFont(.comfortaaRegular, ofSize: 12)
         label.font = .customFont(.suseRegular, ofSize: 12)
         label.textColor = .secondaryLabel
         label.numberOfLines = 0
@@ -65,8 +63,13 @@ class CustomTableViewCell: UITableViewCell {
     private let voteAverageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        //label.font = .customFont(.comfortaaRegular, ofSize: 14)
         label.font = .customFont(.suseRegular, ofSize: 14)
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.layer.borderWidth = 0.8
+        label.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        label.layer.cornerRadius = 5
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
         return label
     }()
     
@@ -144,15 +147,17 @@ extension CustomTableViewCell {
         ]
         
         let tmdbImageViewConstraints = [
-            tmdbImageView.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 16),
+            tmdbImageView.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 8),
             tmdbImageView.bottomAnchor.constraint(equalTo: posterImageView.bottomAnchor),
             tmdbImageView.widthAnchor.constraint(equalToConstant: 42),
-            tmdbImageView.heightAnchor.constraint(equalToConstant: 20)
+            tmdbImageView.heightAnchor.constraint(equalToConstant: 22)
         ]
         
         let voteAverageLabelConstraints = [
-            voteAverageLabel.leadingAnchor.constraint(equalTo: tmdbImageView.trailingAnchor, constant: 8),
-            voteAverageLabel.centerYAnchor.constraint(equalTo: tmdbImageView.centerYAnchor)
+            voteAverageLabel.leadingAnchor.constraint(equalTo: tmdbImageView.trailingAnchor, constant: 4),
+            voteAverageLabel.centerYAnchor.constraint(equalTo: tmdbImageView.centerYAnchor),
+            voteAverageLabel.heightAnchor.constraint(equalTo: tmdbImageView.heightAnchor),
+            voteAverageLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ]
         
         NSLayoutConstraint.activate(posterContainerViewConstraints)

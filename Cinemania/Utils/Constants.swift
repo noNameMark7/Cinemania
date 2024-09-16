@@ -17,6 +17,7 @@ struct Constants {
     static let horizontalSpacing: CGFloat = 9
     static let verticalSpacing: CGFloat = 10
     static let sectionInsets = UIEdgeInsets(top: 11, left: 11, bottom: 11, right: 11)
+    static let indentationEightOnAllSides = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     
     static let divider = " · "
 }

@@ -15,6 +15,7 @@ class SavedViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchingAndUpdatingUI()
+        navigationItem.backButtonTitle = "Back"
     }
 }
 

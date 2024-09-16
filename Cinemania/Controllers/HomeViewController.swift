@@ -17,6 +17,11 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         fetchingAndUpdatingUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.backButtonTitle = "Back"
+    }
+    
     @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {        
         homeViewModel.segmentedControlValueChanged(index: sender.selectedSegmentIndex)
 
