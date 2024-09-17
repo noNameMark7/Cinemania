@@ -4,7 +4,7 @@ import UIKit
 
 struct ValueFormatting {
     
-    static func convertDateFormat(_ date: String?) -> String {
+    static func formattingPerMonthDateYear(_ date: String?) -> String {
         guard let dateInput = date else { return "No date found" }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -12,15 +12,25 @@ struct ValueFormatting {
             dateFormatter.dateFormat = "MMM d, yyyy"
             return dateFormatter.string(from: newDate)
         }
-        return ""
+        return "Invalid date"
     }
     
-    static func formatVoteAverage(_ voteAverage: Double?) -> String {
+    static func formattingToFloat(_ voteAverage: Double?) -> String {
         if let voteAverage = voteAverage {
             let roundedValue = String(format: "%.1f", voteAverage)
             return "\(roundedValue)"
         } else {
-            // Handle the case where voteAverage is nil
+            /// Handle the case where voteAverage is nil
+            return "N/A"
+        }
+    }
+    
+    static func formattingToIntegerWithPercentage(_ voteAverage: Double?) -> String {
+        if let voteAverage = voteAverage {
+            let percentageValue = Int(voteAverage * 10)
+            return "\(percentageValue)%"
+        } else {
+            /// Handle the case where voteAverage is nil
             return "N/A"
         }
     }

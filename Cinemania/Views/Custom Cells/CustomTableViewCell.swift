@@ -187,7 +187,7 @@ extension CustomTableViewCell {
             genre.first { $0.id == genreID }?.name
         }).joined(separator: "\(Constants.divider)")
         
-        let formattedVoteAverage = ValueFormatting.formatVoteAverage(object.voteAverage)
+        let formattedVoteAverage = ValueFormatting.formattingToFloat(object.voteAverage)
         voteAverageLabel.text = "\(formattedVoteAverage)/10"
     }
     
@@ -204,7 +204,7 @@ extension CustomTableViewCell {
             genre.first { $0.id == genreID }?.name
         }).joined(separator: "\(Constants.divider)")
         
-        let formattedVoteAverage = ValueFormatting.formatVoteAverage(object.voteAverage)
+        let formattedVoteAverage = ValueFormatting.formattingToFloat(object.voteAverage)
         voteAverageLabel.text = "\(formattedVoteAverage)/10"
     }
     
@@ -213,7 +213,7 @@ extension CustomTableViewCell {
         let posterUrl = URL(string: "\(Constants.getImage)\(media.posterPath)")
         posterImageView.sd_setImage(with: posterUrl)
         titleLabel.text = media.title
-        let formattedVoteAverage = ValueFormatting.formatVoteAverage(media.voteAverage)
+        let formattedVoteAverage = ValueFormatting.formattingToFloat(media.voteAverage)
         voteAverageLabel.text = "\(formattedVoteAverage)/10"
         
         genreLabel.text = Media(from: media).genre.compactMap({ genreID in

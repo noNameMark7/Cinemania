@@ -13,7 +13,7 @@ extension Media {
         self.typeOfMedia = model.typeOfMedia
         self.genre = model.genreIDS ?? []
         self.popularity = model.popularity
-        self.releaseDate = ValueFormatting.convertDateFormat(model.releaseDate ?? model.firstAirDate ?? "")
+        self.releaseDate = ValueFormatting.formattingPerMonthDateYear(model.releaseDate ?? model.firstAirDate ?? "")
         self.voteAverage = model.voteAverage
         self.voteCount = model.voteCount
     }

@@ -53,7 +53,7 @@ extension DetailsViewController {
     }
     
     func delegatesSetup() {
-        detailsView.overviewTextView.delegate = self
+        detailsView.overviewValueTextView.delegate = self
         detailsViewModel.delegate = detailsView
     }
 }
