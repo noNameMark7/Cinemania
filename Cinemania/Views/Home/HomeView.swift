@@ -51,6 +51,9 @@ class HomeView: UIView {
         initialSetup()
     }
     
+    /// This initializer is required if the Storyboard.main file is used,
+    /// if it is not used in the project, then you can use this signature @available(*, unavailable)
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
