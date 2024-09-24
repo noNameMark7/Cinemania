@@ -39,39 +39,33 @@ class HomeViewModel {
                 completion()
             case .failure(let error):
                 print("Error fetching trending data: \(error.localizedDescription)")
+                completion()
             }
         }
     }
    
-    func fetchInitialData(
-        completion: @escaping (() -> Void)
-    ) {
-        if initialDataLoaded {
-            /// If data is already loaded, just call the completion block
-            completion()
-            return
-        }
+    func fetchInitialData(completion: @escaping (() -> Void)) {
         
-        fetchMedia(
-            for: .movie,
-            modelType: TrendingMovies.self
-        ) {
+        let mediaType: TypeOfMedia = selectedSegment == 0 ? .movie : .tv
+        let modelType: Codable.Type = selectedSegment == 0 ? TrendingMovies.self : TrendingTVShows.self
+        
+        fetchMedia(for: mediaType, modelType: modelType) {
             DispatchQueue.main.async {
-                /// Set the flag to true
                 self.initialDataLoaded = true
                 completion()
             }
         }
     }
     
-    func fetchAllGenres() {
+    func fetchAllGenres(completion: @escaping (() -> Void)) {
         NetworkService.shared.fetchAllGenres { [weak self] response in
             switch response {
             case .success(let genres):
                 self?.genres = genres
-                self?.updateUI?()
+                completion()
             case .failure(let error):
                 print("Error fetching genres: \(error.localizedDescription)")
+                completion()
             }
         }
     }

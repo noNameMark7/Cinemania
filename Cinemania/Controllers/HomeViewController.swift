@@ -14,27 +14,11 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-        fetchingAndUpdatingUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.backButtonTitle = "Back"
-    }
-    
-    @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {        
-        homeViewModel.segmentedControlValueChanged(index: sender.selectedSegmentIndex)
-
-        let modelType: Codable.Type = homeViewModel.selectedSegment == 0 ? TrendingMovies.self : TrendingTVShows.self
-        
-        homeViewModel.fetchMedia(
-            for: homeViewModel.selectedSegment == 0 ? .movie : .tv,
-            modelType: modelType
-        ) { [weak self] in
-            DispatchQueue.main.async {
-                self?.homeView.tableView.reloadData()
-            }
-        }
     }
 }
 
@@ -46,6 +30,7 @@ extension HomeViewController {
     func initialSetup() {
         view.backgroundColor = .systemBackground
         configureUI()
+        fetchingAndUpdatingUI()
     }
     
     func configureUI() {
@@ -68,25 +53,58 @@ extension HomeViewController {
         configureSearchBar()
         configureTableView()
     }
+}
+
+
+// MARK: - Monitoring states and data changes
+
+extension HomeViewController {
     
-    func fetchingAndUpdatingUI() {
-        homeViewModel.fetchInitialData { [weak self] in
+    @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        homeViewModel.segmentedControlValueChanged(index: sender.selectedSegmentIndex)
+
+        let modelType: Codable.Type = homeViewModel.selectedSegment == 0 ? TrendingMovies.self : TrendingTVShows.self
+        
+        homeViewModel.fetchMedia(
+            for: homeViewModel.selectedSegment == 0 ? .movie : .tv,
+            modelType: modelType
+        ) { [weak self] in
             DispatchQueue.main.async {
                 self?.homeView.tableView.reloadData()
-                self?.homeViewModel.fetchAllGenres()
+            }
+        }
+    }
+    
+    private func fetchingAndUpdatingUI() {
+        // Fetch genres after fetching media
+        homeViewModel.fetchInitialData { [weak self] in
+            // Then fetch genres
+            self?.homeViewModel.fetchAllGenres {
+                DispatchQueue.main.async {
+                    self?.homeView.tableView.reloadData()
+                }
             }
         }
 
+        // Update UI callback that can be triggered whenever needed
         homeViewModel.updateUI = { [weak self] in
             DispatchQueue.main.async {
                 self?.homeView.tableView.reloadData()
             }
         }
     }
+    
+    @objc private func refreshData() {
+        // Fetch data and reload the table view when pulling to refresh
+        fetchingAndUpdatingUI()
+        
+        // End refreshing after data is fetched
+        homeView.tableView.refreshControl?.endRefreshing()
+    }
 }
 
 
-// MARK: - NavigationBar, TableView, SearchBar setup
+// MARK: - NavigationBar, TableView, SearchBar
 
 extension HomeViewController {
     
@@ -109,11 +127,16 @@ extension HomeViewController {
             CustomTableViewCell.self,
             forCellReuseIdentifier: CustomTableViewCell.reuseIdentifier
         )
+        
+        // Add pull-to-refresh functionality
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        homeView.tableView.refreshControl = refreshControl
     }
 }
 
 
-// MARK: - UITableViewDataSource and UITableViewDelegate setup
+// MARK: - UITableViewDataSource and UITableViewDelegate
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
