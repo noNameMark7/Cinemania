@@ -9,14 +9,11 @@ class HomeView: UIView {
     var segmentedControlTopConstraint: NSLayoutConstraint?
 
     let segmentedControl: UISegmentedControl = {
-        let customColor = UIColor(
-            red: 110/255, green: 83/255, blue: 211/255, alpha: 1.0
-        )
         
         let control = UISegmentedControl(items: ["Movies", "TV shows"])
         control.translatesAutoresizingMaskIntoConstraints = false
         control.selectedSegmentIndex = 0
-        control.backgroundColor = customColor
+        control.backgroundColor = #colorLiteral(red: 0.5019607843, green: 0.1725490196, blue: 0.537254902, alpha: 1)
         
         let normalAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.white,

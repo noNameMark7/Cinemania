@@ -65,7 +65,6 @@ extension SearchViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = "Forrest Gump or Black Adam"
         navigationItem.searchController = searchController
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -262,11 +261,11 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     ) -> CGSize {
         
         /// Calculate the total horizontal space for the collectionView's section insets and inter-item spacing
-        let totalHorizontalSpace = Constants.sectionInsets.left + Constants.sectionInsets.right + (Constants.horizontalSpacing * (Constants.numberOfCellsPerRow - 1))
+        let totalHorizontalSpace = SECTION_INSETS.left + SECTION_INSETS.right + (HORIZONTAL_SPACING * (NUMBER_OF_CELLS_PER_ROW - 1))
         
         /// Calculate the width available for each cell
         let availableWidth = collectionView.bounds.width - totalHorizontalSpace
-        let cellWidth = availableWidth / Constants.numberOfCellsPerRow
+        let cellWidth = availableWidth / NUMBER_OF_CELLS_PER_ROW
         
         /// Maintain the 1.5 aspect ratio (height = 1.5 * width)
         let cellHeight = cellWidth * 1.5
@@ -282,10 +281,10 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         
         /// Adjust the edge insets to reduce space from display edges
         UIEdgeInsets(
-            top: Constants.sectionInsets.top,
-            left: Constants.sectionInsets.left,
-            bottom: Constants.sectionInsets.bottom,
-            right: Constants.sectionInsets.right
+            top: SECTION_INSETS.top,
+            left: SECTION_INSETS.left,
+            bottom: SECTION_INSETS.bottom,
+            right: SECTION_INSETS.right
         )
     }
     
@@ -294,7 +293,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         minimumInteritemSpacingForSectionAt section: Int
     ) -> CGFloat {
-        Constants.horizontalSpacing
+        HORIZONTAL_SPACING
     }
     
     func collectionView(
@@ -302,6 +301,6 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int
     ) -> CGFloat {
-        Constants.verticalSpacing
+        VERTICAL_SPACING
     }
 }

@@ -60,16 +60,17 @@ class CustomTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    private let voteAverageLabel: UILabel = {
-        let label = UILabel()
+    private let voteAverageLabel: PaddedLabel = {
+        let label = PaddedLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseRegular, ofSize: 14)
+        label.font = .customFont(.suseRegular, ofSize: 13)
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.layer.borderWidth = 0.8
         label.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         label.layer.cornerRadius = 5
         label.layer.masksToBounds = true
         label.textAlignment = .center
+        label.textInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         return label
     }()
     
@@ -154,10 +155,10 @@ extension CustomTableViewCell {
         ]
         
         let voteAverageLabelConstraints = [
-            voteAverageLabel.leadingAnchor.constraint(equalTo: tmdbImageView.trailingAnchor, constant: 4),
+            voteAverageLabel.leadingAnchor.constraint(equalTo: tmdbImageView.trailingAnchor, constant: 8),
             voteAverageLabel.centerYAnchor.constraint(equalTo: tmdbImageView.centerYAnchor),
             voteAverageLabel.heightAnchor.constraint(equalTo: tmdbImageView.heightAnchor),
-            voteAverageLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 50)
+            //voteAverageLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ]
         
         NSLayoutConstraint.activate(posterContainerViewConstraints)
@@ -175,7 +176,7 @@ extension CustomTableViewCell {
 extension CustomTableViewCell {
     
     func configureWith(_ object: Media, and genre: [Genre]) {
-        if let posterURL = URL(string: Constants.getImage + object.poster) {
+        if let posterURL = URL(string: GET_IMAGE + object.poster) {
             posterImageView.sd_setImage(with: posterURL, placeholderImage: .placeholder(named: "DefaultPoster"))
         } else {
             posterImageView.image = .placeholder(named: "DefaultPoster")
@@ -185,14 +186,14 @@ extension CustomTableViewCell {
         
         genreLabel.text = object.genre.compactMap({ genreID in
             genre.first { $0.id == genreID }?.name
-        }).joined(separator: "\(Constants.divider)")
+        }).joined(separator: " · ")
         
         let formattedVoteAverage = ValueFormatting.formattingToFloat(object.voteAverage)
         voteAverageLabel.text = "\(formattedVoteAverage)/10"
     }
     
     func configureWith(_ object: MediaRealm, and genre: [Genre]) {
-        if let posterURL = URL(string: Constants.getImage + object.poster) {
+        if let posterURL = URL(string: GET_IMAGE + object.poster) {
             posterImageView.sd_setImage(with: posterURL, placeholderImage: .placeholder(named: "DefaultPoster"))
         } else {
             posterImageView.image = .placeholder(named: "DefaultPoster")
@@ -202,7 +203,7 @@ extension CustomTableViewCell {
         
         genreLabel.text = object.genre.compactMap({ genreID in
             genre.first { $0.id == genreID }?.name
-        }).joined(separator: "\(Constants.divider)")
+        }).joined(separator: " · ")
         
         let formattedVoteAverage = ValueFormatting.formattingToFloat(object.voteAverage)
         voteAverageLabel.text = "\(formattedVoteAverage)/10"
@@ -210,7 +211,7 @@ extension CustomTableViewCell {
     
     ///  Configuring SearchViewController
     func configureWith(_ media: Movies, and genre: [Genre]) {
-        let posterUrl = URL(string: "\(Constants.getImage)\(media.posterPath)")
+        let posterUrl = URL(string: "\(GET_IMAGE)\(media.posterPath)")
         posterImageView.sd_setImage(with: posterUrl)
         titleLabel.text = media.title
         let formattedVoteAverage = ValueFormatting.formattingToFloat(media.voteAverage)
@@ -218,6 +219,6 @@ extension CustomTableViewCell {
         
         genreLabel.text = Media(from: media).genre.compactMap({ genreID in
             genre.first { $0.id == genreID }?.name
-        }).joined(separator: "\(Constants.divider)")
+        }).joined(separator: " · ")
     }
 }

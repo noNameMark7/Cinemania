@@ -37,7 +37,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
 extension CustomCollectionViewCell {
     
     func configure(with media: Media) {
-        let posterUrl = URL(string: "\(Constants.getImage)\(media.poster)")
+        let posterUrl = URL(string: "\(GET_IMAGE)\(media.poster)")
         posterImageView.sd_setImage(with: posterUrl)
     }
 }

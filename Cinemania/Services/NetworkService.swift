@@ -16,9 +16,9 @@ final class NetworkService {
         completion: @escaping ((Result<T?, Error>) -> Void)
     ) {
         
-        let url = "\(Constants.trendingBaseUrl)\(mediaType)/\(timeWindow)"
+        let url = "\(TRENDING_BASE_URL)\(mediaType)/\(timeWindow)"
         let parameters: Parameters = [
-            "api_key": Constants.apiKey,
+            "api_key": API_KEY,
             "language": "en-US",
             "page": 1
         ]
@@ -41,12 +41,12 @@ final class NetworkService {
     ) {
         
         let parameters: Parameters = [
-            "api_key": Constants.apiKey,
+            "api_key": API_KEY,
             "language": "en-US"
         ]
         
-        let movieGenresUrl = "\(Constants.getMoviesGenreList)"
-        let tvShowGenresUrl = "\(Constants.getTVsGenreList)"
+        let movieGenresUrl = "\(GET_MOVIES_GENRE_LIST)"
+        let tvShowGenresUrl = "\(GET_TV_GENRE_LIST)"
         
         let dispatchGroup = DispatchGroup()
         
@@ -97,10 +97,10 @@ final class NetworkService {
         completion: @escaping ((URL?) -> Void)
     ) {
         
-        let url = "\(Constants.baseUrl)\(type)/\(id)\(Constants.videos)"
+        let url = "\(BASE_URL)\(type)/\(id)\(VIDEOS)"
         
         let parameters: Parameters = [
-            "api_key": Constants.apiKey,
+            "api_key": API_KEY,
             "language": "en-US"
         ]
         
@@ -137,64 +137,6 @@ final class NetworkService {
         }
     }
     
-//    func search(
-//        with query: String,
-//        completion: @escaping (Result<[Media], Error>) -> Void
-//    ) {
-//        /// Ensure the query is properly URL encoded
-//        guard let encodedQuery = query.addingPercentEncoding(
-//            withAllowedCharacters: .urlQueryAllowed
-//        ) else {
-//            return
-//        }
-//
-//        /// Construct the URL for the search request
-//        guard let url = URL(
-//            string: "\(Constants.baseUrl)search/multi?query=\(encodedQuery)&api_key=\(Constants.apiKey)"
-//        ) else {
-//            completion(.failure(APIError.invalidResponse))
-//            return
-//        }
-//
-//        /// Create the URLRequest object
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "GET"
-//
-//        /// Start the URL session data task
-//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-//
-//            if let error = error {
-//                completion(.failure(error))
-//                return
-//            }
-//
-//            guard let httpResponse = response as? HTTPURLResponse, (200...209).contains(httpResponse.statusCode) else {
-//                completion(.failure(APIError.invalidResponse))
-//                return
-//            }
-//
-//            guard let data = data else {
-//                completion(.failure(APIError.failedToGetData))
-//                return
-//            }
-//
-//            do {
-//                let results = try JSONDecoder().decode(TrendingMovies.self, from: data)
-//                let mediaResults = results.results.map { Media(from: $0) }
-//
-//                DispatchQueue.main.async {
-//                    completion(.success(mediaResults))
-//                }
-//            } catch {
-//                DispatchQueue.main.async {
-//                    completion(.failure(APIError.failedToGetData))
-//                }
-//                debugPrint("Decoding error: \(error.localizedDescription)")
-//            }
-//        }
-//        task.resume()
-//    }
-    
     func universalSearch(
         with query: String,
         completion: @escaping (Result<[Media], Error>) -> Void
@@ -204,7 +146,7 @@ final class NetworkService {
         ) else { return }
         
         guard let url = URL(
-            string: "\(Constants.baseUrl)search/multi?query=\(encodedQuery)&api_key=\(Constants.apiKey)"
+            string: "\(BASE_URL)search/multi?query=\(encodedQuery)&api_key=\(API_KEY)"
         ) else {
             completion(.failure(APIError.invalidResponse))
             return

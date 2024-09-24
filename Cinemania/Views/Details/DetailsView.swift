@@ -49,8 +49,8 @@ class DetailsView: UIView {
         return imageView
     }()
     
-    private let releasedDateValueLabel: UILabel = {
-        let label = UILabel()
+    private let releasedDateValueLabel: PaddedLabel = {
+        let label = PaddedLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(.suseRegular, ofSize: 14)
         label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -58,8 +58,7 @@ class DetailsView: UIView {
         label.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         label.layer.cornerRadius = 5
         label.layer.masksToBounds = true
-        label.heightAnchor.constraint(equalToConstant: 26).isActive = true
-        label.widthAnchor.constraint(equalToConstant: 97).isActive = true
+        label.textInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         label.textAlignment = .center
         return label
     }()
@@ -117,7 +116,7 @@ class DetailsView: UIView {
         textView.isScrollEnabled = false
         textView.layer.cornerRadius = 10
         textView.layer.masksToBounds = true
-        textView.textContainerInset = Constants.indentationEightOnAllSides
+        textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         return textView
     }()
     
@@ -547,13 +546,13 @@ extension DetailsView {
 extension DetailsView {
 
     func configure(with object: Media, and genres: [Genre]) {
-        if let backdropURL = URL(string: Constants.getImage + object.backdrop) {
+        if let backdropURL = URL(string: GET_IMAGE + object.backdrop) {
             backdropImageView.sd_setImage(with: backdropURL, placeholderImage: .placeholder(named: "DefaultBackdrop"))
         } else {
             backdropImageView.image = .placeholder(named: "DefaultBackdrop")
         }
         
-        if let posterURL = URL(string: Constants.getImage + object.poster) {
+        if let posterURL = URL(string: GET_IMAGE + object.poster) {
             posterImageView.sd_setImage(with: posterURL, placeholderImage: .placeholder(named: "DefaultPoster"))
         } else {
             posterImageView.image = .placeholder(named: "DefaultPoster")
@@ -561,7 +560,7 @@ extension DetailsView {
         
         genreLabelValue.text = object.genre.compactMap({ genreID in
             genres.first { $0.id == genreID }?.name
-        }).joined(separator: "\(Constants.divider)")
+        }).joined(separator: " · ")
         
         titleValueLabel.text = object.title
         
