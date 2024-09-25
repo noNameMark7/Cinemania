@@ -185,7 +185,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         )
     }
     
-    /// Swipe to download
+    // Swipe to download
     func tableView(
         _ tableView: UITableView,
         leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath
@@ -198,15 +198,15 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             let mediaToSave: Media
             
             if self.homeViewModel.searchController.isActive {
-                /// If in search mode, get the media from the search results
+                // If in search mode, get the media from the search results
                 mediaToSave = self.homeViewModel.filtered[indexPath.row]
             } else {
-                /// If not in search mode, get the media from the original data
+                // If not in search mode, get the media from the original data
                 mediaToSave = self.homeViewModel.getItem(at: indexPath.row)
             }
             
             if RealmService.shared.isMediaSaved(mediaToSave.id) {
-                /// Alert message if media already exsist
+                // Alert message if media already exsist
                 let alert = UIAlertController(
                     title: "Saved",
                     message: "\(mediaToSave.title) already saved.",
@@ -221,7 +221,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
                 alert.addAction(okAction)
                 self.present(alert, animated: true)
             } else {
-                /// Save the media to Realm using RealmManager
+                // Save the media to Realm using RealmManager
                 RealmService.shared.saveMedia(mediaToSave)
                 
                 DispatchQueue.main.async { [weak self] in

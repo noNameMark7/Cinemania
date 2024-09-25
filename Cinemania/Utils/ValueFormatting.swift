@@ -20,7 +20,6 @@ struct ValueFormatting {
             let roundedValue = String(format: "%.1f", voteAverage)
             return "\(roundedValue)"
         } else {
-            /// Handle the case where voteAverage is nil
             return "N/A"
         }
     }
@@ -30,7 +29,6 @@ struct ValueFormatting {
             let percentageValue = Int(voteAverage * 10)
             return "\(percentageValue)%"
         } else {
-            /// Handle the case where voteAverage is nil
             return "N/A"
         }
     }

@@ -11,7 +11,7 @@ final class RealmService {
     
     let realm = try? Realm()
     
-    /// Save a Media object to Realm
+    // Save a Media object to Realm
     func saveMedia(_ media: Media) {
         guard let realm = realm else { return }
         
@@ -33,7 +33,7 @@ final class RealmService {
         }
     }
     
-    /// Check if a Media object with the given ID is saved in Realm
+    // Check if a Media object with the given ID is saved in Realm
     func isMediaSaved(_ mediaID: Int) -> Bool {
         guard let realm = realm else {
             return false
@@ -42,7 +42,7 @@ final class RealmService {
         return realm.object(ofType: MediaRealm.self, forPrimaryKey: mediaID) != nil
     }
     
-    /// Delete a Media object with the given ID from Realm
+    // Delete a Media object with the given ID from Realm
     func deleteMedia(_ mediaID: Int) {
         guard let realm = realm else {
             return

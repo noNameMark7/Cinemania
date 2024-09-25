@@ -429,12 +429,12 @@ extension DetailsView {
 
 private extension DetailsView {
     
-    /// Add link into overviewTextView and show message if overview is missing
+    // Add link into overviewTextView and show message if overview is missing
     func configureMissingDescription() {
         let defaultText = "We don't have an overview translated in English, apologize for this. We recommend visiting https://www.themoviedb.org/ to find the content you need. Thank you for understanding."
         let attributedText = NSMutableAttributedString(string: defaultText)
         
-        /// Determine the text color based on the current color scheme
+        // Determine the text color based on the current color scheme
         let textColor: UIColor = {
             if self.traitCollection.userInterfaceStyle == .dark {
                 return .white
@@ -468,7 +468,6 @@ private extension DetailsView {
             range: linkRange
         )
         
-        /// Set the determined text color
         attributedText.addAttribute(
             .foregroundColor,
             value: textColor,
@@ -481,7 +480,7 @@ private extension DetailsView {
         overviewValueTextView.isEditable = false
     }
     
-    /// Show message if trailer is missing
+    // Show message if trailer is missing
     func showMessageIfTrailerIsMissing() {
         let text = "😥\nUnfortunately, there is no trailer, sorry.. If the trailer appears on our website, it will immediately appear here."
         let components = text.components(separatedBy: ". ")
@@ -511,7 +510,6 @@ private extension DetailsView {
 
 extension DetailsView {
     
-    /// Extract video ID
     private func extractVideoId(from trailerUrl: URL) -> String? {
         guard let queryItems = URLComponents(
             url: trailerUrl,
@@ -520,14 +518,12 @@ extension DetailsView {
             return nil
         }
 
-        /// Find the 'v' query item
         guard let vQueryItem = queryItems.first(where: { $0.name == "v" }), let videoId = vQueryItem.value else {
             return nil
         }
         return videoId
     }
     
-    /// Update the trailer in the player view
     public func updateTrailer(with trailerURL: URL?) {
         if let trailerURL = trailerURL {
             self.playerView.load(

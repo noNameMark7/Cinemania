@@ -32,7 +32,7 @@ struct MediaResult: Codable {
     let firstAirDate: String?
     let voteAverage: Double
     let voteCount: Int
-    let mediaType: String /// 'movie', 'tv', or 'person'
+    let mediaType: String
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -47,10 +47,9 @@ struct MediaResult: Codable {
         case firstAirDate = "first_air_date"
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
-        case mediaType = "media_type" /// Important: Identifies if it's a movie, tv show, or person
+        case mediaType = "media_type"
     }
 
-    /// Helper to determine if the media is a movie or TV show
     var typeOfMedia: TypeOfMedia {
         return mediaType == "movie" ? .movie : .tv
     }

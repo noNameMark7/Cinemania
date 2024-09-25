@@ -137,7 +137,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         )
     }
     
-    /// Handling long press and save
+    // Handling long press and save
     func collectionView(
         _ collectionView: UICollectionView,
         contextMenuConfigurationForItemAt indexPath: IndexPath,
@@ -156,12 +156,12 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 
                 guard let strongSelf = self else { return }
                 
-                /// Convert movies to media object
+                // Convert movies to media object
                 let media = strongSelf.media[indexPath.item]
                 
-                /// Checking id if item already exist before saving
+                // Checking id if item already exist before saving
                 if RealmService.shared.isMediaSaved(media.id) {
-                    /// Alert message if media already exsist
+                    // Alert message if media already exsist
                     let alert = UIAlertController(
                         title: "Saved",
                         message: "\(media.title) already saved.",
@@ -176,7 +176,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
                     alert.addAction(okAction)
                     strongSelf.present(alert, animated: true)
                 } else {
-                    /// If not - save
+                    // If not - save
                     RealmService.shared.saveMedia(media)
                     
                     let alert = UIAlertController(
@@ -216,7 +216,7 @@ extension SearchViewController: UISearchResultsUpdating {
             return
         }
         
-        /// Start the search request
+        // Start the search request
         NetworkService.shared.universalSearch(with: query) { result in
             DispatchQueue.main.async { [weak self] in
                 switch result {
@@ -260,14 +260,14 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         
-        /// Calculate the total horizontal space for the collectionView's section insets and inter-item spacing
+        // Calculate the total horizontal space for the collectionView's section insets and inter-item spacing
         let totalHorizontalSpace = SECTION_INSETS.left + SECTION_INSETS.right + (HORIZONTAL_SPACING * (NUMBER_OF_CELLS_PER_ROW - 1))
         
-        /// Calculate the width available for each cell
+        // Calculate the width available for each cell
         let availableWidth = collectionView.bounds.width - totalHorizontalSpace
         let cellWidth = availableWidth / NUMBER_OF_CELLS_PER_ROW
         
-        /// Maintain the 1.5 aspect ratio (height = 1.5 * width)
+        // Maintain the 1.5 aspect ratio (height = 1.5 * width)
         let cellHeight = cellWidth * 1.5
         
         return CGSize(width: cellWidth, height: cellHeight)
@@ -279,7 +279,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
         
-        /// Adjust the edge insets to reduce space from display edges
+        // Adjust the edge insets to reduce space from display edges
         UIEdgeInsets(
             top: SECTION_INSETS.top,
             left: SECTION_INSETS.left,

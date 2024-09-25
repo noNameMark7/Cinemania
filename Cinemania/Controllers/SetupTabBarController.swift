@@ -9,8 +9,6 @@ final class SetupTabBarController {
         let tabBarController = UITabBarController()
         tabBarController.tabBar.tintColor = .label
         
-        /// Define the font attributes for the tab bar titles
-        
         let titleAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.customFont(.comfortaaSemiBold, ofSize: 12) as Any
         ]
@@ -59,13 +57,9 @@ final class SetupTabBarController {
             tag: 2
         )
         
-        /// Apply the font attributes to all navigationController titles
-        
         UINavigationBar.appearance().titleTextAttributes = [
             NSAttributedString.Key.font: UIFont.customFont(.comfortaaBold, ofSize: 19) as Any
         ]
-        
-        /// Apply the font attributes to all tab bar items
         
         UITabBarItem.appearance().setTitleTextAttributes(titleAttributes, for: .normal)
         

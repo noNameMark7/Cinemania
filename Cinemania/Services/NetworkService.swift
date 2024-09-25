@@ -52,7 +52,7 @@ final class NetworkService {
         
         var allGenres: [Genre] = []
         
-        /// Fetch movie genres
+        // Fetch movie genres
         dispatchGroup.enter()
         AF.request(
             movieGenresUrl,
@@ -69,7 +69,7 @@ final class NetworkService {
             }
         }
         
-        /// Fetch TV show genres
+        // Fetch TV show genres
         dispatchGroup.enter()
         AF.request(
             tvShowGenresUrl,
@@ -172,10 +172,10 @@ final class NetworkService {
             }
             
             do {
-                /// Decode the response into TrendingMedia
+                // Decode the response into TrendingMedia
                 let results = try JSONDecoder().decode(TrendingMedia.self, from: data)
                 let mediaResults = results.results
-                    .filter { $0.mediaType == "movie" || $0.mediaType == "tv" } /// Filter out people or irrelevant types
+                    .filter { $0.mediaType == "movie" || $0.mediaType == "tv" } // Filter out people or irrelevant types
                     .map { Media(from: $0) }
                 
                 DispatchQueue.main.async {

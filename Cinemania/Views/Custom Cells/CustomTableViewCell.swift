@@ -7,7 +7,6 @@ class CustomTableViewCell: UITableViewCell {
     
     static let reuseIdentifier = "CustomTableViewCell"
     
-    /// Create a container view for the shadow
     private let posterContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -16,7 +15,7 @@ class CustomTableViewCell: UITableViewCell {
         view.layer.shadowOpacity = 0.4
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowRadius = 3
-        view.layer.masksToBounds = false /// Allow shadow to overflow
+        view.layer.masksToBounds = false
         
         view.layer.borderWidth = 0.2
         view.layer.borderColor = UIColor.black.cgColor
@@ -92,14 +91,11 @@ class CustomTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        /// Get the frames of the titleLabel and voteAverageLabel
         let titleLabelBottom = titleLabel.frame.maxY
         let voteAverageLabelTop = voteAverageLabel.frame.minY
         
-        /// Calculate the center point between the two
         let centerY = (titleLabelBottom + voteAverageLabelTop) / 2
         
-        /// Set the genreLabel frame to align it at the calculated centerY
         genreLabel.frame.origin.y = centerY - (genreLabel.frame.height / 2)
     }
 }
@@ -157,8 +153,7 @@ extension CustomTableViewCell {
         let voteAverageLabelConstraints = [
             voteAverageLabel.leadingAnchor.constraint(equalTo: tmdbImageView.trailingAnchor, constant: 8),
             voteAverageLabel.centerYAnchor.constraint(equalTo: tmdbImageView.centerYAnchor),
-            voteAverageLabel.heightAnchor.constraint(equalTo: tmdbImageView.heightAnchor),
-            //voteAverageLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 50)
+            voteAverageLabel.heightAnchor.constraint(equalTo: tmdbImageView.heightAnchor)
         ]
         
         NSLayoutConstraint.activate(posterContainerViewConstraints)
@@ -209,7 +204,6 @@ extension CustomTableViewCell {
         voteAverageLabel.text = "\(formattedVoteAverage)/10"
     }
     
-    ///  Configuring SearchViewController
     func configureWith(_ media: Movies, and genre: [Genre]) {
         let posterUrl = URL(string: "\(GET_IMAGE)\(media.posterPath)")
         posterImageView.sd_setImage(with: posterUrl)

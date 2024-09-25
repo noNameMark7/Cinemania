@@ -119,7 +119,7 @@ extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    /// Deleting a cell by swipe from right to left
+    // Deleting a cell by swipe from right to left
     func tableView(
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
@@ -131,7 +131,7 @@ extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
             guard let self = self else { return }
             let deleteMedia = self.savedViewModel.getItem(at: indexPath.row)
             
-            /// Deletion confirmation
+            // Deletion confirmation
             let alert = UIAlertController(
                 title: "Remove",
                 message: "Are you sure you want to remove \(deleteMedia?.title ?? "Unknown title")?",
@@ -149,15 +149,12 @@ extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
                 title: "Remove",
                 style: .destructive
             ) { _ in
-                /// Delete the media using the RealmService
+                // Delete the media using the RealmService
                 if let mediaID = deleteMedia?.id {
                     RealmService.shared.deleteMedia(mediaID)
                 }
                 
-                /// Remove the item from the ViewModel's data source
-                //self.savedViewModel.genres.remove(at: indexPath.row)
-                
-                /// Delete the row from the table view
+                // Delete the row from the table view
                 self.savedView.tableView.deleteRows(
                     at: [indexPath],
                     with: .fade
