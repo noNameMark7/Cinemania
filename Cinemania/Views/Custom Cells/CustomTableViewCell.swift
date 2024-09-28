@@ -16,9 +16,7 @@ class CustomTableViewCell: UITableViewCell {
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowRadius = 3
         view.layer.masksToBounds = false
-        
         view.layer.borderWidth = 0.2
-        view.layer.borderColor = UIColor.black.cgColor
         return view
     }()
 
@@ -37,6 +35,7 @@ class CustomTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(.suseBold, ofSize: 15)
         label.numberOfLines = 0
+        label.textColor = .label
         return label
     }()
     
@@ -63,7 +62,7 @@ class CustomTableViewCell: UITableViewCell {
         let label = PaddedLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(.suseRegular, ofSize: 13)
-        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textColor = .label
         label.layer.borderWidth = 0.8
         label.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         label.layer.cornerRadius = 5
@@ -97,6 +96,11 @@ class CustomTableViewCell: UITableViewCell {
         let centerY = (titleLabelBottom + voteAverageLabelTop) / 2
         
         genreLabel.frame.origin.y = centerY - (genreLabel.frame.height / 2)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateAppearance(for: traitCollection)
     }
 }
 
@@ -162,6 +166,18 @@ extension CustomTableViewCell {
         NSLayoutConstraint.activate(genreLabelConstraints)
         NSLayoutConstraint.activate(tmdbImageViewConstraints)
         NSLayoutConstraint.activate(voteAverageLabelConstraints)
+        
+        updateAppearance(for: traitCollection)
+    }
+    
+    func updateAppearance(for traitCollection: UITraitCollection) {
+        if traitCollection.userInterfaceStyle == .dark {
+            posterContainerView.layer.borderColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1).cgColor
+            voteAverageLabel.layer.borderColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1).cgColor
+        } else {
+            posterContainerView.layer.borderColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+            voteAverageLabel.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        }
     }
 }
 

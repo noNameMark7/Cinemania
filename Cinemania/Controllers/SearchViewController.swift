@@ -51,7 +51,6 @@ class SearchViewController: UIViewController {
 extension SearchViewController {
     
     func initialSetup() {
-        view.backgroundColor = .systemBackground
         configureUI()
         setupSearchController()
         setupCollectionView()

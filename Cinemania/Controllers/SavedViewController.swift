@@ -25,7 +25,6 @@ class SavedViewController: UIViewController {
 extension SavedViewController {
     
     func initialSetup() {
-        view.backgroundColor = .systemBackground
         configureUI()
         configureTableView()
     }

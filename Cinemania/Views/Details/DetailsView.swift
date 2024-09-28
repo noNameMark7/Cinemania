@@ -75,7 +75,7 @@ class DetailsView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .customFont(.suseRegular, ofSize: 13)
         label.numberOfLines = 0
-        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        label.textColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return label
     }()
     
@@ -85,6 +85,7 @@ class DetailsView: UIView {
         label.font = .customFont(.suseBold, ofSize: 20)
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = .label
         return label
     }()
     
@@ -93,7 +94,6 @@ class DetailsView: UIView {
     private let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9647058824, alpha: 1)
         return view
     }()
     
@@ -108,7 +108,6 @@ class DetailsView: UIView {
     let overviewValueTextView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         textView.textColor = .secondaryLabel
         textView.font = .customFont(.suseRegular, ofSize: 15)
         textView.textContainer.lineBreakMode = .byWordWrapping
@@ -123,7 +122,6 @@ class DetailsView: UIView {
     private let firstSeparatorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.18)
         view.heightAnchor.constraint(equalToConstant: 0.7).isActive = true
         return view
     }()
@@ -133,6 +131,7 @@ class DetailsView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Trailer"
         label.font = .customFont(.suseSemiBold, ofSize: 22)
+        label.textColor = .label
         return label
     }()
 
@@ -146,7 +145,6 @@ class DetailsView: UIView {
     private let secondSeparatorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.18)
         view.heightAnchor.constraint(equalToConstant: 0.7).isActive = true
         return view
     }()
@@ -156,6 +154,7 @@ class DetailsView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Information"
         label.font = .customFont(.suseSemiBold, ofSize: 22)
+        label.textColor = .label
         return label
     }()
     
@@ -165,7 +164,7 @@ class DetailsView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Popularity"
         label.font = .customFont(.suseRegular, ofSize: 12)
-        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textColor = .label
         return label
     }()
     
@@ -182,7 +181,7 @@ class DetailsView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Voted"
         label.font = .customFont(.suseRegular, ofSize: 12)
-        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textColor = .label
         return label
     }()
     
@@ -199,7 +198,7 @@ class DetailsView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Vote average"
         label.font = .customFont(.suseRegular, ofSize: 12)
-        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textColor = .label
         return label
     }()
     
@@ -218,6 +217,11 @@ class DetailsView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateAppearance(for: traitCollection)
     }
 }
 
@@ -421,6 +425,22 @@ extension DetailsView {
         NSLayoutConstraint.activate(voteAverageValueLabelConstraints)
 
         scrollView.contentSize = contentView.bounds.size
+        
+        updateAppearance(for: traitCollection)
+    }
+    
+    func updateAppearance(for traitCollection: UITraitCollection) {
+        if traitCollection.userInterfaceStyle == .dark {
+            containerView.backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
+            overviewValueTextView.backgroundColor = #colorLiteral(red: 0.4756349325, green: 0.4756467342, blue: 0.4756404161, alpha: 1)
+            firstSeparatorView.backgroundColor = #colorLiteral(red: 0.4756349325, green: 0.4756467342, blue: 0.4756404161, alpha: 1).withAlphaComponent(0.18)
+            secondSeparatorView.backgroundColor = #colorLiteral(red: 0.4756349325, green: 0.4756467342, blue: 0.4756404161, alpha: 1).withAlphaComponent(0.18)
+        } else {
+            containerView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9647058824, alpha: 1)
+            overviewValueTextView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            firstSeparatorView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.18)
+            secondSeparatorView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.18)
+        }
     }
 }
 

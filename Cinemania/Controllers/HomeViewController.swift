@@ -28,7 +28,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
 extension HomeViewController {
     
     func initialSetup() {
-        view.backgroundColor = .systemBackground
         configureUI()
         fetchingAndUpdatingUI()
     }
