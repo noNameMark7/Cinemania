@@ -138,12 +138,12 @@ extension CustomTableViewCell {
         
         let titleLabelConstraints = [
             titleLabel.topAnchor.constraint(equalTo: posterImageView.topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 16),
+            titleLabel.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 8),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: -8)
         ]
         
         let genreLabelConstraints = [
-            genreLabel.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 16),
+            genreLabel.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 8),
             genreLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -8),
         ]
         
