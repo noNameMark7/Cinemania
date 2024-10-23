@@ -31,7 +31,7 @@
 		4D2E86DA2C89E6D1003C5074 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E86D92C89E6D1003C5074 /* CustomCollectionViewCell.swift */; };
 		4D46C2A12A75A31F00C4C127 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D46C2A02A75A31F00C4C127 /* HomeViewController.swift */; };
 		4D5C7C312A7ACEFC0085994F /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C7C302A7ACEFC0085994F /* SavedViewController.swift */; };
-		4D63F22C2AA3704000FADB08 /* ValueFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63F22B2AA3704000FADB08 /* ValueFormatting.swift */; };
+		4D63F22C2AA3704000FADB08 /* FormattingReleaseDateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63F22B2AA3704000FADB08 /* FormattingReleaseDateValue.swift */; };
 		4DA6D09D2ABF73740048FCEE /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6D09C2ABF73730048FCEE /* AppRouter.swift */; };
 		4DA6D09F2ABF794F0048FCEE /* SetupTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6D09E2ABF794F0048FCEE /* SetupTabBarController.swift */; };
 		4DC540352C939A60001DD80A /* SUSE-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DC540302C939846001DD80A /* SUSE-Bold.ttf */; };
@@ -78,7 +78,7 @@
 		4D2E86D92C89E6D1003C5074 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D46C2A02A75A31F00C4C127 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4D5C7C302A7ACEFC0085994F /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
-		4D63F22B2AA3704000FADB08 /* ValueFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueFormatting.swift; sourceTree = "<group>"; };
+		4D63F22B2AA3704000FADB08 /* FormattingReleaseDateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattingReleaseDateValue.swift; sourceTree = "<group>"; };
 		4DA6D09C2ABF73730048FCEE /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		4DA6D09E2ABF794F0048FCEE /* SetupTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTabBarController.swift; sourceTree = "<group>"; };
 		4DC5402F2C939846001DD80A /* SUSE-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUSE-Thin.ttf"; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 				4D00A21D2A9019D600799B9C /* Constants.swift */,
 				4D0E93552C9B377400822D08 /* Enums.swift */,
 				4D0E93572C9B42A200822D08 /* Extensions.swift */,
-				4D63F22B2AA3704000FADB08 /* ValueFormatting.swift */,
+				4D63F22B2AA3704000FADB08 /* FormattingReleaseDateValue.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -453,7 +453,7 @@
 				4DD25BDC2A51D84300C44A9E /* SceneDelegate.swift in Sources */,
 				4DF505BE2A8FC9A500CFDC52 /* CustomTableViewCell.swift in Sources */,
 				4DDA203E2B6ACAF7001AD7CE /* SettingsViewController.swift in Sources */,
-				4D63F22C2AA3704000FADB08 /* ValueFormatting.swift in Sources */,
+				4D63F22C2AA3704000FADB08 /* FormattingReleaseDateValue.swift in Sources */,
 				4D46C2A12A75A31F00C4C127 /* HomeViewController.swift in Sources */,
 				4DF505BB2A8FC81200CFDC52 /* DetailsViewController.swift in Sources */,
 				4DCB2D7A2A9AA5F2004FDFDB /* DetailsViewModelDelegate.swift in Sources */,

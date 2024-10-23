@@ -1,13 +1,11 @@
 import UIKit
 
 struct Trailers: Codable {
-    
     let id: Int
     let results: [Trailer]
 }
 
 struct Trailer: Codable {
-    
     let iso639_1: String
     let iso3166_1: String
     let name: String

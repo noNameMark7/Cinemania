@@ -31,56 +31,37 @@ class DetailsView: UIView {
     private let backdropOverlayView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        return view
+    }()
+    
+    private let posterContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 7
+        view.layer.shadowOpacity = 0.8
+        view.layer.shadowOffset = CGSize(width: 1, height: 1)
+        view.layer.shadowRadius = 5
+        view.layer.masksToBounds = false
+        view.layer.borderWidth = 0.8
+        view.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         return view
     }()
 
     private let posterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 5
+        imageView.layer.cornerRadius = 7
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.image = .placeholder(named: "DefaultPoster")
-        imageView.layer.borderWidth = 0.8
-        imageView.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         return imageView
-    }()
-    
-    private let releasedDateValueLabel: PaddedLabel = {
-        let label = PaddedLabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseRegular, ofSize: 14)
-        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        label.layer.borderWidth = 0.8
-        label.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-        label.layer.cornerRadius = 5
-        label.layer.masksToBounds = true
-        label.textInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        label.textAlignment = .center
-        return label
-    }()
-
-    private let spacerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
-        return view
-    }()
-    
-    private let genreLabelValue: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseRegular, ofSize: 13)
-        label.numberOfLines = 0
-        label.textColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        return label
     }()
     
     private let titleValueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseBold, ofSize: 20)
+        label.font = .customFont(.suseBold, ofSize: 19)
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .label
@@ -95,11 +76,20 @@ class DetailsView: UIView {
         return view
     }()
     
+    private let genreLabelValue: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .customFont(.suseBold, ofSize: 14)
+        label.numberOfLines = 0
+        label.textColor = .label
+        return label
+    }()
+    
     private let aboutLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "About"
-        label.font = .customFont(.suseSemiBold, ofSize: 22)
+        label.font = .customFont(.suseBold, ofSize: 20)
         return label
     }()
     
@@ -128,7 +118,7 @@ class DetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Trailer"
-        label.font = .customFont(.suseSemiBold, ofSize: 22)
+        label.font = .customFont(.suseBold, ofSize: 20)
         label.textColor = .label
         return label
     }()
@@ -151,7 +141,7 @@ class DetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Information"
-        label.font = .customFont(.suseSemiBold, ofSize: 22)
+        label.font = .customFont(.suseBold, ofSize: 20)
         label.textColor = .label
         return label
     }()
@@ -161,7 +151,7 @@ class DetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Popularity"
-        label.font = .customFont(.suseRegular, ofSize: 12)
+        label.font = .customFont(.suseRegular, ofSize: 15)
         label.textColor = .label
         return label
     }()
@@ -169,7 +159,7 @@ class DetailsView: UIView {
     private let popularityValueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseLight, ofSize: 12)
+        label.font = .customFont(.suseRegular, ofSize: 13)
         label.textColor = .secondaryLabel
         return label
     }()
@@ -178,7 +168,7 @@ class DetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Voted"
-        label.font = .customFont(.suseRegular, ofSize: 12)
+        label.font = .customFont(.suseRegular, ofSize: 15)
         label.textColor = .label
         return label
     }()
@@ -186,7 +176,7 @@ class DetailsView: UIView {
     private let voteCountValueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseLight, ofSize: 12)
+        label.font = .customFont(.suseRegular, ofSize: 13)
         label.textColor = .secondaryLabel
         return label
     }()
@@ -195,7 +185,7 @@ class DetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Vote average"
-        label.font = .customFont(.suseRegular, ofSize: 12)
+        label.font = .customFont(.suseRegular, ofSize: 15)
         label.textColor = .label
         return label
     }()
@@ -203,7 +193,7 @@ class DetailsView: UIView {
     private let voteAverageValueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseLight, ofSize: 12)
+        label.font = .customFont(.suseRegular, ofSize: 13)
         label.textColor = .secondaryLabel
         return label
     }()
@@ -233,18 +223,16 @@ extension DetailsView {
     }
     
     func configureUI() {
-        
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(backdropImageView)
         backdropImageView.addSubview(backdropOverlayView)
-        contentView.addSubview(posterImageView)
-        contentView.addSubview(releasedDateValueLabel)
-        contentView.addSubview(spacerView)
-        spacerView.addSubview(genreLabelValue)
+        contentView.addSubview(posterContainerView)
+        posterContainerView.addSubview(posterImageView)
         contentView.addSubview(titleValueLabel)
         contentView.addSubview(containerView)
         
+        containerView.addSubview(genreLabelValue)
         containerView.addSubview(aboutLabel)
         containerView.addSubview(overviewValueTextView)
         containerView.addSubview(firstSeparatorView)
@@ -287,48 +275,44 @@ extension DetailsView {
             backdropOverlayView.trailingAnchor.constraint(equalTo: backdropImageView.trailingAnchor),
             backdropOverlayView.bottomAnchor.constraint(equalTo: backdropImageView.bottomAnchor)
         ]
-
+        
+        let posterContainerViewConstraints = [
+            posterContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 176),
+            posterContainerView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            posterContainerView.heightAnchor.constraint(equalToConstant: 140),
+            posterContainerView.widthAnchor.constraint(equalToConstant: 93)
+        ]
+        
         let posterImageViewConstraints = [
-            posterImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            posterImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            posterImageView.heightAnchor.constraint(equalToConstant: 140),
-            posterImageView.widthAnchor.constraint(equalToConstant: 93)
-        ]
-        
-        let releasedDateValueLabelConstraints = [
-            releasedDateValueLabel.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 8),
-            releasedDateValueLabel.bottomAnchor.constraint(equalTo: posterImageView.bottomAnchor)
-        ]
-        
-        let spacerViewConstraints = [
-            spacerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            spacerView.topAnchor.constraint(equalTo: posterImageView.bottomAnchor, constant: 12),
-            spacerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            spacerView.bottomAnchor.constraint(equalTo: backdropImageView.bottomAnchor, constant: -12)
-        ]
-        
-        let genreLabelConstraints = [
-            genreLabelValue.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            genreLabelValue.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            genreLabelValue.centerYAnchor.constraint(equalTo: spacerView.centerYAnchor)
+            posterImageView.topAnchor.constraint(equalTo: posterContainerView.topAnchor),
+            posterImageView.leadingAnchor.constraint(equalTo: posterContainerView.leadingAnchor),
+            posterImageView.trailingAnchor.constraint(equalTo: posterContainerView.trailingAnchor),
+            posterImageView.bottomAnchor.constraint(equalTo: posterContainerView.bottomAnchor)
         ]
         
         let titleLabelConstraints = [
             titleValueLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            titleValueLabel.topAnchor.constraint(equalTo: posterImageView.bottomAnchor, constant: 20),
+            titleValueLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -16),
             titleValueLabel.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: 16),
-            titleValueLabel.topAnchor.constraint(equalTo: backdropImageView.bottomAnchor, constant: 22),
-            titleValueLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -16)
         ]
         
         let containerViewConstraints = [
-            containerView.topAnchor.constraint(equalTo: titleValueLabel.bottomAnchor, constant: 26),
+            containerView.topAnchor.constraint(equalTo: titleValueLabel.bottomAnchor, constant: 20),
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 34),
             containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
         ]
         
+        let genreLabelConstraints = [
+            genreLabelValue.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            genreLabelValue.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+            genreLabelValue.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor, constant: -16),
+            genreLabelValue.leadingAnchor.constraint(greaterThanOrEqualTo: containerView.leadingAnchor, constant: 16),
+        ]
+        
         let aboutLabelConstraints = [
-            aboutLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16),
+            aboutLabel.topAnchor.constraint(equalTo: genreLabelValue.bottomAnchor, constant: 20),
             aboutLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
         ]
 
@@ -402,12 +386,11 @@ extension DetailsView {
         NSLayoutConstraint.activate(contentViewConstraints)
         NSLayoutConstraint.activate(backdropImageViewConstraints)
         NSLayoutConstraint.activate(backdropOverlayViewConstraints)
+        NSLayoutConstraint.activate(posterContainerViewConstraints)
         NSLayoutConstraint.activate(posterImageViewConstraints)
-        NSLayoutConstraint.activate(releasedDateValueLabelConstraints)
-        NSLayoutConstraint.activate(spacerViewConstraints)
-        NSLayoutConstraint.activate(genreLabelConstraints)
         NSLayoutConstraint.activate(titleLabelConstraints)
         NSLayoutConstraint.activate(containerViewConstraints)
+        NSLayoutConstraint.activate(genreLabelConstraints)
         NSLayoutConstraint.activate(aboutLabelConstraints)
         NSLayoutConstraint.activate(overviewTextViewConstraints)
         NSLayoutConstraint.activate(firstSeparatorViewConstraints)
@@ -429,11 +412,15 @@ extension DetailsView {
     
     func updateAppearance(for traitCollection: UITraitCollection) {
         if traitCollection.userInterfaceStyle == .dark {
-            containerView.backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
+            posterContainerView.layer.shadowColor = UIColor.gray.cgColor
+            contentView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            containerView.backgroundColor = #colorLiteral(red: 0.217025317, green: 0.2191740825, blue: 0.2191740825, alpha: 1)
             overviewValueTextView.backgroundColor = #colorLiteral(red: 0.4756349325, green: 0.4756467342, blue: 0.4756404161, alpha: 1)
             firstSeparatorView.backgroundColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1).withAlphaComponent(0.18)
             secondSeparatorView.backgroundColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1).withAlphaComponent(0.18)
         } else {
+            posterContainerView.layer.shadowColor = UIColor.black.cgColor
+            contentView.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
             containerView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9647058824, alpha: 1)
             overviewValueTextView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             firstSeparatorView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.18)
@@ -576,17 +563,15 @@ extension DetailsView {
             genres.first { $0.id == genreID }?.name
         }).joined(separator: " · ")
         
-        titleValueLabel.text = object.title
+        titleValueLabel.text = object.title + " (\(object.releaseDate))"
         
         object.overview.isEmpty ? configureMissingDescription() : { overviewValueTextView.text = object.overview }()
-        
-        releasedDateValueLabel.text = object.releaseDate
         
         popularityValueLabel.text = "\(object.popularity)"
         
         voteCountValueLabel.text = "\(object.voteCount)"
         
-        let formattedVoteAverage = ValueFormatting.formattingToIntegerWithPercentage(object.voteAverage)
+        let formattedVoteAverage = FormattingReleaseDateValue.formattingToIntegerWithPercentage(object.voteAverage)
         voteAverageValueLabel.text = formattedVoteAverage
     }
 }

@@ -1,7 +1,6 @@
 import UIKit
 
 struct Media {
-    
     var backdrop: String
     var id: Int
     var title: String
@@ -23,7 +22,7 @@ struct Media {
         self.typeOfMedia = .movie
         self.genre = model.genreIDS
         self.popularity = model.popularity
-        self.releaseDate = ValueFormatting.formattingPerMonthDateYear(model.releaseDate)
+        self.releaseDate = FormattingReleaseDateValue.convertToYearFormat(model.releaseDate)
         self.voteAverage = model.voteAverage
         self.voteCount = model.voteCount
     }
@@ -37,7 +36,7 @@ struct Media {
         self.typeOfMedia = .tv
         self.genre = model.genreIDS
         self.popularity = model.popularity
-        self.releaseDate = ValueFormatting.formattingPerMonthDateYear(model.firstAirDate)
+        self.releaseDate = FormattingReleaseDateValue.convertToYearFormat(model.firstAirDate)
         self.voteAverage = model.voteAverage
         self.voteCount = model.voteCount
     }

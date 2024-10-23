@@ -1,15 +1,24 @@
 import UIKit
 
-struct ValueFormatting {
+struct FormattingReleaseDateValue {
     
-    static func formattingPerMonthDateYear(_ date: String?) -> String {
+    static func convertToYearFormat(_ date: String?) -> String {
         guard let dateInput = date else { return "No date found" }
         let dateFormatter = DateFormatter()
+        
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        
         if let newDate = dateFormatter.date(from: dateInput) {
-            dateFormatter.dateFormat = "MMM d, yyyy"
+            dateFormatter.dateFormat = "yyyy"
             return dateFormatter.string(from: newDate)
         }
+        
+        dateFormatter.dateFormat = "yyyy"
+        
+        if let yearDate = dateFormatter.date(from: dateInput) {
+            return dateFormatter.string(from: yearDate)
+        }
+        
         return "Invalid date"
     }
     

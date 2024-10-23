@@ -8,20 +8,20 @@ class CustomTableViewCell: UITableViewCell {
     private let posterContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 5
+        view.layer.cornerRadius = 8
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.4
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowRadius = 3
         view.layer.masksToBounds = false
-        view.layer.borderWidth = 0.2
+        view.layer.borderWidth = 0.8
         return view
     }()
 
     private let posterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 5
+        imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.image = .placeholder(named: "DefaultPoster")
@@ -31,7 +31,7 @@ class CustomTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseBold, ofSize: 15)
+        label.font = .customFont(.suseBold, ofSize: 16)
         label.numberOfLines = 0
         label.textColor = .label
         return label
@@ -40,7 +40,7 @@ class CustomTableViewCell: UITableViewCell {
     private let genreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseRegular, ofSize: 12)
+        label.font = .customFont(.suseMedium, ofSize: 13)
         label.textColor = .secondaryLabel
         label.numberOfLines = 0
         return label
@@ -59,10 +59,9 @@ class CustomTableViewCell: UITableViewCell {
     private let voteAverageLabel: PaddedLabel = {
         let label = PaddedLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseRegular, ofSize: 13)
+        label.font = .customFont(.suseMedium, ofSize: 13)
         label.textColor = .label
         label.layer.borderWidth = 0.8
-        label.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         label.layer.cornerRadius = 5
         label.layer.masksToBounds = true
         label.textAlignment = .center
@@ -197,7 +196,7 @@ extension CustomTableViewCell {
             genre.first { $0.id == genreID }?.name
         }).joined(separator: " · ")
         
-        let formattedVoteAverage = ValueFormatting.formattingToFloat(object.voteAverage)
+        let formattedVoteAverage = FormattingReleaseDateValue.formattingToFloat(object.voteAverage)
         voteAverageLabel.text = "\(formattedVoteAverage)/10"
     }
     
@@ -214,15 +213,17 @@ extension CustomTableViewCell {
             genre.first { $0.id == genreID }?.name
         }).joined(separator: " · ")
         
-        let formattedVoteAverage = ValueFormatting.formattingToFloat(object.voteAverage)
+        let formattedVoteAverage = FormattingReleaseDateValue.formattingToFloat(object.voteAverage)
         voteAverageLabel.text = "\(formattedVoteAverage)/10"
     }
     
     func configureWith(_ media: Movies, and genre: [Genre]) {
         let posterUrl = URL(string: "\(GET_IMAGE)\(media.posterPath)")
         posterImageView.sd_setImage(with: posterUrl)
+        
         titleLabel.text = media.title
-        let formattedVoteAverage = ValueFormatting.formattingToFloat(media.voteAverage)
+        
+        let formattedVoteAverage = FormattingReleaseDateValue.formattingToFloat(media.voteAverage)
         voteAverageLabel.text = "\(formattedVoteAverage)/10"
         
         genreLabel.text = Media(from: media).genre.compactMap({ genreID in
