@@ -40,7 +40,7 @@ class CustomTableViewCell: UITableViewCell {
     private let genreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseMedium, ofSize: 13)
+        label.font = .customFont(.suseMedium, ofSize: 12)
         label.textColor = .secondaryLabel
         label.numberOfLines = 0
         return label
@@ -194,7 +194,7 @@ extension CustomTableViewCell {
         
         genreLabel.text = object.genre.compactMap({ genreID in
             genre.first { $0.id == genreID }?.name
-        }).joined(separator: " · ")
+        }).joined(separator: "・")
         
         let formattedVoteAverage = FormattingReleaseDateValue.formattingToFloat(object.voteAverage)
         voteAverageLabel.text = "\(formattedVoteAverage)/10"
@@ -211,7 +211,7 @@ extension CustomTableViewCell {
         
         genreLabel.text = object.genre.compactMap({ genreID in
             genre.first { $0.id == genreID }?.name
-        }).joined(separator: " · ")
+        }).joined(separator: "・")
         
         let formattedVoteAverage = FormattingReleaseDateValue.formattingToFloat(object.voteAverage)
         voteAverageLabel.text = "\(formattedVoteAverage)/10"
@@ -228,6 +228,6 @@ extension CustomTableViewCell {
         
         genreLabel.text = Media(from: media).genre.compactMap({ genreID in
             genre.first { $0.id == genreID }?.name
-        }).joined(separator: " · ")
+        }).joined(separator: "・")
     }
 }

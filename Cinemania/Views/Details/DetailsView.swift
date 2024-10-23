@@ -334,7 +334,7 @@ extension DetailsView {
         ]
 
         let playerViewConstraints = [
-            playerView.topAnchor.constraint(equalTo: trailerLabel.bottomAnchor, constant: 20),
+            playerView.topAnchor.constraint(equalTo: trailerLabel.bottomAnchor, constant: 16),
             playerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             playerView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             playerView.heightAnchor.constraint(equalTo: playerView.widthAnchor, multiplier: 9/16)
@@ -352,7 +352,7 @@ extension DetailsView {
         ]
         
         let popularityLabelConstraints = [
-            popularityLabel.topAnchor.constraint(equalTo: informationLabel.bottomAnchor, constant: 10),
+            popularityLabel.topAnchor.constraint(equalTo: informationLabel.bottomAnchor, constant: 16),
             popularityLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
         ]
         
@@ -561,7 +561,7 @@ extension DetailsView {
         
         genreLabelValue.text = object.genre.compactMap({ genreID in
             genres.first { $0.id == genreID }?.name
-        }).joined(separator: " · ")
+        }).joined(separator: "・")
         
         titleValueLabel.text = object.title + " (\(object.releaseDate))"
         
