@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: - Media
-
 struct Media {
     
     var backdrop: String

@@ -1,8 +1,6 @@
 import UIKit
 import RealmSwift
 
-// MARK: - RealmService
-
 final class RealmService {
     
     static let shared = RealmService()

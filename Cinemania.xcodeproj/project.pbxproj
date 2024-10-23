@@ -162,7 +162,6 @@
 				4D63F22F2AA3D68D00FADB08 /* Fonts */,
 				4DD25BE22A51D84D00C44A9E /* Assets.xcassets */,
 				4DD25BE42A51D84D00C44A9E /* LaunchScreen.storyboard */,
-				4DD25BE72A51D84D00C44A9E /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -176,13 +175,13 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		4D72FA3A2A69F86F0067C71B /* Supporting */ = {
+		4D72FA3A2A69F86F0067C71B /* AppDelegates */ = {
 			isa = PBXGroup;
 			children = (
 				4DD25BD92A51D84300C44A9E /* AppDelegate.swift */,
 				4DD25BDB2A51D84300C44A9E /* SceneDelegate.swift */,
 			);
-			path = Supporting;
+			path = AppDelegates;
 			sourceTree = "<group>";
 		};
 		4DA6D0A02ABF7C400048FCEE /* Routers */ = {
@@ -218,7 +217,7 @@
 			path = SUSE;
 			sourceTree = "<group>";
 		};
-		4DCB2D6E2A97A61A004FDFDB /* Utils */ = {
+		4DCB2D6E2A97A61A004FDFDB /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				4D00A21D2A9019D600799B9C /* Constants.swift */,
@@ -226,7 +225,7 @@
 				4D0E93572C9B42A200822D08 /* Extensions.swift */,
 				4D63F22B2AA3704000FADB08 /* ValueFormatting.swift */,
 			);
-			path = Utils;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		4DCB2D732A981788004FDFDB /* Details */ = {
@@ -265,15 +264,16 @@
 			isa = PBXGroup;
 			children = (
 				4DCB2D782A9AA5C3004FDFDB /* Protocols */,
-				4DCB2D6E2A97A61A004FDFDB /* Utils */,
+				4DCB2D6E2A97A61A004FDFDB /* Utilities */,
 				4D594A3B2A75BEA600FE2B4D /* Models */,
 				4DD25C002A52108800C44A9E /* Views */,
 				4D5C7C322A7ACFB10085994F /* ViewModels */,
 				4DD25BFD2A52102F00C44A9E /* Controllers */,
 				4DA6D0A02ABF7C400048FCEE /* Routers */,
 				4D5C7C332A7ACFD80085994F /* Services */,
-				4D72FA3A2A69F86F0067C71B /* Supporting */,
+				4D72FA3A2A69F86F0067C71B /* AppDelegates */,
 				4D63F22E2AA3D56D00FADB08 /* Resources */,
+				4DD25BE72A51D84D00C44A9E /* Info.plist */,
 			);
 			path = Cinemania;
 			sourceTree = "<group>";
@@ -600,7 +600,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J484329K7V;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Cinemania/Resources/Info.plist;
+				INFOPLIST_FILE = Cinemania/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -630,7 +630,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J484329K7V;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Cinemania/Resources/Info.plist;
+				INFOPLIST_FILE = Cinemania/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

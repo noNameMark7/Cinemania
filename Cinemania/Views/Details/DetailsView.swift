@@ -3,8 +3,6 @@ import SDWebImage
 import YouTubeiOSPlayerHelper
 import RealmSwift
 
-// MARK: - DetailsView
-
 class DetailsView: UIView {
     
     // MARK: - Properties
@@ -325,7 +323,7 @@ extension DetailsView {
         let containerViewConstraints = [
             containerView.topAnchor.constraint(equalTo: titleValueLabel.bottomAnchor, constant: 26),
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 34),
             containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
         ]
         
@@ -397,7 +395,7 @@ extension DetailsView {
         let voteAverageValueLabelConstraints = [
             voteAverageValueLabel.topAnchor.constraint(equalTo: voteAverageLabel.bottomAnchor, constant: 3),
             voteAverageValueLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
-            voteAverageValueLabel.bottomAnchor.constraint(equalTo: containerView.layoutMarginsGuide.bottomAnchor, constant: -16)
+            voteAverageValueLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -32)
         ]
 
         NSLayoutConstraint.activate(scrollViewConstraints)

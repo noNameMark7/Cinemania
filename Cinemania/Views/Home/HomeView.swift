@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: - HomeView
-
 class HomeView: UIView {
     
     // MARK: - Properties

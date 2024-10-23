@@ -1,8 +1,6 @@
 import UIKit
 import SDWebImage
 
-// MARK: - TitleCollectionViewCell
-
 class CustomCollectionViewCell: UICollectionViewCell {
     
     static let reuseIdentifier = "CustomCollectionViewCell"

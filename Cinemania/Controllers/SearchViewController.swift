@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: - SearchViewController
-
 class SearchViewController: UIViewController {
     
     // MARK: - Properties

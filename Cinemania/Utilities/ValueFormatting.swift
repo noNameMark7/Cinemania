@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: - ValueFormatting
-
 struct ValueFormatting {
     
     static func formattingPerMonthDateYear(_ date: String?) -> String {

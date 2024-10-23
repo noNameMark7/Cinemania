@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: -  AppRouter
-
 class AppRouter {
     
     static let shared =  AppRouter()

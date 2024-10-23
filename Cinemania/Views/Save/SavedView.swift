@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: - SavedView
-
 class SavedView: UIView {
     
     let tableView: UITableView = {

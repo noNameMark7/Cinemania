@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: - TrendingMovies
-
 struct TrendingMovies: Codable {
     
     let page: Int
@@ -16,9 +14,6 @@ struct TrendingMovies: Codable {
         case totalResults = "total_results"
     }
 }
-
-
-// MARK: - Movies
 
 struct Movies: Codable {
     

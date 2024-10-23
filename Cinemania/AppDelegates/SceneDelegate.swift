@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: -  SceneDelegate
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?

@@ -1,8 +1,6 @@
 import UIKit
 import RealmSwift
 
-// MARK: - SavedViewModel
-
 class SavedViewModel {
     
     var savedMedia: Results<MediaRealm>?

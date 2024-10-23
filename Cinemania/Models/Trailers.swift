@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: - Trailers
-
 struct Trailers: Codable {
     
     let id: Int

@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: -  SetupTabBarController
-
 final class SetupTabBarController {
     
     static func asRootViewController(in window: UIWindow) {
@@ -15,7 +13,7 @@ final class SetupTabBarController {
         
         let homeViewController = HomeViewController()
         homeViewController.view.backgroundColor = .systemBackground
-        homeViewController.title = "What's trending today"
+        homeViewController.title = "Trending today"
         
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
         homeNavigationController.tabBarItem = UITabBarItem(

@@ -1,8 +1,6 @@
 import UIKit
 import RealmSwift
 
-// MARK: - MediaRealm
-
 class MediaRealm: Object {
     
     @Persisted(primaryKey: true) var id: Int

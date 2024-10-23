@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: - HomeViewController
-
 class HomeViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Properties
@@ -55,6 +53,38 @@ extension HomeViewController {
 }
 
 
+// MARK: - NavigationBar, TableView, SearchBar
+
+extension HomeViewController {
+    
+    func configureNavigationBar() {
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = homeViewModel.searchController
+        definesPresentationContext = true
+    }
+    
+    func configureSearchBar() {
+        homeViewModel.searchController.searchResultsUpdater = self
+        homeViewModel.searchController.obscuresBackgroundDuringPresentation = false
+        homeViewModel.searchController.searchBar.delegate = self
+    }
+    
+    func configureTableView() {
+        homeView.tableView.dataSource = self
+        homeView.tableView.delegate = self
+        homeView.tableView.register(
+            CustomTableViewCell.self,
+            forCellReuseIdentifier: CustomTableViewCell.reuseIdentifier
+        )
+        
+        // Add pull-to-refresh functionality
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        homeView.tableView.refreshControl = refreshControl
+    }
+}
+
+
 // MARK: - Monitoring states and data changes
 
 extension HomeViewController {
@@ -99,38 +129,6 @@ extension HomeViewController {
         
         // End refreshing after data is fetched
         homeView.tableView.refreshControl?.endRefreshing()
-    }
-}
-
-
-// MARK: - NavigationBar, TableView, SearchBar
-
-extension HomeViewController {
-    
-    func configureNavigationBar() {
-        navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.searchController = homeViewModel.searchController
-        definesPresentationContext = true
-    }
-    
-    func configureSearchBar() {
-        homeViewModel.searchController.searchResultsUpdater = self
-        homeViewModel.searchController.obscuresBackgroundDuringPresentation = false
-        homeViewModel.searchController.searchBar.delegate = self
-    }
-    
-    func configureTableView() {
-        homeView.tableView.dataSource = self
-        homeView.tableView.delegate = self
-        homeView.tableView.register(
-            CustomTableViewCell.self,
-            forCellReuseIdentifier: CustomTableViewCell.reuseIdentifier
-        )
-        
-        // Add pull-to-refresh functionality
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        homeView.tableView.refreshControl = refreshControl
     }
 }
 

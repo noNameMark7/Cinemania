@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: - SavedViewController
-
 class SavedViewController: UIViewController {
     
     private let savedView = SavedView()
@@ -69,7 +67,7 @@ extension SavedViewController {
 }
 
 
-// MARK: - UITableViewDataSource and UITableViewDelegate setup
+// MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(

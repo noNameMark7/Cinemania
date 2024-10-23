@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: - DetailsViewModel
-
 class DetailsViewModel {
     
     var media: Media?

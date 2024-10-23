@@ -64,6 +64,8 @@ extension Media {
 }
 
 
+// MARK: - Insets
+
 class PaddedLabel: UILabel {
     var textInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
 

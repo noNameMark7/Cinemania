@@ -1,8 +1,6 @@
 import UIKit
 import SafariServices
 
-// MARK: - DetailsViewController
-
 class DetailsViewController: UIViewController {
     
     private let detailsView: DetailsView

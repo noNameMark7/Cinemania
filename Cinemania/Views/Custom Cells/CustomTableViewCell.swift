@@ -1,8 +1,6 @@
 import UIKit
 import SDWebImage
 
-// MARK: - CustomTableViewCell
-
 class CustomTableViewCell: UITableViewCell {
     
     static let reuseIdentifier = "CustomTableViewCell"

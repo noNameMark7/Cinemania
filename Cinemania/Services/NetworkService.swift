@@ -1,8 +1,6 @@
 import UIKit
 import Alamofire
 
-// MARK: -  NetworkService
-
 final class NetworkService {
     
     static let shared = NetworkService()

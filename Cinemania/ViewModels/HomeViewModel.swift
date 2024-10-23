@@ -1,7 +1,5 @@
 import UIKit
 
-// MARK: - HomeViewModel
-
 class HomeViewModel {
     
     var trendingMedia: [Media] = []
