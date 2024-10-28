@@ -62,7 +62,7 @@ class CustomTableViewCell: UITableViewCell {
         label.font = .customFont(.suseMedium, ofSize: 13)
         label.textColor = .label
         label.layer.borderWidth = 0.8
-        label.layer.cornerRadius = 5
+        label.layer.cornerRadius = 4
         label.layer.masksToBounds = true
         label.textAlignment = .center
         label.textInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
@@ -141,7 +141,7 @@ extension CustomTableViewCell {
         
         let genreLabelConstraints = [
             genreLabel.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 8),
-            genreLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -8),
+            genreLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -22),
         ]
         
         let tmdbImageViewConstraints = [

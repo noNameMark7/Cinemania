@@ -79,7 +79,7 @@ class DetailsView: UIView {
     private let genreLabelValue: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseBold, ofSize: 14)
+        label.font = .customFont(.suseMedium, ofSize: 14)
         label.numberOfLines = 0
         label.textColor = .label
         return label
@@ -151,7 +151,7 @@ class DetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Popularity"
-        label.font = .customFont(.suseRegular, ofSize: 15)
+        label.font = .customFont(.suseRegular, ofSize: 14)
         label.textColor = .label
         return label
     }()
@@ -159,7 +159,7 @@ class DetailsView: UIView {
     private let popularityValueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseRegular, ofSize: 13)
+        label.font = .customFont(.suseRegular, ofSize: 12)
         label.textColor = .secondaryLabel
         return label
     }()
@@ -168,7 +168,7 @@ class DetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Voted"
-        label.font = .customFont(.suseRegular, ofSize: 15)
+        label.font = .customFont(.suseRegular, ofSize: 14)
         label.textColor = .label
         return label
     }()
@@ -176,7 +176,7 @@ class DetailsView: UIView {
     private let voteCountValueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseRegular, ofSize: 13)
+        label.font = .customFont(.suseRegular, ofSize: 12)
         label.textColor = .secondaryLabel
         return label
     }()
@@ -185,7 +185,7 @@ class DetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Vote average"
-        label.font = .customFont(.suseRegular, ofSize: 15)
+        label.font = .customFont(.suseRegular, ofSize: 14)
         label.textColor = .label
         return label
     }()
@@ -193,7 +193,7 @@ class DetailsView: UIView {
     private let voteAverageValueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .customFont(.suseRegular, ofSize: 13)
+        label.font = .customFont(.suseRegular, ofSize: 12)
         label.textColor = .secondaryLabel
         return label
     }()
@@ -304,7 +304,7 @@ extension DetailsView {
             containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
         ]
         
-        let genreLabelConstraints = [
+        let genreLabelValueConstraints = [
             genreLabelValue.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             genreLabelValue.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
             genreLabelValue.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor, constant: -16),
@@ -312,12 +312,12 @@ extension DetailsView {
         ]
         
         let aboutLabelConstraints = [
-            aboutLabel.topAnchor.constraint(equalTo: genreLabelValue.bottomAnchor, constant: 20),
+            aboutLabel.topAnchor.constraint(equalTo: genreLabelValue.bottomAnchor, constant: 22),
             aboutLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
         ]
 
         let overviewTextViewConstraints = [
-            overviewValueTextView.topAnchor.constraint(equalTo: aboutLabel.bottomAnchor, constant: 16),
+            overviewValueTextView.topAnchor.constraint(equalTo: aboutLabel.bottomAnchor, constant: 12),
             overviewValueTextView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
             overviewValueTextView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
         ]
@@ -357,7 +357,7 @@ extension DetailsView {
         ]
         
         let popularityLabelValueConstraints = [
-            popularityValueLabel.topAnchor.constraint(equalTo: popularityLabel.bottomAnchor, constant: 3),
+            popularityValueLabel.topAnchor.constraint(equalTo: popularityLabel.bottomAnchor, constant: 4),
             popularityValueLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
         ]
         
@@ -367,7 +367,7 @@ extension DetailsView {
         ]
 
         let voteCountLabelValueConstraints = [
-            voteCountValueLabel.topAnchor.constraint(equalTo: votedLabel.bottomAnchor, constant: 3),
+            voteCountValueLabel.topAnchor.constraint(equalTo: votedLabel.bottomAnchor, constant: 4),
             voteCountValueLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
         ]
         
@@ -377,7 +377,7 @@ extension DetailsView {
         ]
         
         let voteAverageValueLabelConstraints = [
-            voteAverageValueLabel.topAnchor.constraint(equalTo: voteAverageLabel.bottomAnchor, constant: 3),
+            voteAverageValueLabel.topAnchor.constraint(equalTo: voteAverageLabel.bottomAnchor, constant: 4),
             voteAverageValueLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             voteAverageValueLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -32)
         ]
@@ -390,7 +390,7 @@ extension DetailsView {
         NSLayoutConstraint.activate(posterImageViewConstraints)
         NSLayoutConstraint.activate(titleLabelConstraints)
         NSLayoutConstraint.activate(containerViewConstraints)
-        NSLayoutConstraint.activate(genreLabelConstraints)
+        NSLayoutConstraint.activate(genreLabelValueConstraints)
         NSLayoutConstraint.activate(aboutLabelConstraints)
         NSLayoutConstraint.activate(overviewTextViewConstraints)
         NSLayoutConstraint.activate(firstSeparatorViewConstraints)
@@ -434,7 +434,7 @@ extension DetailsView {
 
 private extension DetailsView {
     
-    // Add link into overviewTextView and show message if overview is missing
+    // MARK: - Add link into overviewTextView and show message if overview is missing
     func configureMissingDescription() {
         let defaultText = "We don't have an overview translated in English, apologize for this. We recommend visiting https://www.themoviedb.org/ to find the content you need. Thank you for understanding."
         let attributedText = NSMutableAttributedString(string: defaultText)
@@ -485,7 +485,7 @@ private extension DetailsView {
         overviewValueTextView.isEditable = false
     }
     
-    // Show message if trailer is missing
+    // MARK: - Show message if trailer is missing
     func showMessageIfTrailerIsMissing() {
         let text = "😥\nUnfortunately, there is no trailer, sorry.. If the trailer appears on our website, it will immediately appear here."
         let components = text.components(separatedBy: ". ")
