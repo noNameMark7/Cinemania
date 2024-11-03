@@ -3,8 +3,10 @@ import SDWebImage
 
 class CustomTableViewCell: UITableViewCell {
     
+    // MARK: - Properties
     static let reuseIdentifier = "CustomTableViewCell"
     
+    // MARK: - UI Components
     private let posterContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -69,6 +71,7 @@ class CustomTableViewCell: UITableViewCell {
         return label
     }()
     
+    // MARK: - Lifecycle
     override init(
         style: UITableViewCell.CellStyle,
         reuseIdentifier: String?
@@ -95,6 +98,7 @@ class CustomTableViewCell: UITableViewCell {
         genreLabel.frame.origin.y = centerY - (genreLabel.frame.height / 2)
     }
     
+    // MARK: - Theme appearance
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updateAppearance(for: traitCollection)
@@ -103,7 +107,6 @@ class CustomTableViewCell: UITableViewCell {
 
 
 // MARK: - Initial Setup
-
 extension CustomTableViewCell {
     
     func initialSetup() {
@@ -180,7 +183,6 @@ extension CustomTableViewCell {
 
 
 // MARK: - Cell Configuration
-
 extension CustomTableViewCell {
     
     func configureWith(_ object: Media, and genre: [Genre]) {
