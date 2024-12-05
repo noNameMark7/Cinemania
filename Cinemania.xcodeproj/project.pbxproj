@@ -159,7 +159,8 @@
 		4D63F22E2AA3D56D00FADB08 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4DD25BE22A51D84D00C44A9E /* Assets.xcassets */,
+				4DBF9DB82D02565000D8E290 /* Storyboard */,
+				4DBF9DB72D02562600D8E290 /* Assets */,
 				4D63F22F2AA3D68D00FADB08 /* Fonts */,
 			);
 			path = Resources;
@@ -192,6 +193,22 @@
 				4D2D2A222C91C641006E7DF8 /* Comfortaa-Bold.ttf */,
 			);
 			path = Comfortaa;
+			sourceTree = "<group>";
+		};
+		4DBF9DB72D02562600D8E290 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				4DD25BE22A51D84D00C44A9E /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		4DBF9DB82D02565000D8E290 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				4DD25BE42A51D84D00C44A9E /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		4DC5402E2C93981A001DD80A /* SUSE */ = {
@@ -329,7 +346,6 @@
 			children = (
 				4DD25BD92A51D84300C44A9E /* AppDelegate.swift */,
 				4DD25BDB2A51D84300C44A9E /* SceneDelegate.swift */,
-				4DD25BE42A51D84D00C44A9E /* LaunchScreen.storyboard */,
 				4DD25BE72A51D84D00C44A9E /* Info.plist */,
 			);
 			name = "Supporting files";
