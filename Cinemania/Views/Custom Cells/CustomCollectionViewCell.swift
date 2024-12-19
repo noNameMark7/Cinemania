@@ -6,7 +6,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "CustomCollectionViewCell"
     
     // MARK: - Properties
-    
     let posterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
@@ -31,7 +30,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
 
 
 // MARK: - Cell Configuration
-
 extension CustomCollectionViewCell {
     
     func configure(with media: Media) {

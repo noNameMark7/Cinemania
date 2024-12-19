@@ -4,7 +4,7 @@ import SDWebImage
 class CustomTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-    static let reuseIdentifier = "CustomTableViewCell"
+    static let reuseIdentifier = String(describing: CustomTableViewCell.self)
     
     // MARK: - UI Components
     private let posterContainerView: UIView = {
@@ -126,7 +126,7 @@ extension CustomTableViewCell {
             posterContainerView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             posterContainerView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             posterContainerView.widthAnchor.constraint(equalToConstant: 120),
-            posterContainerView.heightAnchor.constraint(equalToConstant: 180)
+            //posterContainerView.heightAnchor.constraint(equalToConstant: 180)
         ]
         
         let posterImageViewConstraints = [

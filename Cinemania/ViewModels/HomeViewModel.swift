@@ -2,15 +2,16 @@ import UIKit
 
 class HomeViewModel {
     
+    // MARK: - Properties
     var trendingMedia: [Media] = []
     var filtered: [Media] = []
     var genres: [Genre] = []
     var selectedSegment: Int = 0
     var searchIsActive: Bool = false
     var updateUI: (() -> Void)?
-    
     private var initialDataLoaded = false
    
+    // MARK: - UI Components
     let searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.hidesNavigationBarDuringPresentation = false
@@ -24,7 +25,7 @@ class HomeViewModel {
     ) {
         NetworkService.shared.fetchTrendingMedia(
             mediaType: mediaType,
-            timeWindow: .day,
+            timeWindow: .week,
             modelType: modelType
         ) { [weak self] response in
             switch response {
@@ -72,6 +73,7 @@ class HomeViewModel {
         selectedSegment = index
     }
     
+    // MARK: - DataSource methods
     var numberOfItems: Int {
         trendingMedia.count
     }

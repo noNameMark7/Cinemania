@@ -6,7 +6,6 @@ import RealmSwift
 class DetailsView: UIView {
     
     // MARK: - Properties
-    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +68,6 @@ class DetailsView: UIView {
     }()
     
     // MARK: - Contains all properties below
-    
     private let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -200,7 +198,7 @@ class DetailsView: UIView {
   
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initialSetup()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -213,16 +211,10 @@ class DetailsView: UIView {
     }
 }
 
-
-// MARK: - Initial setup
-
+// MARK: - Setup UI
 extension DetailsView {
     
-    func initialSetup() {
-        configureUI()
-    }
-    
-    func configureUI() {
+    func setupUI() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(backdropImageView)
@@ -246,7 +238,11 @@ extension DetailsView {
         containerView.addSubview(voteCountValueLabel)
         containerView.addSubview(voteAverageLabel)
         containerView.addSubview(voteAverageValueLabel)
-
+        
+        setupConstraints()
+    }
+    
+    func setupConstraints() {
         let scrollViewConstraints = [
             scrollView.topAnchor.constraint(equalTo: topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -429,9 +425,7 @@ extension DetailsView {
     }
 }
 
-
 // MARK: - Text processing in UITextView
-
 private extension DetailsView {
     
     // MARK: - Add link into overviewTextView and show message if overview is missing
@@ -510,9 +504,7 @@ private extension DetailsView {
     }
 }
 
-
 // MARK: - Video processing
-
 extension DetailsView {
     
     private func extractVideoId(from trailerUrl: URL) -> String? {
@@ -541,9 +533,7 @@ extension DetailsView {
     }
 }
 
-
 // MARK: - Cell configuration
-
 extension DetailsView {
 
     func configure(with object: Media, and genres: [Genre]) {
@@ -576,9 +566,7 @@ extension DetailsView {
     }
 }
 
-
 // MARK: - DetailsViewModelDelegate
-
 extension DetailsView: DetailsViewModelDelegate {
     
     func updateUI(with model: Media, and genres: [Genre]) {

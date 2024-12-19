@@ -3,12 +3,10 @@ import UIKit
 class HomeViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Properties
-    
     private let homeView = HomeView()
     private let homeViewModel = HomeViewModel()
    
     // MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
@@ -22,7 +20,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
 
 
 // MARK: - Initial setup
-
 extension HomeViewController {
     
     func initialSetup() {
@@ -54,7 +51,6 @@ extension HomeViewController {
 
 
 // MARK: - NavigationBar, TableView, SearchBar
-
 extension HomeViewController {
     
     func configureNavigationBar() {
@@ -86,7 +82,6 @@ extension HomeViewController {
 
 
 // MARK: - Monitoring states and data changes
-
 extension HomeViewController {
     
     @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
@@ -134,7 +129,6 @@ extension HomeViewController {
 
 
 // MARK: - UITableViewDataSource and UITableViewDelegate
-
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(
@@ -252,7 +246,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
 
 // MARK: - UISearchResultsUpdating and UISearchBarDelegate
-
 extension HomeViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {

@@ -42,7 +42,6 @@
 		4DC5403A2C939A6F001DD80A /* SUSE-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DC5402F2C939846001DD80A /* SUSE-Thin.ttf */; };
 		4DCB2D752A9817D4004FDFDB /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB2D742A9817D4004FDFDB /* DetailsView.swift */; };
 		4DCB2D772A981871004FDFDB /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB2D762A981871004FDFDB /* DetailsViewModel.swift */; };
-		4DCB2D7A2A9AA5F2004FDFDB /* DetailsViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB2D792A9AA5F2004FDFDB /* DetailsViewModelDelegate.swift */; };
 		4DD25BDA2A51D84300C44A9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD25BD92A51D84300C44A9E /* AppDelegate.swift */; };
 		4DD25BDC2A51D84300C44A9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD25BDB2A51D84300C44A9E /* SceneDelegate.swift */; };
 		4DD25BE32A51D84D00C44A9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DD25BE22A51D84D00C44A9E /* Assets.xcassets */; };
@@ -89,7 +88,6 @@
 		4DC540342C939847001DD80A /* SUSE-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUSE-SemiBold.ttf"; sourceTree = "<group>"; };
 		4DCB2D742A9817D4004FDFDB /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		4DCB2D762A981871004FDFDB /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
-		4DCB2D792A9AA5F2004FDFDB /* DetailsViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelDelegate.swift; sourceTree = "<group>"; };
 		4DD25BD62A51D84300C44A9E /* Cinemania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cinemania.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD25BD92A51D84300C44A9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DD25BDB2A51D84300C44A9E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +131,7 @@
 				4D00A2062A8FFB7D00799B9C /* Trailers.swift */,
 				4D00A2082A8FFB8C00799B9C /* Media.swift */,
 				4D00A20B2A8FFBD200799B9C /* MediaRealm.swift */,
+				4D0E93552C9B377400822D08 /* Enums.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +194,14 @@
 			path = Comfortaa;
 			sourceTree = "<group>";
 		};
+		4DBF09C02D1392FB007262FB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4D0E93572C9B42A200822D08 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4DBF9DB72D02562600D8E290 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,15 +231,13 @@
 			path = SUSE;
 			sourceTree = "<group>";
 		};
-		4DCB2D6E2A97A61A004FDFDB /* Utilities */ = {
+		4DCB2D6E2A97A61A004FDFDB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				4D00A21D2A9019D600799B9C /* Constants.swift */,
-				4D0E93552C9B377400822D08 /* Enums.swift */,
-				4D0E93572C9B42A200822D08 /* Extensions.swift */,
 				4D63F22B2AA3704000FADB08 /* FormattingReleaseDateValue.swift */,
 			);
-			path = Utilities;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		4DCB2D732A981788004FDFDB /* Details */ = {
@@ -241,14 +246,6 @@
 				4DCB2D742A9817D4004FDFDB /* DetailsView.swift */,
 			);
 			path = Details;
-			sourceTree = "<group>";
-		};
-		4DCB2D782A9AA5C3004FDFDB /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				4DCB2D792A9AA5F2004FDFDB /* DetailsViewModelDelegate.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		4DD25BCD2A51D84300C44A9E = {
@@ -270,16 +267,16 @@
 		4DD25BD82A51D84300C44A9E /* Cinemania */ = {
 			isa = PBXGroup;
 			children = (
-				4DFA9FA22CEEBCE700DC1D98 /* Supporting files */,
-				4DCB2D782A9AA5C3004FDFDB /* Protocols */,
-				4DCB2D6E2A97A61A004FDFDB /* Utilities */,
-				4D594A3B2A75BEA600FE2B4D /* Models */,
-				4DD25C002A52108800C44A9E /* Views */,
-				4D5C7C322A7ACFB10085994F /* ViewModels */,
+				4DCB2D6E2A97A61A004FDFDB /* Utils */,
+				4DBF09C02D1392FB007262FB /* Extensions */,
 				4DD25BFD2A52102F00C44A9E /* Controllers */,
+				4D5C7C322A7ACFB10085994F /* ViewModels */,
+				4DD25C002A52108800C44A9E /* Views */,
+				4D594A3B2A75BEA600FE2B4D /* Models */,
 				4DA6D0A02ABF7C400048FCEE /* Routers */,
-				4D5C7C332A7ACFD80085994F /* Services */,
 				4D63F22E2AA3D56D00FADB08 /* Resources */,
+				4D5C7C332A7ACFD80085994F /* Services */,
+				4DFA9FA22CEEBCE700DC1D98 /* Supporting files */,
 			);
 			path = Cinemania;
 			sourceTree = "<group>";
@@ -472,7 +469,6 @@
 				4D63F22C2AA3704000FADB08 /* FormattingReleaseDateValue.swift in Sources */,
 				4D46C2A12A75A31F00C4C127 /* HomeViewController.swift in Sources */,
 				4DF505BB2A8FC81200CFDC52 /* DetailsViewController.swift in Sources */,
-				4DCB2D7A2A9AA5F2004FDFDB /* DetailsViewModelDelegate.swift in Sources */,
 				4D0E93582C9B42A200822D08 /* Extensions.swift in Sources */,
 				4D2E86DA2C89E6D1003C5074 /* CustomCollectionViewCell.swift in Sources */,
 				4DDA20402B6ACBD0001AD7CE /* SearchViewController.swift in Sources */,
