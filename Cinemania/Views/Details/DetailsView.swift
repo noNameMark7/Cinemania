@@ -94,7 +94,7 @@ class DetailsView: UIView {
     let overviewValueTextView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.textColor = .secondaryLabel
+        textView.textColor = .label
         textView.font = .customFont(.suseRegular, ofSize: 15)
         textView.textContainer.lineBreakMode = .byWordWrapping
         textView.isEditable = false
